@@ -1,0 +1,28 @@
+{
+  "name": "orchids/demokit",
+  "description": "Demo kit package for Orchid Platform",
+  "type": "library",
+  "keywords": [
+    "Orchid",
+    "DemoKit"
+  ],
+  "license": "MIT",
+  "require": {
+    "orchid/platform":"dev-develop"
+  },
+  "autoload": {
+    "psr-4": {
+      "Orchids\\DemoKit\\Database\\Seeds\\": "database/seeds/",
+      "Orchids\\DemoKit\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Orchids\\DemoKit\\Providers\\DemoKitProvider"
+      ]
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
