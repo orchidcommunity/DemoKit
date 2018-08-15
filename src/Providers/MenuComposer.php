@@ -40,11 +40,36 @@ class MenuComposer
                 'icon'       => 'icon-notebook',
                 'route'      => route('platform.demokit.screen1.list'),
                 'label'      => 'Screens1',
+                'groupname'  => 'Screens',
                 'childs'     => false,
                 'main'       => false,
                 /*'active'     => 'platform.demokit.*',*/
                 'permission' => 'platform.demokit',
                 'sort'       => 10,
+            ]);
+        $this->dashboard->menu
+            ->add('demokit-screens', [
+                'slug'       => 'demokit-screen2',
+                'icon'       => 'icon-notebook',
+                'route'      => route('platform.demokit.screen2.edit'),
+                'label'      => 'Icon Screen',
+                'childs'     => false,
+                'main'       => false,
+                /*'active'     => 'platform.demokit.*',*/
+                'permission' => 'platform.demokit',
+                'sort'       => 11,
+            ]);
+        $this->dashboard->menu
+            ->add('demokit-screens', [
+                'slug'       => 'demokit-screen3',
+                'icon'       => 'icon-notebook',
+                'route'      => route('platform.demokit.screen3.list'),
+                'label'      => 'Typography Screen',
+                'childs'     => false,
+                'main'       => false,
+                /*'active'     => 'platform.demokit.*',*/
+                'permission' => 'platform.demokit',
+                'sort'       => 12,
             ]);
 /*
         $this->dashboard->menu

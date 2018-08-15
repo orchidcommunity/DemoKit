@@ -17,7 +17,7 @@ class DemoKitProvider extends ServiceProvider
     {
         $this->dashboard = $dashboard;
 
-        $this->app->make(Factory::class)->load(realpath(__DIR__.'/../../database/factories'));
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'orchids/demokit');
 
         $this->dashboard->registerPermissions($this->registerPermissions());
         //$this->loadMigrationsFrom(realpath(__DIR__.'/../../database/migrations'));
@@ -25,6 +25,8 @@ class DemoKitProvider extends ServiceProvider
 
         View::composer('platform::layouts.dashboard', MenuComposer::class);
         View::composer('platform::container.systems.index', SystemMenuComposer::class);
+
+        $this->app->make(Factory::class)->load(realpath(__DIR__.'/../../database/factories'));
     }
 
     /**

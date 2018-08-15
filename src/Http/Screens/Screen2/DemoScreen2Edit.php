@@ -1,5 +1,5 @@
 <?php
-namespace Orchids\DemoKit\Http\Screens\Screen1;
+namespace Orchids\DemoKit\Http\Screens\Screen2;
 
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Setting;
@@ -8,10 +8,10 @@ use Orchid\Screen\Link;
 use Orchid\Screen\Screen;
 
 use Orchids\DemoKit\Models\DemoPost;
-use Orchids\DemoKit\Http\Layouts\AllFields\DemoEdit1Layout;
+use Orchids\DemoKit\Http\Layouts\Pages\IconsLayout;
 
 
-class DemoScreen1Edit extends Screen
+class DemoScreen2Edit extends Screen
 {
 	
     /**
@@ -29,18 +29,19 @@ class DemoScreen1Edit extends Screen
     /**
      * Query data
      *
-     * @param XSetting $xsetting
+     * @param DemoPost $demopost
      *
      * @return array
      */
-    public function query($demokitdata= null) : array
+    public function query($demopost= null) : array
     {
-
+        /*
         $demokitdata = is_null($demokitdata) ? new DemoPost() : DemoPost::whereId($demokitdata)->first();
         //dd($demokitdata);
         return [
             'data'   => $demokitdata,
-        ];
+        ];*/
+        return [];
     }
     /**
      * Button commands
@@ -50,8 +51,8 @@ class DemoScreen1Edit extends Screen
     public function commandBar() : array
     {
         return [				
-            Link::name('Save')->method('save'),
-            Link::name('Remove')->method('remove'),
+            //Link::name('Save')->method('save'),
+            //Link::name('Remove')->method('remove'),
         ];
     }
     /**
@@ -65,7 +66,7 @@ class DemoScreen1Edit extends Screen
 		
 		    Layouts::columns([
                 'EditLayout' => [
-                    DemoEdit1Layout::class
+                    IconsLayout::class
                 ],
             ]),
 		

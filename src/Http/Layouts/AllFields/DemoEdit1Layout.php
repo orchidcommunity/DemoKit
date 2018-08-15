@@ -12,66 +12,69 @@ class DemoEdit1Layout extends Rows
      */
 	public function fields(): array
     {
-        //dd($this->query->getContent('data.content.'.app()->getLocale().'.input'));
+        //dd($this->query->getContent($data_con.'.input'));
+        $data_con='data.content.'.app()->getLocale();
+        
+        
         return [
             Field::tag('input')
                 ->type('text')
-                ->name('data.content.'.app()->getLocale().'.input')
+                ->name($data_con.'.input')
                 ->max(255)
                 ->required()
                 ->title('Name Articles')
                 ->help('Article title'),
             Field::tag('textarea')
-                ->name('data.content.'.app()->getLocale().'.textarea')
+                ->name($data_con.'.textarea')
                 ->max(255)
                 ->rows(5)
                 ->title('Short description'),
             Field::tag('wysiwyg')
-                ->name('data.content.'.app()->getLocale().'.body')
+                ->name($data_con.'.body')
                 ->required()
                 ->title('Name Articles')
                 ->help('Article title')
                 ->theme('inlite'),
             Field::tag('markdown')
-                ->name('data.content.'.app()->getLocale().'.markdown')
+                ->name($data_con.'.markdown')
                 ->title('О чём вы хотите рассказать?'),
             Field::tag('picture')
-                ->name('data.content.'.app()->getLocale().'.picture')
+                ->name($data_con.'.picture')
                 ->width(500)
                 ->height(300),
             Field::tag('upload')
-                ->name('data.content.'.app()->getLocale().'.photos')
+                ->name($data_con.'.photos')
                 ->title('Upload'),
             Field::tag('datetime')
                 ->type('text')
-                ->name('data.content.'.app()->getLocale().'.datetime')
+                ->name($data_con.'.datetime')
                 ->title('Opening date')
                 ->help('The opening event will take place'),
             Field::tag('checkbox')
-                ->name('data.content.'.app()->getLocale().'.checkbox')
+                ->name($data_con.'.checkbox')
                 ->value(1)
                 ->title('Free')
                 ->placeholder('Event for free')
                 ->help('Event for free'),
             Field::tag('code')
-                ->name('data.content.'.app()->getLocale().'.code')
+                ->name($data_con.'.code')
                 ->title('Code Block')
                 ->help('Simple web editor'),
             Field::tag('tags')
-                ->name('data.content.'.app()->getLocale().'.tags')
-                ->title('Keywords')
+                ->name($data_con.'.tags')
+                ->title('Tags')
                 ->help('SEO keywords'),
             Field::tag('select')
                 ->options([
                     'index'   => 'Index',
                     'noindex' => 'No index',
                 ])
-                ->name('data.content.'.app()->getLocale().'.select')
+                ->name($data_con.'.select')
                 ->title('Select tags')
                 ->help('Allow search bots to index page'),
             Field::tag('input')
                 ->type('text')
-                ->name('data.content.'.app()->getLocale().'.phone')
+                ->name($data_con.'.phone')
                 ->mask('(999) 999-9999')
                 ->title('Phone')
                 ->help('Number Phone'),
