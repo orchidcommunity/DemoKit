@@ -36,10 +36,10 @@ class MenuComposer
             ]);
         $this->dashboard->menu
             ->add('demokit-screens', [
-                'slug'       => 'demokit-screen1',
+                'slug'       => 'demokit-screen2',
                 'icon'       => 'icon-notebook',
-                'route'      => route('platform.demokit.screen1.list'),
-                'label'      => 'Screens1',
+                'route'      => route('platform.demokit.screen2.edit'),
+                'label'      => 'Step 1 - Icon Screen',
                 'groupname'  => 'Screens',
                 'childs'     => false,
                 'main'       => false,
@@ -49,28 +49,41 @@ class MenuComposer
             ]);
         $this->dashboard->menu
             ->add('demokit-screens', [
-                'slug'       => 'demokit-screen2',
+                'slug'       => 'demokit-screen1-create',
                 'icon'       => 'icon-notebook',
-                'route'      => route('platform.demokit.screen2.edit'),
-                'label'      => 'Icon Screen',
+                'route'      => route('platform.demokit.screen1.create'),
+                'label'      => 'Step 2 - Screen Create',
                 'childs'     => false,
                 'main'       => false,
                 /*'active'     => 'platform.demokit.*',*/
                 'permission' => 'platform.demokit',
-                'sort'       => 11,
+                'sort'       => 15,
             ]);
         $this->dashboard->menu
             ->add('demokit-screens', [
                 'slug'       => 'demokit-screen3',
                 'icon'       => 'icon-notebook',
                 'route'      => route('platform.demokit.screen3.list'),
-                'label'      => 'Typography Screen',
+                'label'      => 'Step 3 - Typography',
                 'childs'     => false,
                 'main'       => false,
                 /*'active'     => 'platform.demokit.*',*/
                 'permission' => 'platform.demokit',
-                'sort'       => 12,
+                'sort'       => 16,
             ]);
+        $this->dashboard->menu
+            ->add('demokit-screens', [
+                'slug'       => 'demokit-screen1',
+                'icon'       => 'icon-notebook',
+                'route'      => route('platform.demokit.screen1.list'),
+                'label'      => 'Step 4 - Screens',
+                'childs'     => false,
+                'main'       => false,
+                /*'active'     => 'platform.demokit.*',*/
+                'permission' => 'platform.demokit',
+                'sort'       => 20,
+            ]);
+
 /*
         $this->dashboard->menu
             ->add('CMS', [

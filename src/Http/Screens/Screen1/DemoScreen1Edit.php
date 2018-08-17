@@ -9,6 +9,7 @@ use Orchid\Screen\Screen;
 
 use Orchids\DemoKit\Models\DemoPost;
 use Orchids\DemoKit\Http\Layouts\AllFields\DemoEdit1Layout;
+use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout;
 
 
 class DemoScreen1Edit extends Screen
@@ -40,6 +41,7 @@ class DemoScreen1Edit extends Screen
         //dd($demokitdata);
         return [
             'data'   => $demokitdata,
+            'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step2.md',
         ];
     }
     /**
@@ -49,9 +51,12 @@ class DemoScreen1Edit extends Screen
      */
     public function commandBar() : array
     {
-        return [				
+        return [
+            Link::name('Help Step 2')
+                ->modal('HelpModal'),
             Link::name('Save')->method('save'),
             Link::name('Remove')->method('remove'),
+
         ];
     }
     /**
@@ -68,6 +73,11 @@ class DemoScreen1Edit extends Screen
                     DemoEdit1Layout::class
                 ],
             ]),
+            Layouts::modals([
+                'HelpModal' => [
+                    HelpModalLayout::class,
+                ],
+            ])->class('modal-lg'),
 		
         ];
     }

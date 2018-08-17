@@ -74,18 +74,23 @@ class DemoScreen3Edit extends Screen
      */
     public function layout() : array
     {
-        dump($this->method);
+        /*
+        $template = function ($template)
+        {
+            return view('orchids/demokit::layouts.'.$template);
+        };
+*/
+        //dump($this->method);
         $Layout = [
             'OneColumn' => [
-                Layouts::blank([
-                    'HeadingsLayout' => [
-                        HeadingsLayout::class,
-                        TextElementsLayout::class,
-                        TextColorsLayout::class,
-                        TextListsLayout::class,
-                        TextAlignsLayout::class,
-                    ],
-                ])
+                //Layouts::view('orchids/demokit::layouts.headings'),
+                //serialize(view('orchids/demokit::layouts.headings')),
+                //serialize($template('headings')),
+                HeadingsLayout::class,
+                TextElementsLayout::class,
+                TextColorsLayout::class,
+                TextListsLayout::class,
+                TextAlignsLayout::class,
             ],
             'TwoColumn' => [
                 Layouts::columns([
@@ -150,7 +155,6 @@ class DemoScreen3Edit extends Screen
         return $Layout[$this->method ?? 'OneColumn'];
     }
 
-
 /*
 
     public function OneColumn()
@@ -183,55 +187,9 @@ class DemoScreen3Edit extends Screen
     public function handle($method = null, $parameters = null)
     {
         $this->method=$parameters;
-        abort_if(! $this->checkAccess(), 403);
 
-        if ($this->request->method() === 'GET' || (is_null($method) && is_null($parameters))) {
-            $this->arguments = is_array($method) ? $method : [$method];
-
-            return $this->view();
-        }
-
-        if (starts_with($method, 'async')) {
-            return $this->asyncBuild($method, $parameters);
-        }
-
-        if (! is_null($parameters)) {
-            $this->arguments = is_array($method) ? $method : [$method];
-
-            $this->reflectionParams($parameters);
-
-            return call_user_func_array([$this, $parameters], $this->arguments);
-        }
-
-        $this->arguments = is_array($parameters) ? $parameters : [$parameters];
-        $this->reflectionParams($method);
-
-        return call_user_func_array([$this, $method], $this->arguments);
+        return parent::handle($method, $parameters);
     }
 
-    /**
-     * @return bool
-     */
-
-    private function checkAccess()
-    {
-        if (is_null($this->permission)) {
-            return true;
-        }
-
-        if (is_string($this->permission)) {
-            $this->permission = [$this->permission];
-        }
-
-        if (is_array($this->permission)) {
-            foreach ($this->permission as $item) {
-                if (! Auth::user()->hasAccess($item)) {
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
 
 }

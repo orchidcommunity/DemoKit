@@ -13,7 +13,7 @@ class HeadingsLayout extends Rows
     public function fields(): array
     {
         //dd($this->query->getContent($data_con.'.input'));
-        $data_con = 'data.content.' . app()->getLocale();
+        //$data_con = 'data.content.' . app()->getLocale();
 
         return [
             /*

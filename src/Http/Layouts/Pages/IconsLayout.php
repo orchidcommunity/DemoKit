@@ -10,13 +10,4 @@ class IconsLayout extends Rows
 
     public $template = 'orchids/demokit::layouts.icons';
 
-    /**
-     * @return array
-     */
-    /*
-	public function fields(): array
-    {
-        return [];
-    }
-*/
 }

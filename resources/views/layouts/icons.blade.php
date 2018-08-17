@@ -304,7 +304,7 @@ $icons = [
     }
 </style>
 <div class="wrapper-md">
-    <h2>Icon collection</h2>
+    <h2>Orchid icon collection</h2>
     <div class="row demokit-icons">
         @foreach($icons as $icon)
             <div class="col-4">

@@ -9,6 +9,7 @@ use Orchid\Screen\Link;
 
 use Orchids\DemoKit\Models\DemoPost;
 use Orchids\DemoKit\Http\Layouts\Lists\DemoScreen3Layout;
+use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout;
 
 class DemoScreen3List extends Screen
 {
@@ -33,7 +34,8 @@ class DemoScreen3List extends Screen
     {
         //dd(DemoPost::paginate(30));
          return [
-            'data' => DemoPost::paginate(30)
+            'data' => DemoPost::paginate(30),
+            'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step3.md',
         ];
     }
     /**
@@ -44,6 +46,8 @@ class DemoScreen3List extends Screen
     public function commandBar() : array
     {
         return [
+            Link::name('Help Step 3')
+                ->modal('HelpModal'),
             //Link::name('Create a new data')->method('create'),
             //Link::name('Add 1 row demo')->method('add1_demo'),
             //Link::name('Add 10 row demo')->method('add10_demo'),
@@ -58,6 +62,11 @@ class DemoScreen3List extends Screen
     {
         return [
             DemoScreen3Layout::class,
+            Layouts::modals([
+                'HelpModal' => [
+                    HelpModalLayout::class,
+                ],
+            ])->class('modal-lg'),
         ];
     }
 }

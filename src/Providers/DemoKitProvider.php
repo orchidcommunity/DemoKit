@@ -17,16 +17,27 @@ class DemoKitProvider extends ServiceProvider
     {
         $this->dashboard = $dashboard;
 
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'orchids/demokit');
+        $this->loadViewsFrom(realpath(DEMOKIT_PATH.'/resources/views'), 'orchids/demokit');
 
         $this->dashboard->registerPermissions($this->registerPermissions());
         //$this->loadMigrationsFrom(realpath(__DIR__.'/../../database/migrations'));
-   		$this->loadRoutesFrom(realpath(__DIR__.'/../../routes/route.php'));  //Файл роутинга
+   		$this->loadRoutesFrom(realpath(DEMOKIT_PATH.'/routes/route.php'));  //Файл роутинга
 
         View::composer('platform::layouts.dashboard', MenuComposer::class);
         View::composer('platform::container.systems.index', SystemMenuComposer::class);
 
-        $this->app->make(Factory::class)->load(realpath(__DIR__.'/../../database/factories'));
+        $this->app->make(Factory::class)->load(realpath(DEMOKIT_PATH.'/database/factories'));
+
+        $this->publishes([
+            realpath( DEMOKIT_PATH.'/public/') => public_path('orchids/demokit'),
+        ], 'public');
+        $this->dashboard->registerResource(
+            [
+                'stylesheets' => ['/orchids/demokit/css/demokit.css'],
+                'scripts'     => ['/orchids/demokit/js/demokit.js'],
+            ]
+        );
+        //dd($this->dashboard);
     }
 
     /**
@@ -42,5 +53,16 @@ class DemoKitProvider extends ServiceProvider
                 ],
             ],
         ];
+    }
+
+    /**
+     * Register the service provider.
+     */
+    public function register()
+    {
+
+        if (! defined('DEMOKIT_PATH')) {
+            define('DEMOKIT_PATH', realpath(__DIR__.'/../../'));
+        }
     }
 }

@@ -9,6 +9,7 @@ use Orchid\Screen\Link;
 
 use Orchids\DemoKit\Models\DemoPost;
 use Orchids\DemoKit\Http\Layouts\Lists\DemoScreen1Layout;
+use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout;
 //use Orchids\DemoKit\Database\Seeds\Add1DemoPostsTableSeeder;
 
 class DemoScreen1List extends Screen
@@ -32,9 +33,10 @@ class DemoScreen1List extends Screen
      */
     public function query() : array
     {
-        //dd(DemoPost::paginate(30));
+        //DEMOKIT_PATH
          return [
-            'data' => DemoPost::paginate(30)
+            'data' => DemoPost::paginate(30),
+            'helpmdpath'  => PLATFORM_PATH.'/docs/ru/screens.md',
         ];
     }
     /**
@@ -48,6 +50,8 @@ class DemoScreen1List extends Screen
             Link::name('Create a new data')->method('create'),
             Link::name('Add 1 row demo')->method('add1_demo'),
             //Link::name('Add 10 row demo')->method('add10_demo'),
+            Link::name('Help')
+                ->modal('HelpModal'),
         ];
     }
     /**
@@ -59,6 +63,11 @@ class DemoScreen1List extends Screen
     {
         return [
             DemoScreen1Layout::class,
+            Layouts::modals([
+                'HelpModal' => [
+                    HelpModalLayout::class,
+                ],
+            ])->class('modal-lg'),
         ];
     }
     /**
