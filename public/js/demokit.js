@@ -60,1090 +60,11 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(1);
-module.exports = __webpack_require__(6);
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-window.Turbolinks = __webpack_require__(2);
-Turbolinks.start();
-
-__webpack_require__(4);
-
-// Instance the tour
-var tour = new Tour({
-    steps: [{
-        element: ".nav-item",
-        title: "Логотип",
-        content: "Это логотип"
-    }, {
-        element: "#app-content-body",
-        title: "Content",
-        content: "Content of my step"
-    }] });
-
-// Initialize the tour
-tour.init();
-
-// Start the tour
-tour.start();
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
-Turbolinks 5.1.1
-Copyright © 2018 Basecamp, LLC
- */
-(function(){var t=this;(function(){(function(){this.Turbolinks={supported:function(){return null!=window.history.pushState&&null!=window.requestAnimationFrame&&null!=window.addEventListener}(),visit:function(t,r){return e.controller.visit(t,r)},clearCache:function(){return e.controller.clearCache()},setProgressBarDelay:function(t){return e.controller.setProgressBarDelay(t)}}}).call(this)}).call(t);var e=t.Turbolinks;(function(){(function(){var t,r,n,o=[].slice;e.copyObject=function(t){var e,r,n;r={};for(e in t)n=t[e],r[e]=n;return r},e.closest=function(e,r){return t.call(e,r)},t=function(){var t,e;return t=document.documentElement,null!=(e=t.closest)?e:function(t){var e;for(e=this;e;){if(e.nodeType===Node.ELEMENT_NODE&&r.call(e,t))return e;e=e.parentNode}}}(),e.defer=function(t){return setTimeout(t,1)},e.throttle=function(t){var e;return e=null,function(){var r;return r=1<=arguments.length?o.call(arguments,0):[],null!=e?e:e=requestAnimationFrame(function(n){return function(){return e=null,t.apply(n,r)}}(this))}},e.dispatch=function(t,e){var r,o,i,s,a,u;return a=null!=e?e:{},u=a.target,r=a.cancelable,o=a.data,i=document.createEvent("Events"),i.initEvent(t,!0,r===!0),i.data=null!=o?o:{},i.cancelable&&!n&&(s=i.preventDefault,i.preventDefault=function(){return this.defaultPrevented||Object.defineProperty(this,"defaultPrevented",{get:function(){return!0}}),s.call(this)}),(null!=u?u:document).dispatchEvent(i),i},n=function(){var t;return t=document.createEvent("Events"),t.initEvent("test",!0,!0),t.preventDefault(),t.defaultPrevented}(),e.match=function(t,e){return r.call(t,e)},r=function(){var t,e,r,n;return t=document.documentElement,null!=(e=null!=(r=null!=(n=t.matchesSelector)?n:t.webkitMatchesSelector)?r:t.msMatchesSelector)?e:t.mozMatchesSelector}(),e.uuid=function(){var t,e,r;for(r="",t=e=1;36>=e;t=++e)r+=9===t||14===t||19===t||24===t?"-":15===t?"4":20===t?(Math.floor(4*Math.random())+8).toString(16):Math.floor(15*Math.random()).toString(16);return r}}).call(this),function(){e.Location=function(){function t(t){var e,r;null==t&&(t=""),r=document.createElement("a"),r.href=t.toString(),this.absoluteURL=r.href,e=r.hash.length,2>e?this.requestURL=this.absoluteURL:(this.requestURL=this.absoluteURL.slice(0,-e),this.anchor=r.hash.slice(1))}var e,r,n,o;return t.wrap=function(t){return t instanceof this?t:new this(t)},t.prototype.getOrigin=function(){return this.absoluteURL.split("/",3).join("/")},t.prototype.getPath=function(){var t,e;return null!=(t=null!=(e=this.requestURL.match(/\/\/[^\/]*(\/[^?;]*)/))?e[1]:void 0)?t:"/"},t.prototype.getPathComponents=function(){return this.getPath().split("/").slice(1)},t.prototype.getLastPathComponent=function(){return this.getPathComponents().slice(-1)[0]},t.prototype.getExtension=function(){var t,e;return null!=(t=null!=(e=this.getLastPathComponent().match(/\.[^.]*$/))?e[0]:void 0)?t:""},t.prototype.isHTML=function(){return this.getExtension().match(/^(?:|\.(?:htm|html|xhtml))$/)},t.prototype.isPrefixedBy=function(t){var e;return e=r(t),this.isEqualTo(t)||o(this.absoluteURL,e)},t.prototype.isEqualTo=function(t){return this.absoluteURL===(null!=t?t.absoluteURL:void 0)},t.prototype.toCacheKey=function(){return this.requestURL},t.prototype.toJSON=function(){return this.absoluteURL},t.prototype.toString=function(){return this.absoluteURL},t.prototype.valueOf=function(){return this.absoluteURL},r=function(t){return e(t.getOrigin()+t.getPath())},e=function(t){return n(t,"/")?t:t+"/"},o=function(t,e){return t.slice(0,e.length)===e},n=function(t,e){return t.slice(-e.length)===e},t}()}.call(this),function(){var t=function(t,e){return function(){return t.apply(e,arguments)}};e.HttpRequest=function(){function r(r,n,o){this.delegate=r,this.requestCanceled=t(this.requestCanceled,this),this.requestTimedOut=t(this.requestTimedOut,this),this.requestFailed=t(this.requestFailed,this),this.requestLoaded=t(this.requestLoaded,this),this.requestProgressed=t(this.requestProgressed,this),this.url=e.Location.wrap(n).requestURL,this.referrer=e.Location.wrap(o).absoluteURL,this.createXHR()}return r.NETWORK_FAILURE=0,r.TIMEOUT_FAILURE=-1,r.timeout=60,r.prototype.send=function(){var t;return this.xhr&&!this.sent?(this.notifyApplicationBeforeRequestStart(),this.setProgress(0),this.xhr.send(),this.sent=!0,"function"==typeof(t=this.delegate).requestStarted?t.requestStarted():void 0):void 0},r.prototype.cancel=function(){return this.xhr&&this.sent?this.xhr.abort():void 0},r.prototype.requestProgressed=function(t){return t.lengthComputable?this.setProgress(t.loaded/t.total):void 0},r.prototype.requestLoaded=function(){return this.endRequest(function(t){return function(){var e;return 200<=(e=t.xhr.status)&&300>e?t.delegate.requestCompletedWithResponse(t.xhr.responseText,t.xhr.getResponseHeader("Turbolinks-Location")):(t.failed=!0,t.delegate.requestFailedWithStatusCode(t.xhr.status,t.xhr.responseText))}}(this))},r.prototype.requestFailed=function(){return this.endRequest(function(t){return function(){return t.failed=!0,t.delegate.requestFailedWithStatusCode(t.constructor.NETWORK_FAILURE)}}(this))},r.prototype.requestTimedOut=function(){return this.endRequest(function(t){return function(){return t.failed=!0,t.delegate.requestFailedWithStatusCode(t.constructor.TIMEOUT_FAILURE)}}(this))},r.prototype.requestCanceled=function(){return this.endRequest()},r.prototype.notifyApplicationBeforeRequestStart=function(){return e.dispatch("turbolinks:request-start",{data:{url:this.url,xhr:this.xhr}})},r.prototype.notifyApplicationAfterRequestEnd=function(){return e.dispatch("turbolinks:request-end",{data:{url:this.url,xhr:this.xhr}})},r.prototype.createXHR=function(){return this.xhr=new XMLHttpRequest,this.xhr.open("GET",this.url,!0),this.xhr.timeout=1e3*this.constructor.timeout,this.xhr.setRequestHeader("Accept","text/html, application/xhtml+xml"),this.xhr.setRequestHeader("Turbolinks-Referrer",this.referrer),this.xhr.onprogress=this.requestProgressed,this.xhr.onload=this.requestLoaded,this.xhr.onerror=this.requestFailed,this.xhr.ontimeout=this.requestTimedOut,this.xhr.onabort=this.requestCanceled},r.prototype.endRequest=function(t){return this.xhr?(this.notifyApplicationAfterRequestEnd(),null!=t&&t.call(this),this.destroy()):void 0},r.prototype.setProgress=function(t){var e;return this.progress=t,"function"==typeof(e=this.delegate).requestProgressed?e.requestProgressed(this.progress):void 0},r.prototype.destroy=function(){var t;return this.setProgress(1),"function"==typeof(t=this.delegate).requestFinished&&t.requestFinished(),this.delegate=null,this.xhr=null},r}()}.call(this),function(){var t=function(t,e){return function(){return t.apply(e,arguments)}};e.ProgressBar=function(){function e(){this.trickle=t(this.trickle,this),this.stylesheetElement=this.createStylesheetElement(),this.progressElement=this.createProgressElement()}var r;return r=300,e.defaultCSS=".turbolinks-progress-bar {\n  position: fixed;\n  display: block;\n  top: 0;\n  left: 0;\n  height: 3px;\n  background: #0076ff;\n  z-index: 9999;\n  transition: width "+r+"ms ease-out, opacity "+r/2+"ms "+r/2+"ms ease-in;\n  transform: translate3d(0, 0, 0);\n}",e.prototype.show=function(){return this.visible?void 0:(this.visible=!0,this.installStylesheetElement(),this.installProgressElement(),this.startTrickling())},e.prototype.hide=function(){return this.visible&&!this.hiding?(this.hiding=!0,this.fadeProgressElement(function(t){return function(){return t.uninstallProgressElement(),t.stopTrickling(),t.visible=!1,t.hiding=!1}}(this))):void 0},e.prototype.setValue=function(t){return this.value=t,this.refresh()},e.prototype.installStylesheetElement=function(){return document.head.insertBefore(this.stylesheetElement,document.head.firstChild)},e.prototype.installProgressElement=function(){return this.progressElement.style.width=0,this.progressElement.style.opacity=1,document.documentElement.insertBefore(this.progressElement,document.body),this.refresh()},e.prototype.fadeProgressElement=function(t){return this.progressElement.style.opacity=0,setTimeout(t,1.5*r)},e.prototype.uninstallProgressElement=function(){return this.progressElement.parentNode?document.documentElement.removeChild(this.progressElement):void 0},e.prototype.startTrickling=function(){return null!=this.trickleInterval?this.trickleInterval:this.trickleInterval=setInterval(this.trickle,r)},e.prototype.stopTrickling=function(){return clearInterval(this.trickleInterval),this.trickleInterval=null},e.prototype.trickle=function(){return this.setValue(this.value+Math.random()/100)},e.prototype.refresh=function(){return requestAnimationFrame(function(t){return function(){return t.progressElement.style.width=10+90*t.value+"%"}}(this))},e.prototype.createStylesheetElement=function(){var t;return t=document.createElement("style"),t.type="text/css",t.textContent=this.constructor.defaultCSS,t},e.prototype.createProgressElement=function(){var t;return t=document.createElement("div"),t.className="turbolinks-progress-bar",t},e}()}.call(this),function(){var t=function(t,e){return function(){return t.apply(e,arguments)}};e.BrowserAdapter=function(){function r(r){this.controller=r,this.showProgressBar=t(this.showProgressBar,this),this.progressBar=new e.ProgressBar}var n,o,i;return i=e.HttpRequest,n=i.NETWORK_FAILURE,o=i.TIMEOUT_FAILURE,r.prototype.visitProposedToLocationWithAction=function(t,e){return this.controller.startVisitToLocationWithAction(t,e)},r.prototype.visitStarted=function(t){return t.issueRequest(),t.changeHistory(),t.loadCachedSnapshot()},r.prototype.visitRequestStarted=function(t){return this.progressBar.setValue(0),t.hasCachedSnapshot()||"restore"!==t.action?this.showProgressBarAfterDelay():this.showProgressBar()},r.prototype.visitRequestProgressed=function(t){return this.progressBar.setValue(t.progress)},r.prototype.visitRequestCompleted=function(t){return t.loadResponse()},r.prototype.visitRequestFailedWithStatusCode=function(t,e){switch(e){case n:case o:return this.reload();default:return t.loadResponse()}},r.prototype.visitRequestFinished=function(t){return this.hideProgressBar()},r.prototype.visitCompleted=function(t){return t.followRedirect()},r.prototype.pageInvalidated=function(){return this.reload()},r.prototype.showProgressBarAfterDelay=function(){return this.progressBarTimeout=setTimeout(this.showProgressBar,this.controller.progressBarDelay)},r.prototype.showProgressBar=function(){return this.progressBar.show()},r.prototype.hideProgressBar=function(){return this.progressBar.hide(),clearTimeout(this.progressBarTimeout)},r.prototype.reload=function(){return window.location.reload()},r}()}.call(this),function(){var t=function(t,e){return function(){return t.apply(e,arguments)}};e.History=function(){function r(e){this.delegate=e,this.onPageLoad=t(this.onPageLoad,this),this.onPopState=t(this.onPopState,this)}return r.prototype.start=function(){return this.started?void 0:(addEventListener("popstate",this.onPopState,!1),addEventListener("load",this.onPageLoad,!1),this.started=!0)},r.prototype.stop=function(){return this.started?(removeEventListener("popstate",this.onPopState,!1),removeEventListener("load",this.onPageLoad,!1),this.started=!1):void 0},r.prototype.push=function(t,r){return t=e.Location.wrap(t),this.update("push",t,r)},r.prototype.replace=function(t,r){return t=e.Location.wrap(t),this.update("replace",t,r)},r.prototype.onPopState=function(t){var r,n,o,i;return this.shouldHandlePopState()&&(i=null!=(n=t.state)?n.turbolinks:void 0)?(r=e.Location.wrap(window.location),o=i.restorationIdentifier,this.delegate.historyPoppedToLocationWithRestorationIdentifier(r,o)):void 0},r.prototype.onPageLoad=function(t){return e.defer(function(t){return function(){return t.pageLoaded=!0}}(this))},r.prototype.shouldHandlePopState=function(){return this.pageIsLoaded()},r.prototype.pageIsLoaded=function(){return this.pageLoaded||"complete"===document.readyState},r.prototype.update=function(t,e,r){var n;return n={turbolinks:{restorationIdentifier:r}},history[t+"State"](n,null,e)},r}()}.call(this),function(){e.Snapshot=function(){function t(t){var e,r;r=t.head,e=t.body,this.head=null!=r?r:document.createElement("head"),this.body=null!=e?e:document.createElement("body")}return t.wrap=function(t){return t instanceof this?t:this.fromHTML(t)},t.fromHTML=function(t){var e;return e=document.createElement("html"),e.innerHTML=t,this.fromElement(e)},t.fromElement=function(t){return new this({head:t.querySelector("head"),body:t.querySelector("body")})},t.prototype.clone=function(){return new t({head:this.head.cloneNode(!0),body:this.body.cloneNode(!0)})},t.prototype.getRootLocation=function(){var t,r;return r=null!=(t=this.getSetting("root"))?t:"/",new e.Location(r)},t.prototype.getCacheControlValue=function(){return this.getSetting("cache-control")},t.prototype.getElementForAnchor=function(t){try{return this.body.querySelector("[id='"+t+"'], a[name='"+t+"']")}catch(e){}},t.prototype.hasAnchor=function(t){return null!=this.getElementForAnchor(t)},t.prototype.isPreviewable=function(){return"no-preview"!==this.getCacheControlValue()},t.prototype.isCacheable=function(){return"no-cache"!==this.getCacheControlValue()},t.prototype.isVisitable=function(){return"reload"!==this.getSetting("visit-control")},t.prototype.getSetting=function(t){var e,r;return r=this.head.querySelectorAll("meta[name='turbolinks-"+t+"']"),e=r[r.length-1],null!=e?e.getAttribute("content"):void 0},t}()}.call(this),function(){var t=[].slice;e.Renderer=function(){function e(){}var r;return e.render=function(){var e,r,n,o;return n=arguments[0],r=arguments[1],e=3<=arguments.length?t.call(arguments,2):[],o=function(t,e,r){r.prototype=t.prototype;var n=new r,o=t.apply(n,e);return Object(o)===o?o:n}(this,e,function(){}),o.delegate=n,o.render(r),o},e.prototype.renderView=function(t){return this.delegate.viewWillRender(this.newBody),t(),this.delegate.viewRendered(this.newBody)},e.prototype.invalidateView=function(){return this.delegate.viewInvalidated()},e.prototype.createScriptElement=function(t){var e;return"false"===t.getAttribute("data-turbolinks-eval")?t:(e=document.createElement("script"),e.textContent=t.textContent,e.async=!1,r(e,t),e)},r=function(t,e){var r,n,o,i,s,a,u;for(i=e.attributes,a=[],r=0,n=i.length;n>r;r++)s=i[r],o=s.name,u=s.value,a.push(t.setAttribute(o,u));return a},e}()}.call(this),function(){e.HeadDetails=function(){function t(t){var e,r,i,s,a,u,l;for(this.element=t,this.elements={},l=this.element.childNodes,s=0,u=l.length;u>s;s++)i=l[s],i.nodeType===Node.ELEMENT_NODE&&(a=i.outerHTML,r=null!=(e=this.elements)[a]?e[a]:e[a]={type:o(i),tracked:n(i),elements:[]},r.elements.push(i))}var e,r,n,o;return t.prototype.hasElementWithKey=function(t){return t in this.elements},t.prototype.getTrackedElementSignature=function(){var t,e;return function(){var r,n;r=this.elements,n=[];for(t in r)e=r[t].tracked,e&&n.push(t);return n}.call(this).join("")},t.prototype.getScriptElementsNotInDetails=function(t){return this.getElementsMatchingTypeNotInDetails("script",t)},t.prototype.getStylesheetElementsNotInDetails=function(t){return this.getElementsMatchingTypeNotInDetails("stylesheet",t)},t.prototype.getElementsMatchingTypeNotInDetails=function(t,e){var r,n,o,i,s,a;o=this.elements,s=[];for(n in o)i=o[n],a=i.type,r=i.elements,a!==t||e.hasElementWithKey(n)||s.push(r[0]);return s},t.prototype.getProvisionalElements=function(){var t,e,r,n,o,i,s;r=[],n=this.elements;for(e in n)o=n[e],s=o.type,i=o.tracked,t=o.elements,null!=s||i?t.length>1&&r.push.apply(r,t.slice(1)):r.push.apply(r,t);return r},o=function(t){return e(t)?"script":r(t)?"stylesheet":void 0},n=function(t){return"reload"===t.getAttribute("data-turbolinks-track")},e=function(t){var e;return e=t.tagName.toLowerCase(),"script"===e},r=function(t){var e;return e=t.tagName.toLowerCase(),"style"===e||"link"===e&&"stylesheet"===t.getAttribute("rel")},t}()}.call(this),function(){var t=function(t,e){function n(){this.constructor=t}for(var o in e)r.call(e,o)&&(t[o]=e[o]);return n.prototype=e.prototype,t.prototype=new n,t.__super__=e.prototype,t},r={}.hasOwnProperty;e.SnapshotRenderer=function(r){function n(t,r,n){this.currentSnapshot=t,this.newSnapshot=r,this.isPreview=n,this.currentHeadDetails=new e.HeadDetails(this.currentSnapshot.head),this.newHeadDetails=new e.HeadDetails(this.newSnapshot.head),this.newBody=this.newSnapshot.body}return t(n,r),n.prototype.render=function(t){return this.shouldRender()?(this.mergeHead(),this.renderView(function(e){return function(){return e.replaceBody(),e.isPreview||e.focusFirstAutofocusableElement(),t()}}(this))):this.invalidateView()},n.prototype.mergeHead=function(){return this.copyNewHeadStylesheetElements(),this.copyNewHeadScriptElements(),this.removeCurrentHeadProvisionalElements(),this.copyNewHeadProvisionalElements()},n.prototype.replaceBody=function(){return this.activateBodyScriptElements(),this.importBodyPermanentElements(),this.assignNewBody()},n.prototype.shouldRender=function(){return this.newSnapshot.isVisitable()&&this.trackedElementsAreIdentical()},n.prototype.trackedElementsAreIdentical=function(){return this.currentHeadDetails.getTrackedElementSignature()===this.newHeadDetails.getTrackedElementSignature()},n.prototype.copyNewHeadStylesheetElements=function(){var t,e,r,n,o;for(n=this.getNewHeadStylesheetElements(),o=[],e=0,r=n.length;r>e;e++)t=n[e],o.push(document.head.appendChild(t));return o},n.prototype.copyNewHeadScriptElements=function(){var t,e,r,n,o;for(n=this.getNewHeadScriptElements(),o=[],e=0,r=n.length;r>e;e++)t=n[e],o.push(document.head.appendChild(this.createScriptElement(t)));return o},n.prototype.removeCurrentHeadProvisionalElements=function(){var t,e,r,n,o;for(n=this.getCurrentHeadProvisionalElements(),o=[],e=0,r=n.length;r>e;e++)t=n[e],o.push(document.head.removeChild(t));return o},n.prototype.copyNewHeadProvisionalElements=function(){var t,e,r,n,o;for(n=this.getNewHeadProvisionalElements(),o=[],e=0,r=n.length;r>e;e++)t=n[e],o.push(document.head.appendChild(t));return o},n.prototype.importBodyPermanentElements=function(){var t,e,r,n,o,i;for(n=this.getNewBodyPermanentElements(),i=[],e=0,r=n.length;r>e;e++)o=n[e],(t=this.findCurrentBodyPermanentElement(o))?i.push(o.parentNode.replaceChild(t,o)):i.push(void 0);return i},n.prototype.activateBodyScriptElements=function(){var t,e,r,n,o,i;for(n=this.getNewBodyScriptElements(),i=[],e=0,r=n.length;r>e;e++)o=n[e],t=this.createScriptElement(o),i.push(o.parentNode.replaceChild(t,o));return i},n.prototype.assignNewBody=function(){return document.body=this.newBody},n.prototype.focusFirstAutofocusableElement=function(){var t;return null!=(t=this.findFirstAutofocusableElement())?t.focus():void 0},n.prototype.getNewHeadStylesheetElements=function(){return this.newHeadDetails.getStylesheetElementsNotInDetails(this.currentHeadDetails)},n.prototype.getNewHeadScriptElements=function(){return this.newHeadDetails.getScriptElementsNotInDetails(this.currentHeadDetails)},n.prototype.getCurrentHeadProvisionalElements=function(){return this.currentHeadDetails.getProvisionalElements()},n.prototype.getNewHeadProvisionalElements=function(){return this.newHeadDetails.getProvisionalElements()},n.prototype.getNewBodyPermanentElements=function(){return this.newBody.querySelectorAll("[id][data-turbolinks-permanent]")},n.prototype.findCurrentBodyPermanentElement=function(t){return document.body.querySelector("#"+t.id+"[data-turbolinks-permanent]")},n.prototype.getNewBodyScriptElements=function(){return this.newBody.querySelectorAll("script")},n.prototype.findFirstAutofocusableElement=function(){return document.body.querySelector("[autofocus]")},n}(e.Renderer)}.call(this),function(){var t=function(t,e){function n(){this.constructor=t}for(var o in e)r.call(e,o)&&(t[o]=e[o]);return n.prototype=e.prototype,t.prototype=new n,t.__super__=e.prototype,t},r={}.hasOwnProperty;e.ErrorRenderer=function(e){function r(t){this.html=t}return t(r,e),r.prototype.render=function(t){return this.renderView(function(e){return function(){return e.replaceDocumentHTML(),e.activateBodyScriptElements(),t()}}(this))},r.prototype.replaceDocumentHTML=function(){return document.documentElement.innerHTML=this.html},r.prototype.activateBodyScriptElements=function(){var t,e,r,n,o,i;for(n=this.getScriptElements(),i=[],e=0,r=n.length;r>e;e++)o=n[e],t=this.createScriptElement(o),i.push(o.parentNode.replaceChild(t,o));return i},r.prototype.getScriptElements=function(){return document.documentElement.querySelectorAll("script")},r}(e.Renderer)}.call(this),function(){e.View=function(){function t(t){this.delegate=t,this.element=document.documentElement}return t.prototype.getRootLocation=function(){return this.getSnapshot().getRootLocation()},t.prototype.getElementForAnchor=function(t){return this.getSnapshot().getElementForAnchor(t)},t.prototype.getSnapshot=function(){return e.Snapshot.fromElement(this.element)},t.prototype.render=function(t,e){var r,n,o;return o=t.snapshot,r=t.error,n=t.isPreview,this.markAsPreview(n),null!=o?this.renderSnapshot(o,n,e):this.renderError(r,e)},t.prototype.markAsPreview=function(t){return t?this.element.setAttribute("data-turbolinks-preview",""):this.element.removeAttribute("data-turbolinks-preview")},t.prototype.renderSnapshot=function(t,r,n){return e.SnapshotRenderer.render(this.delegate,n,this.getSnapshot(),e.Snapshot.wrap(t),r)},t.prototype.renderError=function(t,r){return e.ErrorRenderer.render(this.delegate,r,t)},t}()}.call(this),function(){var t=function(t,e){return function(){return t.apply(e,arguments)}};e.ScrollManager=function(){function r(r){this.delegate=r,this.onScroll=t(this.onScroll,this),this.onScroll=e.throttle(this.onScroll)}return r.prototype.start=function(){return this.started?void 0:(addEventListener("scroll",this.onScroll,!1),this.onScroll(),this.started=!0)},r.prototype.stop=function(){return this.started?(removeEventListener("scroll",this.onScroll,!1),this.started=!1):void 0},r.prototype.scrollToElement=function(t){return t.scrollIntoView()},r.prototype.scrollToPosition=function(t){var e,r;return e=t.x,r=t.y,window.scrollTo(e,r)},r.prototype.onScroll=function(t){return this.updatePosition({x:window.pageXOffset,y:window.pageYOffset})},r.prototype.updatePosition=function(t){var e;return this.position=t,null!=(e=this.delegate)?e.scrollPositionChanged(this.position):void 0},r}()}.call(this),function(){e.SnapshotCache=function(){function t(t){this.size=t,this.keys=[],this.snapshots={}}var r;return t.prototype.has=function(t){var e;return e=r(t),e in this.snapshots},t.prototype.get=function(t){var e;if(this.has(t))return e=this.read(t),this.touch(t),e},t.prototype.put=function(t,e){return this.write(t,e),this.touch(t),e},t.prototype.read=function(t){var e;return e=r(t),this.snapshots[e]},t.prototype.write=function(t,e){var n;return n=r(t),this.snapshots[n]=e},t.prototype.touch=function(t){var e,n;return n=r(t),e=this.keys.indexOf(n),e>-1&&this.keys.splice(e,1),this.keys.unshift(n),this.trim()},t.prototype.trim=function(){var t,e,r,n,o;for(n=this.keys.splice(this.size),o=[],t=0,r=n.length;r>t;t++)e=n[t],o.push(delete this.snapshots[e]);return o},r=function(t){return e.Location.wrap(t).toCacheKey()},t}()}.call(this),function(){var t=function(t,e){return function(){return t.apply(e,arguments)}};e.Visit=function(){function r(r,n,o){this.controller=r,this.action=o,this.performScroll=t(this.performScroll,this),this.identifier=e.uuid(),this.location=e.Location.wrap(n),this.adapter=this.controller.adapter,this.state="initialized",this.timingMetrics={}}var n;return r.prototype.start=function(){return"initialized"===this.state?(this.recordTimingMetric("visitStart"),this.state="started",this.adapter.visitStarted(this)):void 0},r.prototype.cancel=function(){var t;return"started"===this.state?(null!=(t=this.request)&&t.cancel(),this.cancelRender(),this.state="canceled"):void 0},r.prototype.complete=function(){var t;return"started"===this.state?(this.recordTimingMetric("visitEnd"),this.state="completed","function"==typeof(t=this.adapter).visitCompleted&&t.visitCompleted(this),this.controller.visitCompleted(this)):void 0},r.prototype.fail=function(){var t;return"started"===this.state?(this.state="failed","function"==typeof(t=this.adapter).visitFailed?t.visitFailed(this):void 0):void 0},r.prototype.changeHistory=function(){var t,e;return this.historyChanged?void 0:(t=this.location.isEqualTo(this.referrer)?"replace":this.action,e=n(t),this.controller[e](this.location,this.restorationIdentifier),this.historyChanged=!0)},r.prototype.issueRequest=function(){return this.shouldIssueRequest()&&null==this.request?(this.progress=0,this.request=new e.HttpRequest(this,this.location,this.referrer),this.request.send()):void 0},r.prototype.getCachedSnapshot=function(){var t;return!(t=this.controller.getCachedSnapshotForLocation(this.location))||null!=this.location.anchor&&!t.hasAnchor(this.location.anchor)||"restore"!==this.action&&!t.isPreviewable()?void 0:t},r.prototype.hasCachedSnapshot=function(){return null!=this.getCachedSnapshot()},r.prototype.loadCachedSnapshot=function(){var t,e;return(e=this.getCachedSnapshot())?(t=this.shouldIssueRequest(),this.render(function(){var r;return this.cacheSnapshot(),this.controller.render({snapshot:e,isPreview:t},this.performScroll),"function"==typeof(r=this.adapter).visitRendered&&r.visitRendered(this),t?void 0:this.complete()})):void 0},r.prototype.loadResponse=function(){return null!=this.response?this.render(function(){var t,e;return this.cacheSnapshot(),this.request.failed?(this.controller.render({error:this.response},this.performScroll),"function"==typeof(t=this.adapter).visitRendered&&t.visitRendered(this),this.fail()):(this.controller.render({snapshot:this.response},this.performScroll),"function"==typeof(e=this.adapter).visitRendered&&e.visitRendered(this),this.complete())}):void 0},r.prototype.followRedirect=function(){return this.redirectedToLocation&&!this.followedRedirect?(this.location=this.redirectedToLocation,this.controller.replaceHistoryWithLocationAndRestorationIdentifier(this.redirectedToLocation,this.restorationIdentifier),this.followedRedirect=!0):void 0},r.prototype.requestStarted=function(){var t;return this.recordTimingMetric("requestStart"),"function"==typeof(t=this.adapter).visitRequestStarted?t.visitRequestStarted(this):void 0},r.prototype.requestProgressed=function(t){var e;return this.progress=t,"function"==typeof(e=this.adapter).visitRequestProgressed?e.visitRequestProgressed(this):void 0},r.prototype.requestCompletedWithResponse=function(t,r){return this.response=t,null!=r&&(this.redirectedToLocation=e.Location.wrap(r)),this.adapter.visitRequestCompleted(this)},r.prototype.requestFailedWithStatusCode=function(t,e){return this.response=e,this.adapter.visitRequestFailedWithStatusCode(this,t)},r.prototype.requestFinished=function(){var t;return this.recordTimingMetric("requestEnd"),"function"==typeof(t=this.adapter).visitRequestFinished?t.visitRequestFinished(this):void 0},r.prototype.performScroll=function(){return this.scrolled?void 0:("restore"===this.action?this.scrollToRestoredPosition()||this.scrollToTop():this.scrollToAnchor()||this.scrollToTop(),this.scrolled=!0)},r.prototype.scrollToRestoredPosition=function(){var t,e;return t=null!=(e=this.restorationData)?e.scrollPosition:void 0,null!=t?(this.controller.scrollToPosition(t),!0):void 0},r.prototype.scrollToAnchor=function(){return null!=this.location.anchor?(this.controller.scrollToAnchor(this.location.anchor),!0):void 0},r.prototype.scrollToTop=function(){return this.controller.scrollToPosition({x:0,y:0})},r.prototype.recordTimingMetric=function(t){var e;return null!=(e=this.timingMetrics)[t]?e[t]:e[t]=(new Date).getTime()},r.prototype.getTimingMetrics=function(){return e.copyObject(this.timingMetrics)},n=function(t){switch(t){case"replace":return"replaceHistoryWithLocationAndRestorationIdentifier";case"advance":case"restore":return"pushHistoryWithLocationAndRestorationIdentifier"}},r.prototype.shouldIssueRequest=function(){return"restore"===this.action?!this.hasCachedSnapshot():!0},r.prototype.cacheSnapshot=function(){return this.snapshotCached?void 0:(this.controller.cacheSnapshot(),this.snapshotCached=!0)},r.prototype.render=function(t){return this.cancelRender(),this.frame=requestAnimationFrame(function(e){return function(){return e.frame=null,t.call(e)}}(this))},r.prototype.cancelRender=function(){return this.frame?cancelAnimationFrame(this.frame):void 0},r}()}.call(this),function(){var t=function(t,e){return function(){return t.apply(e,arguments)}};e.Controller=function(){function r(){this.clickBubbled=t(this.clickBubbled,this),this.clickCaptured=t(this.clickCaptured,this),this.pageLoaded=t(this.pageLoaded,this),this.history=new e.History(this),this.view=new e.View(this),this.scrollManager=new e.ScrollManager(this),this.restorationData={},this.clearCache(),this.setProgressBarDelay(500)}return r.prototype.start=function(){return e.supported&&!this.started?(addEventListener("click",this.clickCaptured,!0),addEventListener("DOMContentLoaded",this.pageLoaded,!1),this.scrollManager.start(),this.startHistory(),this.started=!0,this.enabled=!0):void 0},r.prototype.disable=function(){return this.enabled=!1},r.prototype.stop=function(){return this.started?(removeEventListener("click",this.clickCaptured,!0),removeEventListener("DOMContentLoaded",this.pageLoaded,!1),this.scrollManager.stop(),this.stopHistory(),this.started=!1):void 0},r.prototype.clearCache=function(){return this.cache=new e.SnapshotCache(10)},r.prototype.visit=function(t,r){var n,o;return null==r&&(r={}),t=e.Location.wrap(t),this.applicationAllowsVisitingLocation(t)?this.locationIsVisitable(t)?(n=null!=(o=r.action)?o:"advance",this.adapter.visitProposedToLocationWithAction(t,n)):window.location=t:void 0},r.prototype.startVisitToLocationWithAction=function(t,r,n){var o;return e.supported?(o=this.getRestorationDataForIdentifier(n),this.startVisit(t,r,{restorationData:o})):window.location=t},r.prototype.setProgressBarDelay=function(t){return this.progressBarDelay=t},r.prototype.startHistory=function(){return this.location=e.Location.wrap(window.location),this.restorationIdentifier=e.uuid(),this.history.start(),this.history.replace(this.location,this.restorationIdentifier)},r.prototype.stopHistory=function(){return this.history.stop()},r.prototype.pushHistoryWithLocationAndRestorationIdentifier=function(t,r){return this.restorationIdentifier=r,this.location=e.Location.wrap(t),this.history.push(this.location,this.restorationIdentifier)},r.prototype.replaceHistoryWithLocationAndRestorationIdentifier=function(t,r){return this.restorationIdentifier=r,this.location=e.Location.wrap(t),this.history.replace(this.location,this.restorationIdentifier)},r.prototype.historyPoppedToLocationWithRestorationIdentifier=function(t,r){var n;return this.restorationIdentifier=r,this.enabled?(n=this.getRestorationDataForIdentifier(this.restorationIdentifier),this.startVisit(t,"restore",{restorationIdentifier:this.restorationIdentifier,restorationData:n,historyChanged:!0}),this.location=e.Location.wrap(t)):this.adapter.pageInvalidated()},r.prototype.getCachedSnapshotForLocation=function(t){var e;return e=this.cache.get(t),e?e.clone():void 0},r.prototype.shouldCacheSnapshot=function(){return this.view.getSnapshot().isCacheable()},r.prototype.cacheSnapshot=function(){var t;return this.shouldCacheSnapshot()?(this.notifyApplicationBeforeCachingSnapshot(),t=this.view.getSnapshot(),this.cache.put(this.lastRenderedLocation,t.clone())):void 0},r.prototype.scrollToAnchor=function(t){var e;return(e=this.view.getElementForAnchor(t))?this.scrollToElement(e):this.scrollToPosition({x:0,y:0})},r.prototype.scrollToElement=function(t){return this.scrollManager.scrollToElement(t)},r.prototype.scrollToPosition=function(t){return this.scrollManager.scrollToPosition(t)},r.prototype.scrollPositionChanged=function(t){var e;return e=this.getCurrentRestorationData(),e.scrollPosition=t},r.prototype.render=function(t,e){return this.view.render(t,e)},r.prototype.viewInvalidated=function(){return this.adapter.pageInvalidated()},r.prototype.viewWillRender=function(t){return this.notifyApplicationBeforeRender(t)},r.prototype.viewRendered=function(){return this.lastRenderedLocation=this.currentVisit.location,this.notifyApplicationAfterRender()},r.prototype.pageLoaded=function(){return this.lastRenderedLocation=this.location,this.notifyApplicationAfterPageLoad()},r.prototype.clickCaptured=function(){return removeEventListener("click",this.clickBubbled,!1),addEventListener("click",this.clickBubbled,!1)},r.prototype.clickBubbled=function(t){var e,r,n;return this.enabled&&this.clickEventIsSignificant(t)&&(r=this.getVisitableLinkForNode(t.target))&&(n=this.getVisitableLocationForLink(r))&&this.applicationAllowsFollowingLinkToLocation(r,n)?(t.preventDefault(),e=this.getActionForLink(r),
-this.visit(n,{action:e})):void 0},r.prototype.applicationAllowsFollowingLinkToLocation=function(t,e){var r;return r=this.notifyApplicationAfterClickingLinkToLocation(t,e),!r.defaultPrevented},r.prototype.applicationAllowsVisitingLocation=function(t){var e;return e=this.notifyApplicationBeforeVisitingLocation(t),!e.defaultPrevented},r.prototype.notifyApplicationAfterClickingLinkToLocation=function(t,r){return e.dispatch("turbolinks:click",{target:t,data:{url:r.absoluteURL},cancelable:!0})},r.prototype.notifyApplicationBeforeVisitingLocation=function(t){return e.dispatch("turbolinks:before-visit",{data:{url:t.absoluteURL},cancelable:!0})},r.prototype.notifyApplicationAfterVisitingLocation=function(t){return e.dispatch("turbolinks:visit",{data:{url:t.absoluteURL}})},r.prototype.notifyApplicationBeforeCachingSnapshot=function(){return e.dispatch("turbolinks:before-cache")},r.prototype.notifyApplicationBeforeRender=function(t){return e.dispatch("turbolinks:before-render",{data:{newBody:t}})},r.prototype.notifyApplicationAfterRender=function(){return e.dispatch("turbolinks:render")},r.prototype.notifyApplicationAfterPageLoad=function(t){return null==t&&(t={}),e.dispatch("turbolinks:load",{data:{url:this.location.absoluteURL,timing:t}})},r.prototype.startVisit=function(t,e,r){var n;return null!=(n=this.currentVisit)&&n.cancel(),this.currentVisit=this.createVisit(t,e,r),this.currentVisit.start(),this.notifyApplicationAfterVisitingLocation(t)},r.prototype.createVisit=function(t,r,n){var o,i,s,a,u;return i=null!=n?n:{},a=i.restorationIdentifier,s=i.restorationData,o=i.historyChanged,u=new e.Visit(this,t,r),u.restorationIdentifier=null!=a?a:e.uuid(),u.restorationData=e.copyObject(s),u.historyChanged=o,u.referrer=this.location,u},r.prototype.visitCompleted=function(t){return this.notifyApplicationAfterPageLoad(t.getTimingMetrics())},r.prototype.clickEventIsSignificant=function(t){return!(t.defaultPrevented||t.target.isContentEditable||t.which>1||t.altKey||t.ctrlKey||t.metaKey||t.shiftKey)},r.prototype.getVisitableLinkForNode=function(t){return this.nodeIsVisitable(t)?e.closest(t,"a[href]:not([target]):not([download])"):void 0},r.prototype.getVisitableLocationForLink=function(t){var r;return r=new e.Location(t.getAttribute("href")),this.locationIsVisitable(r)?r:void 0},r.prototype.getActionForLink=function(t){var e;return null!=(e=t.getAttribute("data-turbolinks-action"))?e:"advance"},r.prototype.nodeIsVisitable=function(t){var r;return(r=e.closest(t,"[data-turbolinks]"))?"false"!==r.getAttribute("data-turbolinks"):!0},r.prototype.locationIsVisitable=function(t){return t.isPrefixedBy(this.view.getRootLocation())&&t.isHTML()},r.prototype.getCurrentRestorationData=function(){return this.getRestorationDataForIdentifier(this.restorationIdentifier)},r.prototype.getRestorationDataForIdentifier=function(t){var e;return null!=(e=this.restorationData)[t]?e[t]:e[t]={}},r}()}.call(this),function(){!function(){var t,e;if((t=e=document.currentScript)&&!e.hasAttribute("data-turbolinks-suppress-warning"))for(;t=t.parentNode;)if(t===document.body)return console.warn("You are loading Turbolinks from a <script> element inside the <body> element. This is probably not what you meant to do!\n\nLoad your application\u2019s JavaScript bundle inside the <head> element instead. <script> elements in <body> are evaluated with each page change.\n\nFor more information, see: https://github.com/turbolinks/turbolinks#working-with-script-elements\n\n\u2014\u2014\nSuppress this warning by adding a `data-turbolinks-suppress-warning` attribute to: %s",e.outerHTML)}()}.call(this),function(){var t,r,n;e.start=function(){return r()?(null==e.controller&&(e.controller=t()),e.controller.start()):void 0},r=function(){return null==window.Turbolinks&&(window.Turbolinks=e),n()},t=function(){var t;return t=new e.Controller,t.adapter=new e.BrowserAdapter(t),t},n=function(){return window.Turbolinks===e},n()&&e.start()}.call(this)}).call(this),"object"==typeof module&&module.exports?module.exports=e:"function"=="function"&&__webpack_require__(3)&&!(__WEBPACK_AMD_DEFINE_FACTORY__ = (e),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
-				__WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))}).call(this);
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
-module.exports = __webpack_amd_options__;
-
-/* WEBPACK VAR INJECTION */}.call(exports, {}))
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* ========================================================================
- * bootstrap-tour - v0.11.0
- * http://bootstraptour.com
- * ========================================================================
- * Copyright 2012-2015 Ulrich Sossou
- *
- * ========================================================================
- * Licensed under the MIT License (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://opensource.org/licenses/MIT
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ========================================================================
- */
-
-var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
-
-(function(window, factory) {
-  if (true) {
-    return !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(5)], __WEBPACK_AMD_DEFINE_RESULT__ = (function(jQuery) {
-      return window.Tour = factory(jQuery);
-    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else if (typeof exports === 'object') {
-    return module.exports = factory(require('jquery'));
-  } else {
-    return window.Tour = factory(window.jQuery);
-  }
-})(window, function($) {
-  var Tour, document;
-  document = window.document;
-  Tour = (function() {
-    function Tour(options) {
-      this._showPopoverAndOverlay = bind(this._showPopoverAndOverlay, this);
-      var storage;
-      try {
-        storage = window.localStorage;
-      } catch (error) {
-        storage = false;
-      }
-      this._options = $.extend({
-        name: 'tour',
-        steps: [],
-        container: 'body',
-        autoscroll: true,
-        keyboard: true,
-        storage: storage,
-        debug: false,
-        backdrop: false,
-        backdropContainer: 'body',
-        backdropPadding: 0,
-        redirect: true,
-        orphan: false,
-        duration: false,
-        delay: false,
-        basePath: '',
-        template: '<div class="popover" role="tooltip"> <div class="arrow"></div> <h3 class="popover-title"></h3> <div class="popover-content"></div> <div class="popover-navigation"> <div class="btn-group"> <button class="btn btn-sm btn-default" data-role="prev">&laquo; Prev</button> <button class="btn btn-sm btn-default" data-role="next">Next &raquo;</button> <button class="btn btn-sm btn-default" data-role="pause-resume" data-pause-text="Pause" data-resume-text="Resume">Pause</button> </div> <button class="btn btn-sm btn-default" data-role="end">End tour</button> </div> </div>',
-        afterSetState: function(key, value) {},
-        afterGetState: function(key, value) {},
-        afterRemoveState: function(key) {},
-        onStart: function(tour) {},
-        onEnd: function(tour) {},
-        onShow: function(tour) {},
-        onShown: function(tour) {},
-        onHide: function(tour) {},
-        onHidden: function(tour) {},
-        onNext: function(tour) {},
-        onPrev: function(tour) {},
-        onPause: function(tour, duration) {},
-        onResume: function(tour, duration) {},
-        onRedirectError: function(tour) {}
-      }, options);
-      this._force = false;
-      this._inited = false;
-      this._current = null;
-      this.backdrops = [];
-      this;
-    }
-
-    Tour.prototype.addSteps = function(steps) {
-      var j, len, step;
-      for (j = 0, len = steps.length; j < len; j++) {
-        step = steps[j];
-        this.addStep(step);
-      }
-      return this;
-    };
-
-    Tour.prototype.addStep = function(step) {
-      this._options.steps.push(step);
-      return this;
-    };
-
-    Tour.prototype.getStep = function(i) {
-      if (this._options.steps[i] != null) {
-        return $.extend({
-          id: "step-" + i,
-          path: '',
-          host: '',
-          placement: 'right',
-          title: '',
-          content: '<p></p>',
-          next: i === this._options.steps.length - 1 ? -1 : i + 1,
-          prev: i - 1,
-          animation: true,
-          container: this._options.container,
-          autoscroll: this._options.autoscroll,
-          backdrop: this._options.backdrop,
-          backdropContainer: this._options.backdropContainer,
-          backdropPadding: this._options.backdropPadding,
-          redirect: this._options.redirect,
-          reflexElement: this._options.steps[i].element,
-          backdropElement: this._options.steps[i].element,
-          orphan: this._options.orphan,
-          duration: this._options.duration,
-          delay: this._options.delay,
-          template: this._options.template,
-          onShow: this._options.onShow,
-          onShown: this._options.onShown,
-          onHide: this._options.onHide,
-          onHidden: this._options.onHidden,
-          onNext: this._options.onNext,
-          onPrev: this._options.onPrev,
-          onPause: this._options.onPause,
-          onResume: this._options.onResume,
-          onRedirectError: this._options.onRedirectError
-        }, this._options.steps[i]);
-      }
-    };
-
-    Tour.prototype.init = function(force) {
-      this._force = force;
-      if (this.ended()) {
-        this._debug('Tour ended, init prevented.');
-        return this;
-      }
-      this.setCurrentStep();
-      this._initMouseNavigation();
-      this._initKeyboardNavigation();
-      this._onResize((function(_this) {
-        return function() {
-          return _this.showStep(_this._current);
-        };
-      })(this));
-      this._onScroll((function(_this) {
-        return function() {
-          return _this._showPopoverAndOverlay(_this._current);
-        };
-      })(this));
-      if (this._current !== null) {
-        this.showStep(this._current);
-      }
-      this._inited = true;
-      return this;
-    };
-
-    Tour.prototype.start = function(force) {
-      var promise;
-      if (force == null) {
-        force = false;
-      }
-      if (!this._inited) {
-        this.init(force);
-      }
-      if (this._current === null) {
-        promise = this._makePromise(this._options.onStart != null ? this._options.onStart(this) : void 0);
-        this._callOnPromiseDone(promise, this.showStep, 0);
-      }
-      return this;
-    };
-
-    Tour.prototype.next = function() {
-      var promise;
-      promise = this.hideStep(this._current, this._current + 1);
-      return this._callOnPromiseDone(promise, this._showNextStep);
-    };
-
-    Tour.prototype.prev = function() {
-      var promise;
-      promise = this.hideStep(this._current, this._current - 1);
-      return this._callOnPromiseDone(promise, this._showPrevStep);
-    };
-
-    Tour.prototype.goTo = function(i) {
-      var promise;
-      promise = this.hideStep(this._current, i);
-      return this._callOnPromiseDone(promise, this.showStep, i);
-    };
-
-    Tour.prototype.end = function() {
-      var endHelper, promise;
-      endHelper = (function(_this) {
-        return function(e) {
-          $(document).off("click.tour-" + _this._options.name);
-          $(document).off("keyup.tour-" + _this._options.name);
-          $(window).off("resize.tour-" + _this._options.name);
-          $(window).off("scroll.tour-" + _this._options.name);
-          _this._setState('end', 'yes');
-          _this._inited = false;
-          _this._force = false;
-          _this._clearTimer();
-          if (_this._options.onEnd != null) {
-            return _this._options.onEnd(_this);
-          }
-        };
-      })(this);
-      promise = this.hideStep(this._current);
-      return this._callOnPromiseDone(promise, endHelper);
-    };
-
-    Tour.prototype.ended = function() {
-      return !this._force && !!this._getState('end');
-    };
-
-    Tour.prototype.restart = function() {
-      this._removeState('current_step');
-      this._removeState('end');
-      this._removeState('redirect_to');
-      return this.start();
-    };
-
-    Tour.prototype.pause = function() {
-      var step;
-      step = this.getStep(this._current);
-      if (!(step && step.duration)) {
-        return this;
-      }
-      this._paused = true;
-      this._duration -= new Date().getTime() - this._start;
-      window.clearTimeout(this._timer);
-      this._debug("Paused/Stopped step " + (this._current + 1) + " timer (" + this._duration + " remaining).");
-      if (step.onPause != null) {
-        return step.onPause(this, this._duration);
-      }
-    };
-
-    Tour.prototype.resume = function() {
-      var step;
-      step = this.getStep(this._current);
-      if (!(step && step.duration)) {
-        return this;
-      }
-      this._paused = false;
-      this._start = new Date().getTime();
-      this._duration = this._duration || step.duration;
-      this._timer = window.setTimeout((function(_this) {
-        return function() {
-          if (_this._isLast()) {
-            return _this.next();
-          } else {
-            return _this.end();
-          }
-        };
-      })(this), this._duration);
-      this._debug("Started step " + (this._current + 1) + " timer with duration " + this._duration);
-      if ((step.onResume != null) && this._duration !== step.duration) {
-        return step.onResume(this, this._duration);
-      }
-    };
-
-    Tour.prototype.hideStep = function(i, iNext) {
-      var hideDelay, hideStepHelper, promise, step;
-      step = this.getStep(i);
-      if (!step) {
-        return;
-      }
-      this._clearTimer();
-      promise = this._makePromise(step.onHide != null ? step.onHide(this, i) : void 0);
-      hideStepHelper = (function(_this) {
-        return function(e) {
-          var $element, next_step;
-          $element = $(step.element);
-          if (!($element.data('bs.popover') || $element.data('popover'))) {
-            $element = $('body');
-          }
-          $element.popover('destroy').removeClass("tour-" + _this._options.name + "-element tour-" + _this._options.name + "-" + i + "-element").removeData('bs.popover');
-          if (step.reflex) {
-            $(step.reflexElement).removeClass('tour-step-element-reflex').off((_this._reflexEvent(step.reflex)) + ".tour-" + _this._options.name);
-          }
-          if (step.backdrop) {
-            next_step = (iNext != null) && _this.getStep(iNext);
-            if (!next_step || !next_step.backdrop || next_step.backdropElement !== step.backdropElement) {
-              _this._hideOverlayElement(step);
-            }
-          }
-          if (step.onHidden != null) {
-            return step.onHidden(_this);
-          }
-        };
-      })(this);
-      hideDelay = step.delay.hide || step.delay;
-      if ({}.toString.call(hideDelay) === '[object Number]' && hideDelay > 0) {
-        this._debug("Wait " + hideDelay + " milliseconds to hide the step " + (this._current + 1));
-        window.setTimeout((function(_this) {
-          return function() {
-            return _this._callOnPromiseDone(promise, hideStepHelper);
-          };
-        })(this), hideDelay);
-      } else {
-        this._callOnPromiseDone(promise, hideStepHelper);
-      }
-      return promise;
-    };
-
-    Tour.prototype.showStep = function(i) {
-      var path, promise, showDelay, showStepHelper, skipToPrevious, step;
-      if (this.ended()) {
-        this._debug('Tour ended, showStep prevented.');
-        return this;
-      }
-      step = this.getStep(i);
-      if (!step) {
-        return;
-      }
-      skipToPrevious = i < this._current;
-      promise = this._makePromise(step.onShow != null ? step.onShow(this, i) : void 0);
-      this.setCurrentStep(i);
-      path = (function() {
-        switch ({}.toString.call(step.path)) {
-          case '[object Function]':
-            return step.path();
-          case '[object String]':
-            return this._options.basePath + step.path;
-          default:
-            return step.path;
-        }
-      }).call(this);
-      if (step.redirect && this._isRedirect(step.host, path, document.location)) {
-        this._redirect(step, i, path);
-        if (!this._isJustPathHashDifferent(step.host, path, document.location)) {
-          return;
-        }
-      }
-      showStepHelper = (function(_this) {
-        return function(e) {
-          if (_this._isOrphan(step)) {
-            if (step.orphan === false) {
-              _this._debug("Skip the orphan step " + (_this._current + 1) + ".\nOrphan option is false and the element does not exist or is hidden.");
-              if (skipToPrevious) {
-                _this._showPrevStep();
-              } else {
-                _this._showNextStep();
-              }
-              return;
-            }
-            _this._debug("Show the orphan step " + (_this._current + 1) + ". Orphans option is true.");
-          }
-          if (step.autoscroll) {
-            _this._scrollIntoView(i);
-          } else {
-            _this._showPopoverAndOverlay(i);
-          }
-          if (step.duration) {
-            return _this.resume();
-          }
-        };
-      })(this);
-      showDelay = step.delay.show || step.delay;
-      if ({}.toString.call(showDelay) === '[object Number]' && showDelay > 0) {
-        this._debug("Wait " + showDelay + " milliseconds to show the step " + (this._current + 1));
-        window.setTimeout((function(_this) {
-          return function() {
-            return _this._callOnPromiseDone(promise, showStepHelper);
-          };
-        })(this), showDelay);
-      } else {
-        this._callOnPromiseDone(promise, showStepHelper);
-      }
-      return promise;
-    };
-
-    Tour.prototype.getCurrentStep = function() {
-      return this._current;
-    };
-
-    Tour.prototype.setCurrentStep = function(value) {
-      if (value != null) {
-        this._current = value;
-        this._setState('current_step', value);
-      } else {
-        this._current = this._getState('current_step');
-        this._current = this._current === null ? null : parseInt(this._current, 10);
-      }
-      return this;
-    };
-
-    Tour.prototype.redraw = function() {
-      return this._showOverlayElement(this.getStep(this.getCurrentStep()));
-    };
-
-    Tour.prototype._setState = function(key, value) {
-      var e, keyName;
-      if (this._options.storage) {
-        keyName = this._options.name + "_" + key;
-        try {
-          this._options.storage.setItem(keyName, value);
-        } catch (error) {
-          e = error;
-          if (e.code === DOMException.QUOTA_EXCEEDED_ERR) {
-            this._debug('LocalStorage quota exceeded. State storage failed.');
-          }
-        }
-        return this._options.afterSetState(keyName, value);
-      } else {
-        if (this._state == null) {
-          this._state = {};
-        }
-        return this._state[key] = value;
-      }
-    };
-
-    Tour.prototype._removeState = function(key) {
-      var keyName;
-      if (this._options.storage) {
-        keyName = this._options.name + "_" + key;
-        this._options.storage.removeItem(keyName);
-        return this._options.afterRemoveState(keyName);
-      } else {
-        if (this._state != null) {
-          return delete this._state[key];
-        }
-      }
-    };
-
-    Tour.prototype._getState = function(key) {
-      var keyName, value;
-      if (this._options.storage) {
-        keyName = this._options.name + "_" + key;
-        value = this._options.storage.getItem(keyName);
-      } else {
-        if (this._state != null) {
-          value = this._state[key];
-        }
-      }
-      if (value === void 0 || value === 'null') {
-        value = null;
-      }
-      this._options.afterGetState(key, value);
-      return value;
-    };
-
-    Tour.prototype._showNextStep = function() {
-      var promise, showNextStepHelper, step;
-      step = this.getStep(this._current);
-      showNextStepHelper = (function(_this) {
-        return function(e) {
-          return _this.showStep(step.next);
-        };
-      })(this);
-      promise = this._makePromise(step.onNext != null ? step.onNext(this) : void 0);
-      return this._callOnPromiseDone(promise, showNextStepHelper);
-    };
-
-    Tour.prototype._showPrevStep = function() {
-      var promise, showPrevStepHelper, step;
-      step = this.getStep(this._current);
-      showPrevStepHelper = (function(_this) {
-        return function(e) {
-          return _this.showStep(step.prev);
-        };
-      })(this);
-      promise = this._makePromise(step.onPrev != null ? step.onPrev(this) : void 0);
-      return this._callOnPromiseDone(promise, showPrevStepHelper);
-    };
-
-    Tour.prototype._debug = function(text) {
-      if (this._options.debug) {
-        return window.console.log("Bootstrap Tour '" + this._options.name + "' | " + text);
-      }
-    };
-
-    Tour.prototype._isRedirect = function(host, path, location) {
-      var currentPath;
-      if ((host != null) && host !== '' && (({}.toString.call(host) === '[object RegExp]' && !host.test(location.origin)) || ({}.toString.call(host) === '[object String]' && this._isHostDifferent(host, location)))) {
-        return true;
-      }
-      currentPath = [location.pathname, location.search, location.hash].join('');
-      return (path != null) && path !== '' && (({}.toString.call(path) === '[object RegExp]' && !path.test(currentPath)) || ({}.toString.call(path) === '[object String]' && this._isPathDifferent(path, currentPath)));
-    };
-
-    Tour.prototype._isHostDifferent = function(host, location) {
-      switch ({}.toString.call(host)) {
-        case '[object RegExp]':
-          return !host.test(location.origin);
-        case '[object String]':
-          return this._getProtocol(host) !== this._getProtocol(location.href) || this._getHost(host) !== this._getHost(location.href);
-        default:
-          return true;
-      }
-    };
-
-    Tour.prototype._isPathDifferent = function(path, currentPath) {
-      return this._getPath(path) !== this._getPath(currentPath) || !this._equal(this._getQuery(path), this._getQuery(currentPath)) || !this._equal(this._getHash(path), this._getHash(currentPath));
-    };
-
-    Tour.prototype._isJustPathHashDifferent = function(host, path, location) {
-      var currentPath;
-      if ((host != null) && host !== '') {
-        if (this._isHostDifferent(host, location)) {
-          return false;
-        }
-      }
-      currentPath = [location.pathname, location.search, location.hash].join('');
-      if ({}.toString.call(path) === '[object String]') {
-        return this._getPath(path) === this._getPath(currentPath) && this._equal(this._getQuery(path), this._getQuery(currentPath)) && !this._equal(this._getHash(path), this._getHash(currentPath));
-      }
-      return false;
-    };
-
-    Tour.prototype._redirect = function(step, i, path) {
-      var href;
-      if ($.isFunction(step.redirect)) {
-        return step.redirect.call(this, path);
-      } else {
-        href = {}.toString.call(step.host) === '[object String]' ? "" + step.host + path : path;
-        this._debug("Redirect to " + href);
-        if (this._getState('redirect_to') === ("" + i)) {
-          this._debug("Error redirection loop to " + path);
-          this._removeState('redirect_to');
-          if (step.onRedirectError != null) {
-            return step.onRedirectError(this);
-          }
-        } else {
-          this._setState('redirect_to', "" + i);
-          return document.location.href = href;
-        }
-      }
-    };
-
-    Tour.prototype._isOrphan = function(step) {
-      return (step.element == null) || !$(step.element).length || $(step.element).is(':hidden') && ($(step.element)[0].namespaceURI !== 'http://www.w3.org/2000/svg');
-    };
-
-    Tour.prototype._isLast = function() {
-      return this._current < this._options.steps.length - 1;
-    };
-
-    Tour.prototype._showPopoverAndOverlay = function(i) {
-      var step;
-      if (this.getCurrentStep() !== i || this.ended()) {
-        return;
-      }
-      step = this.getStep(i);
-      if (step.backdrop) {
-        this._showOverlayElement(step);
-      }
-      this._showPopover(step, i);
-      if (step.onShown != null) {
-        step.onShown(this);
-      }
-      return this._debug("Step " + (this._current + 1) + " of " + this._options.steps.length);
-    };
-
-    Tour.prototype._showPopover = function(step, i) {
-      var $element, $tip, isOrphan, options, shouldAddSmart;
-      $(".tour-" + this._options.name).remove();
-      options = $.extend({}, this._options);
-      isOrphan = this._isOrphan(step);
-      step.template = this._template(step, i);
-      if (isOrphan) {
-        step.element = 'body';
-        step.placement = 'top';
-      }
-      $element = $(step.element);
-      $element.addClass("tour-" + this._options.name + "-element tour-" + this._options.name + "-" + i + "-element");
-      if (step.options) {
-        $.extend(options, step.options);
-      }
-      if (step.reflex && !isOrphan) {
-        $(step.reflexElement).addClass('tour-step-element-reflex').off((this._reflexEvent(step.reflex)) + ".tour-" + this._options.name).on((this._reflexEvent(step.reflex)) + ".tour-" + this._options.name, (function(_this) {
-          return function() {
-            if (_this._isLast()) {
-              return _this.next();
-            } else {
-              return _this.end();
-            }
-          };
-        })(this));
-      }
-      shouldAddSmart = step.smartPlacement === true && step.placement.search(/auto/i) === -1;
-      $element.popover({
-        placement: shouldAddSmart ? "auto " + step.placement : step.placement,
-        trigger: 'manual',
-        title: step.title,
-        content: step.content,
-        html: true,
-        animation: step.animation,
-        container: step.container,
-        template: step.template,
-        selector: step.element
-      }).popover('show');
-      $tip = $element.data('bs.popover') ? $element.data('bs.popover').tip() : $element.data('popover').tip();
-      $tip.attr('id', step.id);
-      if ($element.css('position') === 'fixed') {
-        $tip.css('position', 'fixed');
-      }
-      this._reposition($tip, step);
-      if (isOrphan) {
-        return this._center($tip);
-      }
-    };
-
-    Tour.prototype._template = function(step, i) {
-      var $navigation, $next, $prev, $resume, $template, template;
-      template = step.template;
-      if (this._isOrphan(step) && {}.toString.call(step.orphan) !== '[object Boolean]') {
-        template = step.orphan;
-      }
-      $template = $.isFunction(template) ? $(template(i, step)) : $(template);
-      $navigation = $template.find('.popover-navigation');
-      $prev = $navigation.find('[data-role="prev"]');
-      $next = $navigation.find('[data-role="next"]');
-      $resume = $navigation.find('[data-role="pause-resume"]');
-      if (this._isOrphan(step)) {
-        $template.addClass('orphan');
-      }
-      $template.addClass("tour-" + this._options.name + " tour-" + this._options.name + "-" + i);
-      if (step.reflex) {
-        $template.addClass("tour-" + this._options.name + "-reflex");
-      }
-      if (step.prev < 0) {
-        $prev.addClass('disabled').prop('disabled', true).prop('tabindex', -1);
-      }
-      if (step.next < 0) {
-        $next.addClass('disabled').prop('disabled', true).prop('tabindex', -1);
-      }
-      if (!step.duration) {
-        $resume.remove();
-      }
-      return $template.clone().wrap('<div>').parent().html();
-    };
-
-    Tour.prototype._reflexEvent = function(reflex) {
-      if ({}.toString.call(reflex) === '[object Boolean]') {
-        return 'click';
-      } else {
-        return reflex;
-      }
-    };
-
-    Tour.prototype._reposition = function($tip, step) {
-      var offsetBottom, offsetHeight, offsetRight, offsetWidth, originalLeft, originalTop, tipOffset;
-      offsetWidth = $tip[0].offsetWidth;
-      offsetHeight = $tip[0].offsetHeight;
-      tipOffset = $tip.offset();
-      originalLeft = tipOffset.left;
-      originalTop = tipOffset.top;
-      offsetBottom = $(document).outerHeight() - tipOffset.top - $tip.outerHeight();
-      if (offsetBottom < 0) {
-        tipOffset.top = tipOffset.top + offsetBottom;
-      }
-      offsetRight = $('html').outerWidth() - tipOffset.left - $tip.outerWidth();
-      if (offsetRight < 0) {
-        tipOffset.left = tipOffset.left + offsetRight;
-      }
-      if (tipOffset.top < 0) {
-        tipOffset.top = 0;
-      }
-      if (tipOffset.left < 0) {
-        tipOffset.left = 0;
-      }
-      $tip.offset(tipOffset);
-      if (step.placement === 'bottom' || step.placement === 'top') {
-        if (originalLeft !== tipOffset.left) {
-          return this._replaceArrow($tip, (tipOffset.left - originalLeft) * 2, offsetWidth, 'left');
-        }
-      } else {
-        if (originalTop !== tipOffset.top) {
-          return this._replaceArrow($tip, (tipOffset.top - originalTop) * 2, offsetHeight, 'top');
-        }
-      }
-    };
-
-    Tour.prototype._center = function($tip) {
-      return $tip.css('top', $(window).outerHeight() / 2 - $tip.outerHeight() / 2);
-    };
-
-    Tour.prototype._replaceArrow = function($tip, delta, dimension, position) {
-      return $tip.find('.arrow').css(position, delta ? 50 * (1 - delta / dimension) + '%' : '');
-    };
-
-    Tour.prototype._scrollIntoView = function(i) {
-      var $element, $window, counter, height, offsetTop, scrollTop, step, windowHeight;
-      step = this.getStep(i);
-      $element = $(step.element);
-      if (!$element.length) {
-        return this._showPopoverAndOverlay(i);
-      }
-      $window = $(window);
-      offsetTop = $element.offset().top;
-      height = $element.outerHeight();
-      windowHeight = $window.height();
-      scrollTop = 0;
-      switch (step.placement) {
-        case 'top':
-          scrollTop = Math.max(0, offsetTop - (windowHeight / 2));
-          break;
-        case 'left':
-        case 'right':
-          scrollTop = Math.max(0, (offsetTop + height / 2) - (windowHeight / 2));
-          break;
-        case 'bottom':
-          scrollTop = Math.max(0, (offsetTop + height) - (windowHeight / 2));
-      }
-      this._debug("Scroll into view. ScrollTop: " + scrollTop + ". Element offset: " + offsetTop + ". Window height: " + windowHeight + ".");
-      counter = 0;
-      return $('body, html').stop(true, true).animate({
-        scrollTop: Math.ceil(scrollTop)
-      }, (function(_this) {
-        return function() {
-          if (++counter === 2) {
-            _this._showPopoverAndOverlay(i);
-            return _this._debug("Scroll into view.\nAnimation end element offset: " + ($element.offset().top) + ".\nWindow height: " + ($window.height()) + ".");
-          }
-        };
-      })(this));
-    };
-
-    Tour.prototype._onResize = function(callback, timeout) {
-      return $(window).on("resize.tour-" + this._options.name, function() {
-        clearTimeout(timeout);
-        return timeout = setTimeout(callback, 100);
-      });
-    };
-
-    Tour.prototype._onScroll = function(callback, timeout) {
-      return $(window).on("scroll.tour-" + this._options.name, function() {
-        clearTimeout(timeout);
-        return timeout = setTimeout(callback, 100);
-      });
-    };
-
-    Tour.prototype._initMouseNavigation = function() {
-      var _this;
-      _this = this;
-      return $(document).off("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='prev']").off("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='next']").off("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='end']").off("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='pause-resume']").on("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='next']", (function(_this) {
-        return function(e) {
-          e.preventDefault();
-          return _this.next();
-        };
-      })(this)).on("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='prev']", (function(_this) {
-        return function(e) {
-          e.preventDefault();
-          if (_this._current > 0) {
-            return _this.prev();
-          }
-        };
-      })(this)).on("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='end']", (function(_this) {
-        return function(e) {
-          e.preventDefault();
-          return _this.end();
-        };
-      })(this)).on("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='pause-resume']", function(e) {
-        var $this;
-        e.preventDefault();
-        $this = $(this);
-        $this.text(_this._paused ? $this.data('pause-text') : $this.data('resume-text'));
-        if (_this._paused) {
-          return _this.resume();
-        } else {
-          return _this.pause();
-        }
-      });
-    };
-
-    Tour.prototype._initKeyboardNavigation = function() {
-      if (!this._options.keyboard) {
-        return;
-      }
-      return $(document).on("keyup.tour-" + this._options.name, (function(_this) {
-        return function(e) {
-          if (!e.which) {
-            return;
-          }
-          switch (e.which) {
-            case 39:
-              e.preventDefault();
-              if (_this._isLast()) {
-                return _this.next();
-              } else {
-                return _this.end();
-              }
-              break;
-            case 37:
-              e.preventDefault();
-              if (_this._current > 0) {
-                return _this.prev();
-              }
-          }
-        };
-      })(this));
-    };
-
-    Tour.prototype._makePromise = function(result) {
-      if (result && $.isFunction(result.then)) {
-        return result;
-      } else {
-        return null;
-      }
-    };
-
-    Tour.prototype._callOnPromiseDone = function(promise, cb, arg) {
-      if (promise) {
-        return promise.then((function(_this) {
-          return function(e) {
-            return cb.call(_this, arg);
-          };
-        })(this));
-      } else {
-        return cb.call(this, arg);
-      }
-    };
-
-    Tour.prototype._showBackground = function(step, data) {
-      var $backdrop, base, height, j, len, pos, ref, results, width;
-      height = $(document).height();
-      width = $(document).width();
-      ref = ['top', 'bottom', 'left', 'right'];
-      results = [];
-      for (j = 0, len = ref.length; j < len; j++) {
-        pos = ref[j];
-        $backdrop = (base = this.backdrops)[pos] != null ? base[pos] : base[pos] = $('<div>', {
-          "class": "tour-backdrop " + pos
-        });
-        $(step.backdropContainer).append($backdrop);
-        switch (pos) {
-          case 'top':
-            results.push($backdrop.height(data.offset.top > 0 ? data.offset.top : 0).width(width).offset({
-              top: 0,
-              left: 0
-            }));
-            break;
-          case 'bottom':
-            results.push($backdrop.offset({
-              top: data.offset.top + data.height,
-              left: 0
-            }).height(height - (data.offset.top + data.height)).width(width));
-            break;
-          case 'left':
-            results.push($backdrop.offset({
-              top: data.offset.top,
-              left: 0
-            }).height(data.height).width(data.offset.left > 0 ? data.offset.left : 0));
-            break;
-          case 'right':
-            results.push($backdrop.offset({
-              top: data.offset.top,
-              left: data.offset.left + data.width
-            }).height(data.height).width(width - (data.offset.left + data.width)));
-            break;
-          default:
-            results.push(void 0);
-        }
-      }
-      return results;
-    };
-
-    Tour.prototype._showOverlayElement = function(step) {
-      var $backdropElement, elementData;
-      $backdropElement = $(step.backdropElement);
-      if ($backdropElement.length === 0) {
-        elementData = {
-          width: 0,
-          height: 0,
-          offset: {
-            top: 0,
-            left: 0
-          }
-        };
-      } else {
-        elementData = {
-          width: $backdropElement.innerWidth(),
-          height: $backdropElement.innerHeight(),
-          offset: $backdropElement.offset()
-        };
-        $backdropElement.addClass('tour-step-backdrop');
-        if (step.backdropPadding) {
-          elementData = this._applyBackdropPadding(step.backdropPadding, elementData);
-        }
-      }
-      return this._showBackground(step, elementData);
-    };
-
-    Tour.prototype._hideOverlayElement = function(step) {
-      var $backdrop, pos, ref;
-      $(step.backdropElement).removeClass('tour-step-backdrop');
-      ref = this.backdrops;
-      for (pos in ref) {
-        $backdrop = ref[pos];
-        if ($backdrop && $backdrop.remove !== void 0) {
-          $backdrop.remove();
-        }
-      }
-      return this.backdrops = [];
-    };
-
-    Tour.prototype._applyBackdropPadding = function(padding, data) {
-      if (typeof padding === 'object') {
-        if (padding.top == null) {
-          padding.top = 0;
-        }
-        if (padding.right == null) {
-          padding.right = 0;
-        }
-        if (padding.bottom == null) {
-          padding.bottom = 0;
-        }
-        if (padding.left == null) {
-          padding.left = 0;
-        }
-        data.offset.top = data.offset.top - padding.top;
-        data.offset.left = data.offset.left - padding.left;
-        data.width = data.width + padding.left + padding.right;
-        data.height = data.height + padding.top + padding.bottom;
-      } else {
-        data.offset.top = data.offset.top - padding;
-        data.offset.left = data.offset.left - padding;
-        data.width = data.width + (padding * 2);
-        data.height = data.height + (padding * 2);
-      }
-      return data;
-    };
-
-    Tour.prototype._clearTimer = function() {
-      window.clearTimeout(this._timer);
-      this._timer = null;
-      return this._duration = null;
-    };
-
-    Tour.prototype._getProtocol = function(url) {
-      url = url.split('://');
-      if (url.length > 1) {
-        return url[0];
-      } else {
-        return 'http';
-      }
-    };
-
-    Tour.prototype._getHost = function(url) {
-      url = url.split('//');
-      url = url.length > 1 ? url[1] : url[0];
-      return url.split('/')[0];
-    };
-
-    Tour.prototype._getPath = function(path) {
-      return path.replace(/\/?$/, '').split('?')[0].split('#')[0];
-    };
-
-    Tour.prototype._getQuery = function(path) {
-      return this._getParams(path, '?');
-    };
-
-    Tour.prototype._getHash = function(path) {
-      return this._getParams(path, '#');
-    };
-
-    Tour.prototype._getParams = function(path, start) {
-      var j, len, param, params, paramsObject;
-      params = path.split(start);
-      if (params.length === 1) {
-        return {};
-      }
-      params = params[1].split('&');
-      paramsObject = {};
-      for (j = 0, len = params.length; j < len; j++) {
-        param = params[j];
-        param = param.split('=');
-        paramsObject[param[0]] = param[1] || '';
-      }
-      return paramsObject;
-    };
-
-    Tour.prototype._equal = function(obj1, obj2) {
-      var j, k, len, obj1Keys, obj2Keys, v;
-      if ({}.toString.call(obj1) === '[object Object]' && {}.toString.call(obj2) === '[object Object]') {
-        obj1Keys = Object.keys(obj1);
-        obj2Keys = Object.keys(obj2);
-        if (obj1Keys.length !== obj2Keys.length) {
-          return false;
-        }
-        for (k in obj1) {
-          v = obj1[k];
-          if (!this._equal(obj2[k], v)) {
-            return false;
-          }
-        }
-        return true;
-      } else if ({}.toString.call(obj1) === '[object Array]' && {}.toString.call(obj2) === '[object Array]') {
-        if (obj1.length !== obj2.length) {
-          return false;
-        }
-        for (k = j = 0, len = obj1.length; j < len; k = ++j) {
-          v = obj1[k];
-          if (!this._equal(v, obj2[k])) {
-            return false;
-          }
-        }
-        return true;
-      } else {
-        return obj1 === obj2;
-      }
-    };
-
-    return Tour;
-
-  })();
-  return Tour;
-});
-
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11514,7 +10435,1788 @@ return jQuery;
 
 
 /***/ }),
-/* 6 */
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(2);
+module.exports = __webpack_require__(4);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+window.Turbolinks = require('turbolinks');
+Turbolinks.start();
+*/
+try {
+    window.$ = window.jQuery = __webpack_require__(0);
+} catch (e) {}
+__webpack_require__(3);
+
+$(function () {
+    // Instance the tour
+
+    //require('bootstrap-tour');
+    //require('bootstrap-tour');
+
+    //var pathuser = new RegExp('\\d+','ig');
+
+    var tour = new Tour({
+        debug: true,
+        steps: [{
+            path: "/dashboard",
+            element: ".nav-footer-fix > li:first-of-type",
+            title: "Шаг1_1. Настройки",
+            content: "Выбирите настройки",
+            reflex: true
+        }, {
+            path: "/dashboard/systems",
+            title: "Шаг1_2. Пользователи",
+            content: "Перейдем в список пользователей",
+            orphan: true
+        }, {
+            path: "/dashboard/systems/users",
+            title: "Шаг1_3. Список пользователей",
+            content: "Выберем нашего пользователя",
+            orphan: true,
+            redirect: false
+        }, {
+            path: RegExp("/\/dashboard\/systems\/users\/\d+\/edit/i"),
+            element: "[for='field--systems']",
+            title: "Шаг1_4. Доступы",
+            content: "Дадим доступ нашему пользователю к DemoKit",
+            redirect: false
+        }] });
+
+    //backdrop:true
+    //op
+
+    // Initialize the tour
+    tour.init();
+
+    // Start the tour
+    tour.start();
+
+    if (tour.ended()) {
+        // decide what to do
+        tour.restart();
+    }
+});
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* ========================================================================
+ * bootstrap-tour - v0.12.0
+ * http://bootstraptour.com
+ * ========================================================================
+ * Copyright 2012-2015 Ulrich Sossou
+ *
+ * ========================================================================
+ * Licensed under the MIT License (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://opensource.org/licenses/MIT
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================================
+ */
+
+/* ========================================================================
+ * Bootstrap: transition.js v3.3.7
+ * http://getbootstrap.com/javascript/#transitions
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+  // ============================================================
+
+  function transitionEnd() {
+    var el = document.createElement('bootstrap')
+
+    var transEndEventNames = {
+      WebkitTransition : 'webkitTransitionEnd',
+      MozTransition    : 'transitionend',
+      OTransition      : 'oTransitionEnd otransitionend',
+      transition       : 'transitionend'
+    }
+
+    for (var name in transEndEventNames) {
+      if (el.style[name] !== undefined) {
+        return { end: transEndEventNames[name] }
+      }
+    }
+
+    return false // explicit for ie8 (  ._.)
+  }
+
+  // http://blog.alexmaccaw.com/css-transitions
+  $.fn.emulateTransitionEnd = function (duration) {
+    var called = false
+    var $el = this
+    $(this).one('bsTransitionEnd', function () { called = true })
+    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
+    setTimeout(callback, duration)
+    return this
+  }
+
+  $(function () {
+    $.support.transition = transitionEnd()
+
+    if (!$.support.transition) return
+
+    $.event.special.bsTransitionEnd = {
+      bindType: $.support.transition.end,
+      delegateType: $.support.transition.end,
+      handle: function (e) {
+        if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
+      }
+    }
+  })
+
+}(jQuery);
+
+/* ========================================================================
+ * Bootstrap: tooltip.js v3.3.7
+ * http://getbootstrap.com/javascript/#tooltip
+ * Inspired by the original jQuery.tipsy by Jason Frame
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // TOOLTIP PUBLIC CLASS DEFINITION
+  // ===============================
+
+  var Tooltip = function (element, options) {
+    this.type       = null
+    this.options    = null
+    this.enabled    = null
+    this.timeout    = null
+    this.hoverState = null
+    this.$element   = null
+    this.inState    = null
+
+    this.init('tooltip', element, options)
+  }
+
+  Tooltip.VERSION  = '3.3.7'
+
+  Tooltip.TRANSITION_DURATION = 150
+
+  Tooltip.DEFAULTS = {
+    animation: true,
+    placement: 'top',
+    selector: false,
+    template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+    trigger: 'hover focus',
+    title: '',
+    delay: 0,
+    html: false,
+    container: false,
+    viewport: {
+      selector: 'body',
+      padding: 0
+    }
+  }
+
+  Tooltip.prototype.init = function (type, element, options) {
+    this.enabled   = true
+    this.type      = type
+    this.$element  = $(element)
+    this.options   = this.getOptions(options)
+    this.$viewport = this.options.viewport && $($.isFunction(this.options.viewport) ? this.options.viewport.call(this, this.$element) : (this.options.viewport.selector || this.options.viewport))
+    this.inState   = { click: false, hover: false, focus: false }
+
+    if (this.$element[0] instanceof document.constructor && !this.options.selector) {
+      throw new Error('`selector` option must be specified when initializing ' + this.type + ' on the window.document object!')
+    }
+
+    var triggers = this.options.trigger.split(' ')
+
+    for (var i = triggers.length; i--;) {
+      var trigger = triggers[i]
+
+      if (trigger == 'click') {
+        this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
+      } else if (trigger != 'manual') {
+        var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
+        var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
+
+        this.$element.on(eventIn  + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
+        this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
+      }
+    }
+
+    this.options.selector ?
+      (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
+      this.fixTitle()
+  }
+
+  Tooltip.prototype.getDefaults = function () {
+    return Tooltip.DEFAULTS
+  }
+
+  Tooltip.prototype.getOptions = function (options) {
+    options = $.extend({}, this.getDefaults(), this.$element.data(), options)
+
+    if (options.delay && typeof options.delay == 'number') {
+      options.delay = {
+        show: options.delay,
+        hide: options.delay
+      }
+    }
+
+    return options
+  }
+
+  Tooltip.prototype.getDelegateOptions = function () {
+    var options  = {}
+    var defaults = this.getDefaults()
+
+    this._options && $.each(this._options, function (key, value) {
+      if (defaults[key] != value) options[key] = value
+    })
+
+    return options
+  }
+
+  Tooltip.prototype.enter = function (obj) {
+    var self = obj instanceof this.constructor ?
+      obj : $(obj.currentTarget).data('bs.' + this.type)
+
+    if (!self) {
+      self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
+      $(obj.currentTarget).data('bs.' + this.type, self)
+    }
+
+    if (obj instanceof $.Event) {
+      self.inState[obj.type == 'focusin' ? 'focus' : 'hover'] = true
+    }
+
+    if (self.tip().hasClass('in') || self.hoverState == 'in') {
+      self.hoverState = 'in'
+      return
+    }
+
+    clearTimeout(self.timeout)
+
+    self.hoverState = 'in'
+
+    if (!self.options.delay || !self.options.delay.show) return self.show()
+
+    self.timeout = setTimeout(function () {
+      if (self.hoverState == 'in') self.show()
+    }, self.options.delay.show)
+  }
+
+  Tooltip.prototype.isInStateTrue = function () {
+    for (var key in this.inState) {
+      if (this.inState[key]) return true
+    }
+
+    return false
+  }
+
+  Tooltip.prototype.leave = function (obj) {
+    var self = obj instanceof this.constructor ?
+      obj : $(obj.currentTarget).data('bs.' + this.type)
+
+    if (!self) {
+      self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
+      $(obj.currentTarget).data('bs.' + this.type, self)
+    }
+
+    if (obj instanceof $.Event) {
+      self.inState[obj.type == 'focusout' ? 'focus' : 'hover'] = false
+    }
+
+    if (self.isInStateTrue()) return
+
+    clearTimeout(self.timeout)
+
+    self.hoverState = 'out'
+
+    if (!self.options.delay || !self.options.delay.hide) return self.hide()
+
+    self.timeout = setTimeout(function () {
+      if (self.hoverState == 'out') self.hide()
+    }, self.options.delay.hide)
+  }
+
+  Tooltip.prototype.show = function () {
+    var e = $.Event('show.bs.' + this.type)
+
+    if (this.hasContent() && this.enabled) {
+      this.$element.trigger(e)
+
+      var inDom = $.contains(this.$element[0].ownerDocument.documentElement, this.$element[0])
+      if (e.isDefaultPrevented() || !inDom) return
+      var that = this
+
+      var $tip = this.tip()
+
+      var tipId = this.getUID(this.type)
+
+      this.setContent()
+      $tip.attr('id', tipId)
+      this.$element.attr('aria-describedby', tipId)
+
+      if (this.options.animation) $tip.addClass('fade')
+
+      var placement = typeof this.options.placement == 'function' ?
+        this.options.placement.call(this, $tip[0], this.$element[0]) :
+        this.options.placement
+
+      var autoToken = /\s?auto?\s?/i
+      var autoPlace = autoToken.test(placement)
+      if (autoPlace) placement = placement.replace(autoToken, '') || 'top'
+
+      $tip
+        .detach()
+        .css({ top: 0, left: 0, display: 'block' })
+        .addClass(placement)
+        .data('bs.' + this.type, this)
+
+      this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
+      this.$element.trigger('inserted.bs.' + this.type)
+
+      var pos          = this.getPosition()
+      var actualWidth  = $tip[0].offsetWidth
+      var actualHeight = $tip[0].offsetHeight
+
+      if (autoPlace) {
+        var orgPlacement = placement
+        var viewportDim = this.getPosition(this.$viewport)
+
+        placement = placement == 'bottom' && pos.bottom + actualHeight > viewportDim.bottom ? 'top'    :
+                    placement == 'top'    && pos.top    - actualHeight < viewportDim.top    ? 'bottom' :
+                    placement == 'right'  && pos.right  + actualWidth  > viewportDim.width  ? 'left'   :
+                    placement == 'left'   && pos.left   - actualWidth  < viewportDim.left   ? 'right'  :
+                    placement
+
+        $tip
+          .removeClass(orgPlacement)
+          .addClass(placement)
+      }
+
+      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
+
+      this.applyPlacement(calculatedOffset, placement)
+
+      var complete = function () {
+        var prevHoverState = that.hoverState
+        that.$element.trigger('shown.bs.' + that.type)
+        that.hoverState = null
+
+        if (prevHoverState == 'out') that.leave(that)
+      }
+
+      $.support.transition && this.$tip.hasClass('fade') ?
+        $tip
+          .one('bsTransitionEnd', complete)
+          .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
+        complete()
+    }
+  }
+
+  Tooltip.prototype.applyPlacement = function (offset, placement) {
+    var $tip   = this.tip()
+    var width  = $tip[0].offsetWidth
+    var height = $tip[0].offsetHeight
+
+    // manually read margins because getBoundingClientRect includes difference
+    var marginTop = parseInt($tip.css('margin-top'), 10)
+    var marginLeft = parseInt($tip.css('margin-left'), 10)
+
+    // we must check for NaN for ie 8/9
+    if (isNaN(marginTop))  marginTop  = 0
+    if (isNaN(marginLeft)) marginLeft = 0
+
+    offset.top  += marginTop
+    offset.left += marginLeft
+
+    // $.fn.offset doesn't round pixel values
+    // so we use setOffset directly with our own function B-0
+    $.offset.setOffset($tip[0], $.extend({
+      using: function (props) {
+        $tip.css({
+          top: Math.round(props.top),
+          left: Math.round(props.left)
+        })
+      }
+    }, offset), 0)
+
+    $tip.addClass('in')
+
+    // check to see if placing tip in new offset caused the tip to resize itself
+    var actualWidth  = $tip[0].offsetWidth
+    var actualHeight = $tip[0].offsetHeight
+
+    if (placement == 'top' && actualHeight != height) {
+      offset.top = offset.top + height - actualHeight
+    }
+
+    var delta = this.getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight)
+
+    if (delta.left) offset.left += delta.left
+    else offset.top += delta.top
+
+    var isVertical          = /top|bottom/.test(placement)
+    var arrowDelta          = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight
+    var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight'
+
+    $tip.offset(offset)
+    this.replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical)
+  }
+
+  Tooltip.prototype.replaceArrow = function (delta, dimension, isVertical) {
+    this.arrow()
+      .css(isVertical ? 'left' : 'top', 50 * (1 - delta / dimension) + '%')
+      .css(isVertical ? 'top' : 'left', '')
+  }
+
+  Tooltip.prototype.setContent = function () {
+    var $tip  = this.tip()
+    var title = this.getTitle()
+
+    $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
+    $tip.removeClass('fade in top bottom left right')
+  }
+
+  Tooltip.prototype.hide = function (callback) {
+    var that = this
+    var $tip = $(this.$tip)
+    var e    = $.Event('hide.bs.' + this.type)
+
+    function complete() {
+      if (that.hoverState != 'in') $tip.detach()
+      if (that.$element) { // TODO: Check whether guarding this code with this `if` is really necessary.
+        that.$element
+          .removeAttr('aria-describedby')
+          .trigger('hidden.bs.' + that.type)
+      }
+      callback && callback()
+    }
+
+    this.$element.trigger(e)
+
+    if (e.isDefaultPrevented()) return
+
+    $tip.removeClass('in')
+
+    $.support.transition && $tip.hasClass('fade') ?
+      $tip
+        .one('bsTransitionEnd', complete)
+        .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
+      complete()
+
+    this.hoverState = null
+
+    return this
+  }
+
+  Tooltip.prototype.fixTitle = function () {
+    var $e = this.$element
+    if ($e.attr('title') || typeof $e.attr('data-original-title') != 'string') {
+      $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
+    }
+  }
+
+  Tooltip.prototype.hasContent = function () {
+    return this.getTitle()
+  }
+
+  Tooltip.prototype.getPosition = function ($element) {
+    $element   = $element || this.$element
+
+    var el     = $element[0]
+    var isBody = el.tagName == 'BODY'
+
+    var elRect    = el.getBoundingClientRect()
+    if (elRect.width == null) {
+      // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
+      elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top })
+    }
+    var isSvg = window.SVGElement && el instanceof window.SVGElement
+    // Avoid using $.offset() on SVGs since it gives incorrect results in jQuery 3.
+    // See https://github.com/twbs/bootstrap/issues/20280
+    var elOffset  = isBody ? { top: 0, left: 0 } : (isSvg ? null : $element.offset())
+    var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
+    var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null
+
+    return $.extend({}, elRect, scroll, outerDims, elOffset)
+  }
+
+  Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight) {
+    return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 } :
+           placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 } :
+           placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width }
+
+  }
+
+  Tooltip.prototype.getViewportAdjustedDelta = function (placement, pos, actualWidth, actualHeight) {
+    var delta = { top: 0, left: 0 }
+    if (!this.$viewport) return delta
+
+    var viewportPadding = this.options.viewport && this.options.viewport.padding || 0
+    var viewportDimensions = this.getPosition(this.$viewport)
+
+    if (/right|left/.test(placement)) {
+      var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll
+      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight
+      if (topEdgeOffset < viewportDimensions.top) { // top overflow
+        delta.top = viewportDimensions.top - topEdgeOffset
+      } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
+        delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset
+      }
+    } else {
+      var leftEdgeOffset  = pos.left - viewportPadding
+      var rightEdgeOffset = pos.left + viewportPadding + actualWidth
+      if (leftEdgeOffset < viewportDimensions.left) { // left overflow
+        delta.left = viewportDimensions.left - leftEdgeOffset
+      } else if (rightEdgeOffset > viewportDimensions.right) { // right overflow
+        delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset
+      }
+    }
+
+    return delta
+  }
+
+  Tooltip.prototype.getTitle = function () {
+    var title
+    var $e = this.$element
+    var o  = this.options
+
+    title = $e.attr('data-original-title')
+      || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
+
+    return title
+  }
+
+  Tooltip.prototype.getUID = function (prefix) {
+    do prefix += ~~(Math.random() * 1000000)
+    while (document.getElementById(prefix))
+    return prefix
+  }
+
+  Tooltip.prototype.tip = function () {
+    if (!this.$tip) {
+      this.$tip = $(this.options.template)
+      if (this.$tip.length != 1) {
+        throw new Error(this.type + ' `template` option must consist of exactly 1 top-level element!')
+      }
+    }
+    return this.$tip
+  }
+
+  Tooltip.prototype.arrow = function () {
+    return (this.$arrow = this.$arrow || this.tip().find('.tooltip-arrow'))
+  }
+
+  Tooltip.prototype.enable = function () {
+    this.enabled = true
+  }
+
+  Tooltip.prototype.disable = function () {
+    this.enabled = false
+  }
+
+  Tooltip.prototype.toggleEnabled = function () {
+    this.enabled = !this.enabled
+  }
+
+  Tooltip.prototype.toggle = function (e) {
+    var self = this
+    if (e) {
+      self = $(e.currentTarget).data('bs.' + this.type)
+      if (!self) {
+        self = new this.constructor(e.currentTarget, this.getDelegateOptions())
+        $(e.currentTarget).data('bs.' + this.type, self)
+      }
+    }
+
+    if (e) {
+      self.inState.click = !self.inState.click
+      if (self.isInStateTrue()) self.enter(self)
+      else self.leave(self)
+    } else {
+      self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
+    }
+  }
+
+  Tooltip.prototype.destroy = function () {
+    var that = this
+    clearTimeout(this.timeout)
+    this.hide(function () {
+      that.$element.off('.' + that.type).removeData('bs.' + that.type)
+      if (that.$tip) {
+        that.$tip.detach()
+      }
+      that.$tip = null
+      that.$arrow = null
+      that.$viewport = null
+      that.$element = null
+    })
+  }
+
+
+  // TOOLTIP PLUGIN DEFINITION
+  // =========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('bs.tooltip')
+      var options = typeof option == 'object' && option
+
+      if (!data && /destroy|hide/.test(option)) return
+      if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  var old = $.fn.tooltip
+
+  $.fn.tooltip             = Plugin
+  $.fn.tooltip.Constructor = Tooltip
+
+
+  // TOOLTIP NO CONFLICT
+  // ===================
+
+  $.fn.tooltip.noConflict = function () {
+    $.fn.tooltip = old
+    return this
+  }
+
+}(jQuery);
+
+/* ========================================================================
+ * Bootstrap: popover.js v3.3.7
+ * http://getbootstrap.com/javascript/#popovers
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // POPOVER PUBLIC CLASS DEFINITION
+  // ===============================
+
+  var Popover = function (element, options) {
+    this.init('popover', element, options)
+  }
+
+  if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
+
+  Popover.VERSION  = '3.3.7'
+
+  Popover.DEFAULTS = $.extend({}, $.fn.tooltip.Constructor.DEFAULTS, {
+    placement: 'right',
+    trigger: 'click',
+    content: '',
+    template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+  })
+
+
+  // NOTE: POPOVER EXTENDS tooltip.js
+  // ================================
+
+  Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype)
+
+  Popover.prototype.constructor = Popover
+
+  Popover.prototype.getDefaults = function () {
+    return Popover.DEFAULTS
+  }
+
+  Popover.prototype.setContent = function () {
+    var $tip    = this.tip()
+    var title   = this.getTitle()
+    var content = this.getContent()
+
+    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
+    $tip.find('.popover-content').children().detach().end()[ // we use append for html objects to maintain js events
+      this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
+    ](content)
+
+    $tip.removeClass('fade top bottom left right in')
+
+    // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
+    // this manually by checking the contents.
+    if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide()
+  }
+
+  Popover.prototype.hasContent = function () {
+    return this.getTitle() || this.getContent()
+  }
+
+  Popover.prototype.getContent = function () {
+    var $e = this.$element
+    var o  = this.options
+
+    return $e.attr('data-content')
+      || (typeof o.content == 'function' ?
+            o.content.call($e[0]) :
+            o.content)
+  }
+
+  Popover.prototype.arrow = function () {
+    return (this.$arrow = this.$arrow || this.tip().find('.arrow'))
+  }
+
+
+  // POPOVER PLUGIN DEFINITION
+  // =========================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('bs.popover')
+      var options = typeof option == 'object' && option
+
+      if (!data && /destroy|hide/.test(option)) return
+      if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  var old = $.fn.popover
+
+  $.fn.popover             = Plugin
+  $.fn.popover.Constructor = Popover
+
+
+  // POPOVER NO CONFLICT
+  // ===================
+
+  $.fn.popover.noConflict = function () {
+    $.fn.popover = old
+    return this
+  }
+
+}(jQuery);
+
+var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+(function(window, factory) {
+  if (true) {
+    return !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_RESULT__ = (function(jQuery) {
+      return window.Tour = factory(jQuery);
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else if (typeof exports === 'object') {
+    return module.exports = factory(require('jquery'));
+  } else {
+    return window.Tour = factory(window.jQuery);
+  }
+})(window, function($) {
+  var Tour, document;
+  document = window.document;
+  Tour = (function() {
+    function Tour(options) {
+      this._showPopoverAndOverlay = bind(this._showPopoverAndOverlay, this);
+      var storage;
+      try {
+        storage = window.localStorage;
+      } catch (error) {
+        storage = false;
+      }
+      this._options = $.extend({
+        name: 'tour',
+        steps: [],
+        container: 'body',
+        autoscroll: true,
+        keyboard: true,
+        storage: storage,
+        debug: false,
+        backdrop: false,
+        backdropContainer: 'body',
+        backdropPadding: 0,
+        redirect: true,
+        orphan: false,
+        duration: false,
+        delay: false,
+        basePath: '',
+        template: '<div class="popover" role="tooltip"> <div class="arrow"></div> <h3 class="popover-title"></h3> <div class="popover-content"></div> <div class="popover-navigation"> <div class="btn-group"> <button class="btn btn-sm btn-default" data-role="prev">&laquo; Prev</button> <button class="btn btn-sm btn-default" data-role="next">Next &raquo;</button> <button class="btn btn-sm btn-default" data-role="pause-resume" data-pause-text="Pause" data-resume-text="Resume">Pause</button> </div> <button class="btn btn-sm btn-default" data-role="end">End tour</button> </div> </div>',
+        afterSetState: function(key, value) {},
+        afterGetState: function(key, value) {},
+        afterRemoveState: function(key) {},
+        onStart: function(tour) {},
+        onEnd: function(tour) {},
+        onShow: function(tour) {},
+        onShown: function(tour) {},
+        onHide: function(tour) {},
+        onHidden: function(tour) {},
+        onNext: function(tour) {},
+        onPrev: function(tour) {},
+        onPause: function(tour, duration) {},
+        onResume: function(tour, duration) {},
+        onRedirectError: function(tour) {}
+      }, options);
+      this._force = false;
+      this._inited = false;
+      this._current = null;
+      this.backdrops = [];
+      this;
+    }
+
+    Tour.prototype.addSteps = function(steps) {
+      var j, len, step;
+      for (j = 0, len = steps.length; j < len; j++) {
+        step = steps[j];
+        this.addStep(step);
+      }
+      return this;
+    };
+
+    Tour.prototype.addStep = function(step) {
+      this._options.steps.push(step);
+      return this;
+    };
+
+    Tour.prototype.getStep = function(i) {
+      if (this._options.steps[i] != null) {
+        return $.extend({
+          id: "step-" + i,
+          path: '',
+          host: '',
+          placement: 'right',
+          title: '',
+          content: '<p></p>',
+          next: i === this._options.steps.length - 1 ? -1 : i + 1,
+          prev: i - 1,
+          animation: true,
+          container: this._options.container,
+          autoscroll: this._options.autoscroll,
+          backdrop: this._options.backdrop,
+          backdropContainer: this._options.backdropContainer,
+          backdropPadding: this._options.backdropPadding,
+          redirect: this._options.redirect,
+          reflexElement: this._options.steps[i].element,
+          backdropElement: this._options.steps[i].element,
+          orphan: this._options.orphan,
+          duration: this._options.duration,
+          delay: this._options.delay,
+          template: this._options.template,
+          onShow: this._options.onShow,
+          onShown: this._options.onShown,
+          onHide: this._options.onHide,
+          onHidden: this._options.onHidden,
+          onNext: this._options.onNext,
+          onPrev: this._options.onPrev,
+          onPause: this._options.onPause,
+          onResume: this._options.onResume,
+          onRedirectError: this._options.onRedirectError
+        }, this._options.steps[i]);
+      }
+    };
+
+    Tour.prototype.init = function(force) {
+      this._force = force;
+      if (this.ended()) {
+        this._debug('Tour ended, init prevented.');
+        return this;
+      }
+      this.setCurrentStep();
+      this._initMouseNavigation();
+      this._initKeyboardNavigation();
+      this._onResize((function(_this) {
+        return function() {
+          return _this.showStep(_this._current);
+        };
+      })(this));
+      this._onScroll((function(_this) {
+        return function() {
+          return _this._showPopoverAndOverlay(_this._current);
+        };
+      })(this));
+      if (this._current !== null) {
+        this.showStep(this._current);
+      }
+      this._inited = true;
+      return this;
+    };
+
+    Tour.prototype.start = function(force) {
+      var promise;
+      if (force == null) {
+        force = false;
+      }
+      if (!this._inited) {
+        this.init(force);
+      }
+      if (this._current === null) {
+        promise = this._makePromise(this._options.onStart != null ? this._options.onStart(this) : void 0);
+        this._callOnPromiseDone(promise, this.showStep, 0);
+      }
+      return this;
+    };
+
+    Tour.prototype.next = function() {
+      var promise;
+      promise = this.hideStep(this._current, this._current + 1);
+      return this._callOnPromiseDone(promise, this._showNextStep);
+    };
+
+    Tour.prototype.prev = function() {
+      var promise;
+      promise = this.hideStep(this._current, this._current - 1);
+      return this._callOnPromiseDone(promise, this._showPrevStep);
+    };
+
+    Tour.prototype.goTo = function(i) {
+      var promise;
+      promise = this.hideStep(this._current, i);
+      return this._callOnPromiseDone(promise, this.showStep, i);
+    };
+
+    Tour.prototype.end = function() {
+      var endHelper, promise;
+      endHelper = (function(_this) {
+        return function(e) {
+          $(document).off("click.tour-" + _this._options.name);
+          $(document).off("keyup.tour-" + _this._options.name);
+          $(window).off("resize.tour-" + _this._options.name);
+          $(window).off("scroll.tour-" + _this._options.name);
+          _this._setState('end', 'yes');
+          _this._inited = false;
+          _this._force = false;
+          _this._clearTimer();
+          if (_this._options.onEnd != null) {
+            return _this._options.onEnd(_this);
+          }
+        };
+      })(this);
+      promise = this.hideStep(this._current);
+      return this._callOnPromiseDone(promise, endHelper);
+    };
+
+    Tour.prototype.ended = function() {
+      return !this._force && !!this._getState('end');
+    };
+
+    Tour.prototype.restart = function() {
+      this._removeState('current_step');
+      this._removeState('end');
+      this._removeState('redirect_to');
+      return this.start();
+    };
+
+    Tour.prototype.pause = function() {
+      var step;
+      step = this.getStep(this._current);
+      if (!(step && step.duration)) {
+        return this;
+      }
+      this._paused = true;
+      this._duration -= new Date().getTime() - this._start;
+      window.clearTimeout(this._timer);
+      this._debug("Paused/Stopped step " + (this._current + 1) + " timer (" + this._duration + " remaining).");
+      if (step.onPause != null) {
+        return step.onPause(this, this._duration);
+      }
+    };
+
+    Tour.prototype.resume = function() {
+      var step;
+      step = this.getStep(this._current);
+      if (!(step && step.duration)) {
+        return this;
+      }
+      this._paused = false;
+      this._start = new Date().getTime();
+      this._duration = this._duration || step.duration;
+      this._timer = window.setTimeout((function(_this) {
+        return function() {
+          if (_this._isLast()) {
+            return _this.next();
+          } else {
+            return _this.end();
+          }
+        };
+      })(this), this._duration);
+      this._debug("Started step " + (this._current + 1) + " timer with duration " + this._duration);
+      if ((step.onResume != null) && this._duration !== step.duration) {
+        return step.onResume(this, this._duration);
+      }
+    };
+
+    Tour.prototype.hideStep = function(i, iNext) {
+      var hideDelay, hideStepHelper, promise, step;
+      step = this.getStep(i);
+      if (!step) {
+        return;
+      }
+      this._clearTimer();
+      promise = this._makePromise(step.onHide != null ? step.onHide(this, i) : void 0);
+      hideStepHelper = (function(_this) {
+        return function(e) {
+          var $element, next_step;
+          $element = $(step.element);
+          if (!($element.data('bs.popover') || $element.data('popover'))) {
+            $element = $('body');
+          }
+          $element.popover('destroy').removeClass("tour-" + _this._options.name + "-element tour-" + _this._options.name + "-" + i + "-element").removeData('bs.popover');
+          if (step.reflex) {
+            $(step.reflexElement).removeClass('tour-step-element-reflex').off((_this._reflexEvent(step.reflex)) + ".tour-" + _this._options.name);
+          }
+          if (step.backdrop) {
+            next_step = (iNext != null) && _this.getStep(iNext);
+            if (!next_step || !next_step.backdrop || next_step.backdropElement !== step.backdropElement) {
+              _this._hideOverlayElement(step);
+            }
+          }
+          if (step.onHidden != null) {
+            return step.onHidden(_this);
+          }
+        };
+      })(this);
+      hideDelay = step.delay.hide || step.delay;
+      if ({}.toString.call(hideDelay) === '[object Number]' && hideDelay > 0) {
+        this._debug("Wait " + hideDelay + " milliseconds to hide the step " + (this._current + 1));
+        window.setTimeout((function(_this) {
+          return function() {
+            return _this._callOnPromiseDone(promise, hideStepHelper);
+          };
+        })(this), hideDelay);
+      } else {
+        this._callOnPromiseDone(promise, hideStepHelper);
+      }
+      return promise;
+    };
+
+    Tour.prototype.showStep = function(i) {
+      var path, promise, showDelay, showStepHelper, skipToPrevious, step;
+      if (this.ended()) {
+        this._debug('Tour ended, showStep prevented.');
+        return this;
+      }
+      step = this.getStep(i);
+      if (!step) {
+        return;
+      }
+      skipToPrevious = i < this._current;
+      promise = this._makePromise(step.onShow != null ? step.onShow(this, i) : void 0);
+      this.setCurrentStep(i);
+      path = (function() {
+        switch ({}.toString.call(step.path)) {
+          case '[object Function]':
+            return step.path();
+          case '[object String]':
+            return this._options.basePath + step.path;
+          default:
+            return step.path;
+        }
+      }).call(this);
+      if (step.redirect && this._isRedirect(step.host, path, document.location)) {
+        this._redirect(step, i, path);
+        if (!this._isJustPathHashDifferent(step.host, path, document.location)) {
+          return;
+        }
+      }
+      showStepHelper = (function(_this) {
+        return function(e) {
+          if (_this._isOrphan(step)) {
+            if (step.orphan === false) {
+              _this._debug("Skip the orphan step " + (_this._current + 1) + ".\nOrphan option is false and the element does not exist or is hidden.");
+              if (skipToPrevious) {
+                _this._showPrevStep();
+              } else {
+                _this._showNextStep();
+              }
+              return;
+            }
+            _this._debug("Show the orphan step " + (_this._current + 1) + ". Orphans option is true.");
+          }
+          if (step.autoscroll) {
+            _this._scrollIntoView(i);
+          } else {
+            _this._showPopoverAndOverlay(i);
+          }
+          if (step.duration) {
+            return _this.resume();
+          }
+        };
+      })(this);
+      showDelay = step.delay.show || step.delay;
+      if ({}.toString.call(showDelay) === '[object Number]' && showDelay > 0) {
+        this._debug("Wait " + showDelay + " milliseconds to show the step " + (this._current + 1));
+        window.setTimeout((function(_this) {
+          return function() {
+            return _this._callOnPromiseDone(promise, showStepHelper);
+          };
+        })(this), showDelay);
+      } else {
+        this._callOnPromiseDone(promise, showStepHelper);
+      }
+      return promise;
+    };
+
+    Tour.prototype.getCurrentStep = function() {
+      return this._current;
+    };
+
+    Tour.prototype.setCurrentStep = function(value) {
+      if (value != null) {
+        this._current = value;
+        this._setState('current_step', value);
+      } else {
+        this._current = this._getState('current_step');
+        this._current = this._current === null ? null : parseInt(this._current, 10);
+      }
+      return this;
+    };
+
+    Tour.prototype.redraw = function() {
+      return this._showOverlayElement(this.getStep(this.getCurrentStep()));
+    };
+
+    Tour.prototype._setState = function(key, value) {
+      var e, keyName;
+      if (this._options.storage) {
+        keyName = this._options.name + "_" + key;
+        try {
+          this._options.storage.setItem(keyName, value);
+        } catch (error) {
+          e = error;
+          if (e.code === DOMException.QUOTA_EXCEEDED_ERR) {
+            this._debug('LocalStorage quota exceeded. State storage failed.');
+          }
+        }
+        return this._options.afterSetState(keyName, value);
+      } else {
+        if (this._state == null) {
+          this._state = {};
+        }
+        return this._state[key] = value;
+      }
+    };
+
+    Tour.prototype._removeState = function(key) {
+      var keyName;
+      if (this._options.storage) {
+        keyName = this._options.name + "_" + key;
+        this._options.storage.removeItem(keyName);
+        return this._options.afterRemoveState(keyName);
+      } else {
+        if (this._state != null) {
+          return delete this._state[key];
+        }
+      }
+    };
+
+    Tour.prototype._getState = function(key) {
+      var keyName, value;
+      if (this._options.storage) {
+        keyName = this._options.name + "_" + key;
+        value = this._options.storage.getItem(keyName);
+      } else {
+        if (this._state != null) {
+          value = this._state[key];
+        }
+      }
+      if (value === void 0 || value === 'null') {
+        value = null;
+      }
+      this._options.afterGetState(key, value);
+      return value;
+    };
+
+    Tour.prototype._showNextStep = function() {
+      var promise, showNextStepHelper, step;
+      step = this.getStep(this._current);
+      showNextStepHelper = (function(_this) {
+        return function(e) {
+          return _this.showStep(step.next);
+        };
+      })(this);
+      promise = this._makePromise(step.onNext != null ? step.onNext(this) : void 0);
+      return this._callOnPromiseDone(promise, showNextStepHelper);
+    };
+
+    Tour.prototype._showPrevStep = function() {
+      var promise, showPrevStepHelper, step;
+      step = this.getStep(this._current);
+      showPrevStepHelper = (function(_this) {
+        return function(e) {
+          return _this.showStep(step.prev);
+        };
+      })(this);
+      promise = this._makePromise(step.onPrev != null ? step.onPrev(this) : void 0);
+      return this._callOnPromiseDone(promise, showPrevStepHelper);
+    };
+
+    Tour.prototype._debug = function(text) {
+      if (this._options.debug) {
+        return window.console.log("Bootstrap Tour '" + this._options.name + "' | " + text);
+      }
+    };
+
+    Tour.prototype._isRedirect = function(host, path, location) {
+      var currentPath;
+      if ((host != null) && host !== '' && (({}.toString.call(host) === '[object RegExp]' && !host.test(location.origin)) || ({}.toString.call(host) === '[object String]' && this._isHostDifferent(host, location)))) {
+        return true;
+      }
+      currentPath = [location.pathname, location.search, location.hash].join('');
+      return (path != null) && path !== '' && (({}.toString.call(path) === '[object RegExp]' && !path.test(currentPath)) || ({}.toString.call(path) === '[object String]' && this._isPathDifferent(path, currentPath)));
+    };
+
+    Tour.prototype._isHostDifferent = function(host, location) {
+      switch ({}.toString.call(host)) {
+        case '[object RegExp]':
+          return !host.test(location.origin);
+        case '[object String]':
+          return this._getProtocol(host) !== this._getProtocol(location.href) || this._getHost(host) !== this._getHost(location.href);
+        default:
+          return true;
+      }
+    };
+
+    Tour.prototype._isPathDifferent = function(path, currentPath) {
+      return this._getPath(path) !== this._getPath(currentPath) || !this._equal(this._getQuery(path), this._getQuery(currentPath)) || !this._equal(this._getHash(path), this._getHash(currentPath));
+    };
+
+    Tour.prototype._isJustPathHashDifferent = function(host, path, location) {
+      var currentPath;
+      if ((host != null) && host !== '') {
+        if (this._isHostDifferent(host, location)) {
+          return false;
+        }
+      }
+      currentPath = [location.pathname, location.search, location.hash].join('');
+      if ({}.toString.call(path) === '[object String]') {
+        return this._getPath(path) === this._getPath(currentPath) && this._equal(this._getQuery(path), this._getQuery(currentPath)) && !this._equal(this._getHash(path), this._getHash(currentPath));
+      }
+      return false;
+    };
+
+    Tour.prototype._redirect = function(step, i, path) {
+      var href;
+      if ($.isFunction(step.redirect)) {
+        return step.redirect.call(this, path);
+      } else {
+        href = {}.toString.call(step.host) === '[object String]' ? "" + step.host + path : path;
+        this._debug("Redirect to " + href);
+        if (this._getState('redirect_to') === ("" + i)) {
+          this._debug("Error redirection loop to " + path);
+          this._removeState('redirect_to');
+          if (step.onRedirectError != null) {
+            return step.onRedirectError(this);
+          }
+        } else {
+          this._setState('redirect_to', "" + i);
+          return document.location.href = href;
+        }
+      }
+    };
+
+    Tour.prototype._isOrphan = function(step) {
+      return (step.element == null) || !$(step.element).length || $(step.element).is(':hidden') && ($(step.element)[0].namespaceURI !== 'http://www.w3.org/2000/svg');
+    };
+
+    Tour.prototype._isLast = function() {
+      return this._current < this._options.steps.length - 1;
+    };
+
+    Tour.prototype._showPopoverAndOverlay = function(i) {
+      var step;
+      if (this.getCurrentStep() !== i || this.ended()) {
+        return;
+      }
+      step = this.getStep(i);
+      if (step.backdrop) {
+        this._showOverlayElement(step);
+      }
+      this._showPopover(step, i);
+      if (step.onShown != null) {
+        step.onShown(this);
+      }
+      return this._debug("Step " + (this._current + 1) + " of " + this._options.steps.length);
+    };
+
+    Tour.prototype._showPopover = function(step, i) {
+      var $element, $tip, isOrphan, options, shouldAddSmart;
+      $(".tour-" + this._options.name).remove();
+      options = $.extend({}, this._options);
+      isOrphan = this._isOrphan(step);
+      step.template = this._template(step, i);
+      if (isOrphan) {
+        step.element = 'body';
+        step.placement = 'top';
+      }
+      $element = $(step.element);
+      $element.addClass("tour-" + this._options.name + "-element tour-" + this._options.name + "-" + i + "-element");
+      if (step.options) {
+        $.extend(options, step.options);
+      }
+      if (step.reflex && !isOrphan) {
+        $(step.reflexElement).addClass('tour-step-element-reflex').off((this._reflexEvent(step.reflex)) + ".tour-" + this._options.name).on((this._reflexEvent(step.reflex)) + ".tour-" + this._options.name, (function(_this) {
+          return function() {
+            if (_this._isLast()) {
+              return _this.next();
+            } else {
+              return _this.end();
+            }
+          };
+        })(this));
+      }
+      shouldAddSmart = step.smartPlacement === true && step.placement.search(/auto/i) === -1;
+      $element.popover({
+        placement: shouldAddSmart ? "auto " + step.placement : step.placement,
+        trigger: 'manual',
+        title: step.title,
+        content: step.content,
+        html: true,
+        animation: step.animation,
+        container: step.container,
+        template: step.template,
+        selector: step.element
+      }).popover('show');
+      $tip = $element.data('bs.popover') ? $element.data('bs.popover').tip() : $element.data('popover').tip();
+      $tip.attr('id', step.id);
+      if ($element.css('position') === 'fixed') {
+        $tip.css('position', 'fixed');
+      }
+      this._reposition($tip, step);
+      if (isOrphan) {
+        return this._center($tip);
+      }
+    };
+
+    Tour.prototype._template = function(step, i) {
+      var $navigation, $next, $prev, $resume, $template, template;
+      template = step.template;
+      if (this._isOrphan(step) && {}.toString.call(step.orphan) !== '[object Boolean]') {
+        template = step.orphan;
+      }
+      $template = $.isFunction(template) ? $(template(i, step)) : $(template);
+      $navigation = $template.find('.popover-navigation');
+      $prev = $navigation.find('[data-role="prev"]');
+      $next = $navigation.find('[data-role="next"]');
+      $resume = $navigation.find('[data-role="pause-resume"]');
+      if (this._isOrphan(step)) {
+        $template.addClass('orphan');
+      }
+      $template.addClass("tour-" + this._options.name + " tour-" + this._options.name + "-" + i);
+      if (step.reflex) {
+        $template.addClass("tour-" + this._options.name + "-reflex");
+      }
+      if (step.prev < 0) {
+        $prev.addClass('disabled').prop('disabled', true).prop('tabindex', -1);
+      }
+      if (step.next < 0) {
+        $next.addClass('disabled').prop('disabled', true).prop('tabindex', -1);
+      }
+      if (!step.duration) {
+        $resume.remove();
+      }
+      return $template.clone().wrap('<div>').parent().html();
+    };
+
+    Tour.prototype._reflexEvent = function(reflex) {
+      if ({}.toString.call(reflex) === '[object Boolean]') {
+        return 'click';
+      } else {
+        return reflex;
+      }
+    };
+
+    Tour.prototype._reposition = function($tip, step) {
+      var offsetBottom, offsetHeight, offsetRight, offsetWidth, originalLeft, originalTop, tipOffset;
+      offsetWidth = $tip[0].offsetWidth;
+      offsetHeight = $tip[0].offsetHeight;
+      tipOffset = $tip.offset();
+      originalLeft = tipOffset.left;
+      originalTop = tipOffset.top;
+      offsetBottom = $(document).outerHeight() - tipOffset.top - $tip.outerHeight();
+      if (offsetBottom < 0) {
+        tipOffset.top = tipOffset.top + offsetBottom;
+      }
+      offsetRight = $('html').outerWidth() - tipOffset.left - $tip.outerWidth();
+      if (offsetRight < 0) {
+        tipOffset.left = tipOffset.left + offsetRight;
+      }
+      if (tipOffset.top < 0) {
+        tipOffset.top = 0;
+      }
+      if (tipOffset.left < 0) {
+        tipOffset.left = 0;
+      }
+      $tip.offset(tipOffset);
+      if (step.placement === 'bottom' || step.placement === 'top') {
+        if (originalLeft !== tipOffset.left) {
+          return this._replaceArrow($tip, (tipOffset.left - originalLeft) * 2, offsetWidth, 'left');
+        }
+      } else {
+        if (originalTop !== tipOffset.top) {
+          return this._replaceArrow($tip, (tipOffset.top - originalTop) * 2, offsetHeight, 'top');
+        }
+      }
+    };
+
+    Tour.prototype._center = function($tip) {
+      return $tip.css('top', $(window).outerHeight() / 2 - $tip.outerHeight() / 2);
+    };
+
+    Tour.prototype._replaceArrow = function($tip, delta, dimension, position) {
+      return $tip.find('.arrow').css(position, delta ? 50 * (1 - delta / dimension) + '%' : '');
+    };
+
+    Tour.prototype._scrollIntoView = function(i) {
+      var $element, $window, counter, height, offsetTop, scrollTop, step, windowHeight;
+      step = this.getStep(i);
+      $element = $(step.element);
+      if (!$element.length) {
+        return this._showPopoverAndOverlay(i);
+      }
+      $window = $(window);
+      offsetTop = $element.offset().top;
+      height = $element.outerHeight();
+      windowHeight = $window.height();
+      scrollTop = 0;
+      switch (step.placement) {
+        case 'top':
+          scrollTop = Math.max(0, offsetTop - (windowHeight / 2));
+          break;
+        case 'left':
+        case 'right':
+          scrollTop = Math.max(0, (offsetTop + height / 2) - (windowHeight / 2));
+          break;
+        case 'bottom':
+          scrollTop = Math.max(0, (offsetTop + height) - (windowHeight / 2));
+      }
+      this._debug("Scroll into view. ScrollTop: " + scrollTop + ". Element offset: " + offsetTop + ". Window height: " + windowHeight + ".");
+      counter = 0;
+      return $('body, html').stop(true, true).animate({
+        scrollTop: Math.ceil(scrollTop)
+      }, (function(_this) {
+        return function() {
+          if (++counter === 2) {
+            _this._showPopoverAndOverlay(i);
+            return _this._debug("Scroll into view.\nAnimation end element offset: " + ($element.offset().top) + ".\nWindow height: " + ($window.height()) + ".");
+          }
+        };
+      })(this));
+    };
+
+    Tour.prototype._onResize = function(callback, timeout) {
+      return $(window).on("resize.tour-" + this._options.name, function() {
+        clearTimeout(timeout);
+        return timeout = setTimeout(callback, 100);
+      });
+    };
+
+    Tour.prototype._onScroll = function(callback, timeout) {
+      return $(window).on("scroll.tour-" + this._options.name, function() {
+        clearTimeout(timeout);
+        return timeout = setTimeout(callback, 100);
+      });
+    };
+
+    Tour.prototype._initMouseNavigation = function() {
+      var _this;
+      _this = this;
+      return $(document).off("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='prev']").off("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='next']").off("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='end']").off("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='pause-resume']").on("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='next']", (function(_this) {
+        return function(e) {
+          e.preventDefault();
+          return _this.next();
+        };
+      })(this)).on("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='prev']", (function(_this) {
+        return function(e) {
+          e.preventDefault();
+          if (_this._current > 0) {
+            return _this.prev();
+          }
+        };
+      })(this)).on("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='end']", (function(_this) {
+        return function(e) {
+          e.preventDefault();
+          return _this.end();
+        };
+      })(this)).on("click.tour-" + this._options.name, ".popover.tour-" + this._options.name + " *[data-role='pause-resume']", function(e) {
+        var $this;
+        e.preventDefault();
+        $this = $(this);
+        $this.text(_this._paused ? $this.data('pause-text') : $this.data('resume-text'));
+        if (_this._paused) {
+          return _this.resume();
+        } else {
+          return _this.pause();
+        }
+      });
+    };
+
+    Tour.prototype._initKeyboardNavigation = function() {
+      if (!this._options.keyboard) {
+        return;
+      }
+      return $(document).on("keyup.tour-" + this._options.name, (function(_this) {
+        return function(e) {
+          if (!e.which) {
+            return;
+          }
+          switch (e.which) {
+            case 39:
+              e.preventDefault();
+              if (_this._isLast()) {
+                return _this.next();
+              } else {
+                return _this.end();
+              }
+              break;
+            case 37:
+              e.preventDefault();
+              if (_this._current > 0) {
+                return _this.prev();
+              }
+          }
+        };
+      })(this));
+    };
+
+    Tour.prototype._makePromise = function(result) {
+      if (result && $.isFunction(result.then)) {
+        return result;
+      } else {
+        return null;
+      }
+    };
+
+    Tour.prototype._callOnPromiseDone = function(promise, cb, arg) {
+      if (promise) {
+        return promise.then((function(_this) {
+          return function(e) {
+            return cb.call(_this, arg);
+          };
+        })(this));
+      } else {
+        return cb.call(this, arg);
+      }
+    };
+
+    Tour.prototype._showBackground = function(step, data) {
+      var $backdrop, base, height, j, len, pos, ref, results, width;
+      height = $(document).height();
+      width = $(document).width();
+      ref = ['top', 'bottom', 'left', 'right'];
+      results = [];
+      for (j = 0, len = ref.length; j < len; j++) {
+        pos = ref[j];
+        $backdrop = (base = this.backdrops)[pos] != null ? base[pos] : base[pos] = $('<div>', {
+          "class": "tour-backdrop " + pos
+        });
+        $(step.backdropContainer).append($backdrop);
+        switch (pos) {
+          case 'top':
+            results.push($backdrop.height(data.offset.top > 0 ? data.offset.top : 0).width(width).offset({
+              top: 0,
+              left: 0
+            }));
+            break;
+          case 'bottom':
+            results.push($backdrop.offset({
+              top: data.offset.top + data.height,
+              left: 0
+            }).height(height - (data.offset.top + data.height)).width(width));
+            break;
+          case 'left':
+            results.push($backdrop.offset({
+              top: data.offset.top,
+              left: 0
+            }).height(data.height).width(data.offset.left > 0 ? data.offset.left : 0));
+            break;
+          case 'right':
+            results.push($backdrop.offset({
+              top: data.offset.top,
+              left: data.offset.left + data.width
+            }).height(data.height).width(width - (data.offset.left + data.width)));
+            break;
+          default:
+            results.push(void 0);
+        }
+      }
+      return results;
+    };
+
+    Tour.prototype._showOverlayElement = function(step) {
+      var $backdropElement, elementData;
+      $backdropElement = $(step.backdropElement);
+      if ($backdropElement.length === 0) {
+        elementData = {
+          width: 0,
+          height: 0,
+          offset: {
+            top: 0,
+            left: 0
+          }
+        };
+      } else {
+        elementData = {
+          width: $backdropElement.innerWidth(),
+          height: $backdropElement.innerHeight(),
+          offset: $backdropElement.offset()
+        };
+        $backdropElement.addClass('tour-step-backdrop');
+        if (step.backdropPadding) {
+          elementData = this._applyBackdropPadding(step.backdropPadding, elementData);
+        }
+      }
+      return this._showBackground(step, elementData);
+    };
+
+    Tour.prototype._hideOverlayElement = function(step) {
+      var $backdrop, pos, ref;
+      $(step.backdropElement).removeClass('tour-step-backdrop');
+      ref = this.backdrops;
+      for (pos in ref) {
+        $backdrop = ref[pos];
+        if ($backdrop && $backdrop.remove !== void 0) {
+          $backdrop.remove();
+        }
+      }
+      return this.backdrops = [];
+    };
+
+    Tour.prototype._applyBackdropPadding = function(padding, data) {
+      if (typeof padding === 'object') {
+        if (padding.top == null) {
+          padding.top = 0;
+        }
+        if (padding.right == null) {
+          padding.right = 0;
+        }
+        if (padding.bottom == null) {
+          padding.bottom = 0;
+        }
+        if (padding.left == null) {
+          padding.left = 0;
+        }
+        data.offset.top = data.offset.top - padding.top;
+        data.offset.left = data.offset.left - padding.left;
+        data.width = data.width + padding.left + padding.right;
+        data.height = data.height + padding.top + padding.bottom;
+      } else {
+        data.offset.top = data.offset.top - padding;
+        data.offset.left = data.offset.left - padding;
+        data.width = data.width + (padding * 2);
+        data.height = data.height + (padding * 2);
+      }
+      return data;
+    };
+
+    Tour.prototype._clearTimer = function() {
+      window.clearTimeout(this._timer);
+      this._timer = null;
+      return this._duration = null;
+    };
+
+    Tour.prototype._getProtocol = function(url) {
+      url = url.split('://');
+      if (url.length > 1) {
+        return url[0];
+      } else {
+        return 'http';
+      }
+    };
+
+    Tour.prototype._getHost = function(url) {
+      url = url.split('//');
+      url = url.length > 1 ? url[1] : url[0];
+      return url.split('/')[0];
+    };
+
+    Tour.prototype._getPath = function(path) {
+      return path.replace(/\/?$/, '').split('?')[0].split('#')[0];
+    };
+
+    Tour.prototype._getQuery = function(path) {
+      return this._getParams(path, '?');
+    };
+
+    Tour.prototype._getHash = function(path) {
+      return this._getParams(path, '#');
+    };
+
+    Tour.prototype._getParams = function(path, start) {
+      var j, len, param, params, paramsObject;
+      params = path.split(start);
+      if (params.length === 1) {
+        return {};
+      }
+      params = params[1].split('&');
+      paramsObject = {};
+      for (j = 0, len = params.length; j < len; j++) {
+        param = params[j];
+        param = param.split('=');
+        paramsObject[param[0]] = param[1] || '';
+      }
+      return paramsObject;
+    };
+
+    Tour.prototype._equal = function(obj1, obj2) {
+      var j, k, len, obj1Keys, obj2Keys, v;
+      if ({}.toString.call(obj1) === '[object Object]' && {}.toString.call(obj2) === '[object Object]') {
+        obj1Keys = Object.keys(obj1);
+        obj2Keys = Object.keys(obj2);
+        if (obj1Keys.length !== obj2Keys.length) {
+          return false;
+        }
+        for (k in obj1) {
+          v = obj1[k];
+          if (!this._equal(obj2[k], v)) {
+            return false;
+          }
+        }
+        return true;
+      } else if ({}.toString.call(obj1) === '[object Array]' && {}.toString.call(obj2) === '[object Array]') {
+        if (obj1.length !== obj2.length) {
+          return false;
+        }
+        for (k = j = 0, len = obj1.length; j < len; k = ++j) {
+          v = obj1[k];
+          if (!this._equal(v, obj2[k])) {
+            return false;
+          }
+        }
+        return true;
+      } else {
+        return obj1 === obj2;
+      }
+    };
+
+    return Tour;
+
+  })();
+  return Tour;
+});
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
