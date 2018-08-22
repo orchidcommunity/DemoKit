@@ -1,11 +1,16 @@
 @php
+
     $getContent = function ($string) use ($query) {
         return $query->getContent('data.content.' . app()->getLocale() . '.'.$string);
     };
-@endphp
+//dd($getContent('tags'));
+    if (is_array($getContent('tags'))) {
+        $tags=$getContent('tags');
+    } else {
+        $tags=explode(',',$getContent('tags'));
+    }
 
-@php
-    $tags=explode(',',$getContent('tags'));
+
 @endphp
 <div class="row">
     <div class="col-6">

@@ -44,7 +44,7 @@ $factory->define(DemoPost::class, function (Faker $faker) {
                 'datetime'    => $faker->dateTimeBetween($startDate = '-30 years', $endDate = 'now', $timezone = null)->format('Y-m-d H:i:s'),
                 'checkbox'    => $faker->randomElement([0,1]),
                 'code'        => $faker->randomHtml(2,3),
-                'tags'        => implode(',', $faker->words($nb = 5, $asText = false)),
+                'tags'        => $faker->words($nb = 5, $asText = false),
                 'select'      => $faker->randomElement(['index','noindex']),
                 'phone'       => $faker->phoneNumber,
             ],

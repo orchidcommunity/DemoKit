@@ -10456,38 +10456,31 @@ try {
 __webpack_require__(3);
 
 $(function () {
-    // Instance the tour
-
-    //require('bootstrap-tour');
-    //require('bootstrap-tour');
-
-    //var pathuser = new RegExp('\\d+','ig');
+    // Instance the tour  http://bootstraptour.com
 
     var tour = new Tour({
-        debug: true,
+        /*debug: true,*/
+        basePath: "/dashboard",
         steps: [{
-            path: "/dashboard",
-            element: ".nav-footer-fix > li:first-of-type",
-            title: "Шаг1_1. Настройки",
-            content: "Выбирите настройки",
+            path: "",
+            element: ".demokit-menu",
+            title: "Шаг 1. Меню",
+            content: "Помощник по освоению Orchid",
             reflex: true
         }, {
-            path: "/dashboard/systems",
-            title: "Шаг1_2. Пользователи",
-            content: "Перейдем в список пользователей",
-            orphan: true
-        }, {
-            path: "/dashboard/systems/users",
-            title: "Шаг1_3. Список пользователей",
-            content: "Выберем нашего пользователя",
+            path: "",
+            element: ".demokit-step1",
+            title: "Шаг 2. Основы",
+            content: "Выберите 1 шаг",
             orphan: true,
-            redirect: false
+            reflex: true
         }, {
-            path: RegExp("/\/dashboard\/systems\/users\/\d+\/edit/i"),
-            element: "[for='field--systems']",
-            title: "Шаг1_4. Доступы",
-            content: "Дадим доступ нашему пользователю к DemoKit",
-            redirect: false
+            path: "/screens/screen2",
+            element: ".app-header > div:last-of-type > ul > li",
+            placement: "left",
+            title: "Шаг 3. Уроки",
+            content: "Откройте урок",
+            reflex: true
         }] });
 
     //backdrop:true
@@ -10498,11 +10491,12 @@ $(function () {
 
     // Start the tour
     tour.start();
-
-    if (tour.ended()) {
-        // decide what to do
-        tour.restart();
-    }
+    /*
+        if (tour.ended()) {
+            // decide what to do
+            tour.restart();
+        }
+    */
 });
 
 /***/ }),

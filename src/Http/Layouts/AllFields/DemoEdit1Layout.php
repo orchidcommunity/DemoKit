@@ -14,8 +14,7 @@ class DemoEdit1Layout extends Rows
     {
         //dd($this->query->getContent($data_con.'.input'));
         $data_con='data.content.'.app()->getLocale();
-        
-        
+
         return [
             Field::tag('input')
                 ->type('text')
@@ -26,12 +25,12 @@ class DemoEdit1Layout extends Rows
                 ->help('Article title'),
             Field::tag('textarea')
                 ->name($data_con.'.textarea')
+                ->required()
                 ->max(255)
                 ->rows(5)
                 ->title('Short description'),
             Field::tag('wysiwyg')
                 ->name($data_con.'.body')
-                ->required()
                 ->title('Name Articles')
                 ->help('Article title')
                 ->theme('inlite'),

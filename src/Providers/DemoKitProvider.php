@@ -19,9 +19,10 @@ class DemoKitProvider extends ServiceProvider
 
         $this->loadViewsFrom(realpath(DEMOKIT_PATH.'/resources/views'), 'orchids/demokit');
 
+
         $this->dashboard->registerPermissions($this->registerPermissions());
         //$this->loadMigrationsFrom(realpath(__DIR__.'/../../database/migrations'));
-   		$this->loadRoutesFrom(realpath(DEMOKIT_PATH.'/routes/route.php'));  //Файл роутинга
+   		//$this->loadRoutesFrom(realpath(DEMOKIT_PATH.'/routes/route.php'));  //Файл роутинга
 
         View::composer('platform::layouts.dashboard', MenuComposer::class);
         View::composer('platform::container.systems.index', SystemMenuComposer::class);
@@ -37,7 +38,7 @@ class DemoKitProvider extends ServiceProvider
                 'scripts'     => ['/orchids/demokit/js/demokit.js'],
             ]
         );*/
-
+        $this->app->register(RouteServiceProvider::class);
         $this->app->register(DashboardProvider::class);
         //dd($this->app);
     }

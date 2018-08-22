@@ -27,9 +27,10 @@ class MenuComposer
                 'slug'       => 'demokit-screens',
                 'icon'       => 'icon-notebook',
                 'route'      => '#',
-                'label'      => 'Screens',
+                'label'      => 'DemoKit',
                 'childs'     => true,
                 'main'       => true,
+                'class'      => 'demokit-menu',
                 'active'     => 'platform.demokit.*',
                 'permission' => 'platform.demokit',
                 'sort'       => 300,
@@ -45,6 +46,7 @@ class MenuComposer
                 'main'       => false,
                 /*'active'     => 'platform.demokit.*',*/
                 'permission' => 'platform.demokit',
+                'class'      => 'demokit-step1',
                 'sort'       => 10,
             ]);
         $this->dashboard->menu
@@ -83,19 +85,5 @@ class MenuComposer
                 'permission' => 'platform.demokit',
                 'sort'       => 20,
             ]);
-
-/*
-        $this->dashboard->menu
-            ->add('CMS', [
-                'slug'       => 'XSetting',
-                'icon'       => 'icon-settings',
-                'route'      => route('platform.xsetting.list'),
-                'label'      => 'Setting configuration',
-                'groupname'  => trans('platform::systems/category.groupname'),
-                'active'     => 'platform.systems.*',
-                'permission' => 'platform.systems.xsetting',
-                'sort'       => 7,
-            ]);*/
-//dd($this->dashboard);
     }
 }

@@ -1,13 +1,16 @@
 <?php
 namespace Orchids\DemoKit\Http\Screens\Screen1;
 
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+
+use Orchid\Press\Models\Post;
 use Orchid\Support\Facades\Alert;
-use Orchid\Support\Facades\Setting;
 use Orchid\Screen\Layouts;
 use Orchid\Screen\Link;
 use Orchid\Screen\Screen;
 
-use Orchids\DemoKit\Models\DemoPost;
+//use Orchids\DemoKit\Models\DemoPost;
 use Orchids\DemoKit\Http\Layouts\AllFields\DemoEdit1Layout;
 use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout;
 
@@ -20,27 +23,25 @@ class DemoScreen1Edit extends Screen
      *
      * @var string
      */
-    public $name = 'Setting edit';
+    public $name = 'Screen edit';
     /**
      * Display header description
      *
      * @var string
      */
-    public $description = 'Edit setting';
+    public $description = 'Simple screen with all fields';
     /**
      * Query data
      *
-     * @param XSetting $xsetting
+     * @param Post $postdata
      *
      * @return array
      */
-    public function query($demokitdata= null) : array
+    public function query($postdata = null) : array
     {
-
-        $demokitdata = is_null($demokitdata) ? new DemoPost() : DemoPost::whereId($demokitdata)->first();
-        //dd($demokitdata);
+        $postdata = is_null($postdata) ? new Post() : $postdata; //Post::whereId($postdata)->first();
         return [
-            'data'   => $demokitdata,
+            'data'   => $postdata,
             'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step2.md',
         ];
     }
@@ -83,36 +84,39 @@ class DemoScreen1Edit extends Screen
     }
     /**
      * @param $request
-     * @param XSetting $xsetting
+     * @param Post $postdata
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save($request, XSetting $xsetting)
+    public function save(Post $postdata)
     {
 
-		$req = $this->request->get('xsetting');
+        //dd($postdata);
+        $req = $this->request->get('data');
+        //dd($req['content'][app()->getLocale()]['input']);
+        $postdata->fill($req);
+        $postdata->slug = is_null($postdata->slug) ? Str::slug($req['content'][app()->getLocale()]['input']) : $postdata->slug;
+        $postdata->user_id = is_null($postdata->user_id) ? Auth::user()->id : $postdata->user_id;
+        $postdata->type = 'demo-screen';
+        $postdata->status = 'publish';
+        $postdata->options = ['locale' => [ app()->getLocale() => 'true' ] ];
+        $postdata->save();
 
-        if ($req['options']['type']=='code') {
-            $req['value']=json_decode($req['value'], true);
-        }
-
-		$xsetting->updateOrCreate(['key' => $req['key']], $req );
-
-        Alert::info('Setting was saved');
-        return redirect()->route('platform.xsetting.list');
+        Alert::info('Data was saved');
+        return redirect()->back();
     }
     /**
      * @param $request
-     * @param XSetting $xsetting
+     * @param Post $postdata
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
 	 
-    public function remove($request, DemoPost $demopost)
+    public function remove(Post $postdata)
     {
-        $demopost->where('id',$request)->delete();
-        Alert::info('DemoPost was removed');
-        return redirect()->route('platform.demokit.screen1.list');
+        $postdata->delete();
+        Alert::info('Data was removed');
+        return redirect()->back();
     }
 }

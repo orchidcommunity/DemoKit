@@ -6,8 +6,72 @@
 Экран может состоять из одного или нескольких макетов ([Layouts](https://orchid.software/ru/docs/layouts)), а макет может быть просто шаблоном (html, blade ...), таблицей или состоять из полей ([Fields](https://orchid.software/ru/docs/field)).
 Один макет можно подключить к нескольким экранам и он будет отображать информацию из этой этих экранов.
 
-
 ## Простой экран
+
+Для того чтобы сделать первый экран нужно добавить, роутинг (путь по которому будет открываться наш экран), а ткже пункты меню в админ панель.
+
+### Роутинг (Route)
+
+Роутинг обрабатывает запросы браузера, сделаем роутинг который обработает запрос `http://sitename.com/dashboard/screens/step1`.
+Для этого добавим в файл `routes/platform.php` следующие строки
+```
+Route::prefix(Dashboard::prefix('/screens'))   //префикс нашего роута будет /dasboard/screens
+    ->middleware(config('platform.middleware.private')) 
+    ->namespace('App\Http\Screens')   //Расположение файлов обработчиков роута 
+    ->group(function (\Illuminate\Routing\Router $router) {
+        $router->screen('step1', 'Step1Screen', 'platform.screens.step1.edit');
+        
+        //Здесь будут добавляться роуты из других уроков
+    });
+```
+
+### Меню
+
+Теперь нужно добавить в левое меню ссылку на наш роутинг, для этого создадим конструктор меню, создадим файл `app/Http/Composers/MenuComposer.php` со следущими данными
+```   
+<?php
+
+namespace App\Http\Composers;
+
+use Orchid\Platform\Dashboard;
+
+class MenuComposer
+{
+    public function __construct(Dashboard $dashboard)
+    {
+        $this->dashboard = $dashboard;
+    }
+
+    public function compose()
+    {
+        $this->dashboard->menu
+            ->add('Main', [
+                'slug'       => 'demokit-screens',
+                'icon'       => 'icon-notebook',
+                'route'      => '#',
+                'label'      => 'DemoKit',
+                'childs'     => true,
+                'main'       => true,
+                'sort'       => 300,
+            ]);
+        $this->dashboard->menu
+            ->add('demokit-screens', [
+                'slug'       => 'demokit-step1',
+                'icon'       => 'icon-notebook',
+                'route'      => route('platform.screens.step1.edit'),
+                'label'      => 'Step 1 - Icon Screen',
+                'groupname'  => 'Screens',
+                'sort'       => 10,
+            ]);
+    }
+}
+```
+Теперь подключим конструктор меню к провайдеру, для этого в файл `app/Providers/AppServiceProvider.php` в функцию `boot` добавим строку:
+```
+View::composer('platform::layouts.dashboard', App/Http/Composers/MenuComposer::class);
+```
+
+### Создание экрана
 
 Сделаем экран который выводит макет из простого шаблона.
 
@@ -46,6 +110,8 @@ class Step1Screen extends Screen
 }
 ```
 
+
+### Макет и шаблон
 Наш экран просто подключает макет, но не передает в него данные.
 Создадим макет, для этого в каталоге `app\Http\Layouts\` добавим файл `IconsLayout.php` с следующим содержимым.
 ```
@@ -70,3 +136,5 @@ class IconsLayout extends Rows
     </div>
 </div>
 ```
+
+Поздравляю!
