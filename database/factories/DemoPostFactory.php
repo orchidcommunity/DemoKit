@@ -50,9 +50,7 @@ $factory->define(DemoPost::class, function (Faker $faker) {
             ],
         ],
         'options' => [
-            'locale' => [
-                'en' => 'true',
-            ],
+            'locale' => [ 'en' => 'true',  ],
         ],
         'slug'    => Str::slug($name), //'slug' => "demo-page"
     ];
