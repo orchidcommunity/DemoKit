@@ -34,7 +34,7 @@ class DemoScreen3List extends Screen
     {
         //dd(DemoPost::paginate(30));
          return [
-            'data' => DemoPost::paginate(30),
+            'data' => DemoPost::where('type','demo-screen')->paginate(30),
             'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step3.md',
         ];
     }
