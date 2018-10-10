@@ -2,7 +2,7 @@
 namespace Orchids\DemoKit\Http\Layouts\Lists;
 
 use Orchid\Screen\Layouts\Table;
-use Orchid\Screen\Fields\TD;
+use Orchid\Screen\TD;
 
 class DemoScreen3Layout extends Table
 {

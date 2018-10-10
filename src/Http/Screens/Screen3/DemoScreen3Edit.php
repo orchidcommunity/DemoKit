@@ -60,11 +60,16 @@ class DemoScreen3Edit extends Screen
      */
     public function commandBar() : array
     {
-        return [				
-            Link::name('OneColumn')->link('OneColumn'),
-            Link::name('TwoColumn')->link('TwoColumn'),
-            Link::name('TabColumn')->link('TabColumn'),
-            Link::name('DivColumn')->link('DivColumn'),
+        return [
+            Link::name('Макеты')
+                ->icon('icon-user')
+                ->group([
+                    Link::name('OneColumn')->link('OneColumn')->icon('icon-user'),
+                    Link::name('TwoColumn')->link('TwoColumn')->icon('icon-user'),
+                    Link::name('TabColumn')->link('TabColumn')->icon('icon-user'),
+                    Link::name('DivColumn')->link('DivColumn')->icon('icon-user'),
+                ])
+
         ];
     }
     /**
@@ -115,16 +120,16 @@ class DemoScreen3Edit extends Screen
                 ]),
             ],
             'DivColumn' => [
-                Layouts::div([
+                Layouts::blank([
                     'Columns' => [
-                        Layouts::div([
+                        Layouts::blank([
                             'First Column'   => [
                                 TextColorsLayout::class,
                                 TextListsLayout::class,
                                 TextAlignsLayout::class
                             ],
                         ])->class('col-7 border-right'),
-                        Layouts::div([
+                        Layouts::blank([
                             'Second Column' => [
                                 HeadingsLayout::class,
                                 TextElementsLayout::class
@@ -151,7 +156,8 @@ class DemoScreen3Edit extends Screen
 
                 ];
         */
-        //dd($Layout);
+        //dd($this->method);
+
         return $Layout[$this->method ?? 'OneColumn'];
     }
 
@@ -184,11 +190,11 @@ class DemoScreen3Edit extends Screen
      * @throws \Throwable
      */
 
-    public function handle($method = null, $parameters = null)
+    public function handle(...$parameters)
     {
-        $this->method=$parameters;
+        $this->method=$parameters[1];
 
-        return parent::handle($method, $parameters);
+        return parent::handle($parameters);
     }
 
 

@@ -2,8 +2,8 @@
 namespace Orchids\DemoKit\Http\Layouts\Pages;
 
 use Orchid\Screen\Layouts\Rows;
-use Orchid\Screen\Fields\Field;
-use Orchid\Screen\Fields\Builder;
+use Orchid\Screen\Field;
+use Orchid\Screen\Builder;
 use Orchid\Screen\Repository;
 
 class TextAlignsLayout extends Rows

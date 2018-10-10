@@ -101,6 +101,8 @@ class DemoScreen1Edit extends Screen
         $postdata->status = 'publish';
         $postdata->options = ['locale' => [ app()->getLocale() => 'true' ] ];
         $postdata->save();
+        $postdata->attachment()
+                ->attach(array_diff($this->request->get('data_photos') ?? [],$postdata->attachment()->pluck('attachment_id')->toArray()));
 
         Alert::info('Data was saved');
         return redirect()->back();

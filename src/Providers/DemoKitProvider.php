@@ -28,10 +28,10 @@ class DemoKitProvider extends ServiceProvider
         View::composer('platform::container.systems.index', SystemMenuComposer::class);
 
         $this->app->make(Factory::class)->load(realpath(DEMOKIT_PATH.'/database/factories'));
-
+/*
         $this->publishes([
             realpath( DEMOKIT_PATH.'/public/') => public_path('orchids/demokit'),
-        ], 'public');
+        ], 'public');*/
         $this->dashboard->registerResource(
             [
                 'stylesheets' => ['/orchids/demokit/css/demokit.css'],

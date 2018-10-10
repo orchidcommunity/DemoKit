@@ -4,8 +4,8 @@ namespace Orchids\DemoKit\Http\Layouts\Modals;
 use Illuminate\Support\Facades\File;
 
 use Orchid\Screen\Layouts\Rows;
-use Orchid\Screen\Fields\Field;
-use Orchid\Screen\Fields\Builder;
+use Orchid\Screen\Field;
+use Orchid\Screen\Builder;
 use Orchid\Screen\Repository;
 use Parsedown;
 

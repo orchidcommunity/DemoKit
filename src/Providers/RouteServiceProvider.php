@@ -9,6 +9,7 @@ use Orchid\Platform\Widget\WidgetContractInterface;
 use Orchid\Press\Models\Post;
 
 
+
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -32,6 +33,11 @@ class RouteServiceProvider extends ServiceProvider
             // RedirectInstall::class,
             AccessMiddleware::class,
         ]);
+
+
+        if (class_exists('Breadcrumbs')) {
+            require DEMOKIT_PATH.'/routes/breadcrumbs.php';
+        }
 
         $this->binding();
 

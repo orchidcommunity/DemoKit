@@ -2,8 +2,8 @@
 namespace Orchids\DemoKit\Http\Layouts\AllFields;
 
 use Orchid\Screen\Layouts\Rows;
-use Orchid\Screen\Fields\Field;
-use Orchid\Screen\Fields\Builder;
+use Orchid\Screen\Field;
+use Orchid\Screen\Builder;
 
 class DemoEdit1Layout extends Rows
 {
@@ -13,9 +13,12 @@ class DemoEdit1Layout extends Rows
 	public function fields(): array
     {
         //dd($this->query->getContent($data_con.'.input'));
+        //$postdata->attachment
+        //dd($this->query->getContent('data')->attachment);
         $data_con='data.content.'.app()->getLocale();
 
         return [
+
             Field::tag('input')
                 ->type('text')
                 ->name($data_con.'.input')
@@ -29,20 +32,22 @@ class DemoEdit1Layout extends Rows
                 ->max(255)
                 ->rows(5)
                 ->title('Short description'),
-            Field::tag('wysiwyg')
-                ->name($data_con.'.body')
-                ->title('Name Articles')
-                ->help('Article title')
-                ->theme('inlite'),
-            Field::tag('markdown')
-                ->name($data_con.'.markdown')
-                ->title('О чём вы хотите рассказать?'),
-            Field::tag('picture')
-                ->name($data_con.'.picture')
-                ->width(500)
-                ->height(300),
+
+                Field::tag('wysiwyg')
+                    ->name($data_con.'.body')
+                    ->title('Name Articles')
+                    ->help('Article title')
+                    ->theme('inlite'),
+                Field::tag('markdown')
+                    ->name($data_con.'.markdown')
+                    ->title('О чём вы хотите рассказать?'),
+                Field::tag('picture')
+                    ->name($data_con.'.picture')
+                    ->width(500)
+                    ->height(300),
             Field::tag('upload')
-                ->name($data_con.'.photos')
+                ->name('data_photos')
+                ->modifyValue($this->query->getContent('data')->attachment)
                 ->title('Upload'),
             Field::tag('datetime')
                 ->type('text')
