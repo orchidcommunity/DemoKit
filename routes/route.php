@@ -2,18 +2,20 @@
 
 
 Route::domain((string) config('platform.domain'))
-    ->prefix(Dashboard::prefix('/screens'))
+    ->prefix(Dashboard::prefix('/demokit'))
     ->middleware(config('platform.middleware.private'))
     ->namespace('Orchids\DemoKit\Http\Screens')
     ->group(function (\Illuminate\Routing\Router $router, $path='platform.demokit.') {
-        $router->screen('screen1/{postscreen}/edit', 'Screen1\DemoScreen1Edit',$path.'screen1.edit');
-        $router->screen('screen1/create', 'Screen1\DemoScreen1Edit',$path.'screen1.create');
-        $router->screen('screen1', 'Screen1\DemoScreen1List',$path.'screen1.list');
+        $router->screen('step2/{postscreen}/edit', 'Step2\DemokitStep2Edit',$path.'step2.edit');
+        $router->screen('step2/create', 'Step2\DemokitStep2Edit',$path.'step2.create');
+        $router->screen('step4', 'Step4\DemokitStep4List',$path.'step4.list');
 
-        $router->screen('screen2', 'Screen2\DemoScreen2Edit',$path.'screen2.edit');
+        $router->screen('step1', 'Step1\DemokitStep1',$path.'step1');
 
-        $router->screen('screen3/{screen3}/column', 'Screen3\DemoScreen3Edit',$path.'screen3.edit');
-        $router->screen('screen3', 'Screen3\DemoScreen3List',$path.'screen3.list');
+        $router->screen('step3/{step3}/column', 'Step3\DemokitStep3',$path.'step3');
+        $router->screen('step3', 'Step3\DemokitStep3List',$path.'step3.list');
+
+        $router->screen('step5', 'Step5\DemokitStep5',$path.'step5');
 
     });
 

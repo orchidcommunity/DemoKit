@@ -1,5 +1,5 @@
 <?php
-namespace Orchids\DemoKit\Http\Screens\Screen2;
+namespace Orchids\DemoKit\Http\Screens\Step1;
 
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Setting;
@@ -11,7 +11,7 @@ use Orchid\Screen\Screen;
 use Orchids\DemoKit\Http\Layouts\Pages\IconsLayout;
 use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout;
 
-class DemoScreen2Edit extends Screen
+class DemokitStep1 extends Screen
 {
     /**
      * Display header name

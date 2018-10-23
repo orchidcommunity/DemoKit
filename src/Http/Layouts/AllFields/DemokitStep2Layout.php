@@ -5,7 +5,7 @@ use Orchid\Screen\Layouts\Rows;
 use Orchid\Screen\Field;
 use Orchid\Screen\Builder;
 
-class DemoEdit1Layout extends Rows
+class DemokitStep2Layout extends Rows
 {
     /**
      * @return array

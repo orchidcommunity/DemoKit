@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchids\DemoKit\Http\Screens\Screen1;
+namespace Orchids\DemoKit\Http\Screens\Step4;
 
 use Illuminate\Support\Facades\Artisan;
 use Orchid\Screen\Screen;
@@ -8,11 +8,11 @@ use Orchid\Screen\Layouts;
 use Orchid\Screen\Link;
 
 use Orchids\DemoKit\Models\DemoPost;
-use Orchids\DemoKit\Http\Layouts\Lists\DemoScreen1Layout;
+use Orchids\DemoKit\Http\Layouts\Lists\DemokitStep4Layout;
 use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout;
 //use Orchids\DemoKit\Database\Seeds\Add1DemoPostsTableSeeder;
 
-class DemoScreen1List extends Screen
+class DemokitStep4List extends Screen
 {
     /**
      * Display header name
@@ -36,7 +36,7 @@ class DemoScreen1List extends Screen
         //DEMOKIT_PATH
          return [
             'data' => DemoPost::paginate(30),
-            'helpmdpath'  => PLATFORM_PATH.'/docs/ru/screens.md',
+             'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step4.md',
         ];
     }
     /**
@@ -62,7 +62,7 @@ class DemoScreen1List extends Screen
     public function layout() : array
     {
         return [
-            DemoScreen1Layout::class,
+            DemokitStep4Layout::class,
             Layouts::modals([
                 'HelpModal' => [
                     HelpModalLayout::class,
@@ -75,7 +75,7 @@ class DemoScreen1List extends Screen
      */
      public function create()
     {
-        return redirect()->route('platform.screens.screens1.create');
+        return redirect()->route('platform.demokit.step2.create');
     }
 
     /**

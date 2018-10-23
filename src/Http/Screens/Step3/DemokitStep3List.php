@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchids\DemoKit\Http\Screens\Screen3;
+namespace Orchids\DemoKit\Http\Screens\Step3;
 
 use Illuminate\Support\Facades\Artisan;
 use Orchid\Screen\Screen;
@@ -8,10 +8,10 @@ use Orchid\Screen\Layouts;
 use Orchid\Screen\Link;
 
 use Orchids\DemoKit\Models\DemoPost;
-use Orchids\DemoKit\Http\Layouts\Lists\DemoScreen3Layout;
+use Orchids\DemoKit\Http\Layouts\Lists\DemokitStep3Layout;
 use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout;
 
-class DemoScreen3List extends Screen
+class DemokitStep3List extends Screen
 {
     /**
      * Display header name
@@ -61,7 +61,7 @@ class DemoScreen3List extends Screen
     public function layout() : array
     {
         return [
-            DemoScreen3Layout::class,
+            DemokitStep3Layout::class,
             Layouts::modals([
                 'HelpModal' => [
                     HelpModalLayout::class,

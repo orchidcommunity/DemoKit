@@ -4,7 +4,7 @@ namespace Orchids\DemoKit\Http\Layouts\Lists;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
-class DemoScreen1Layout extends Table
+class DemokitStep4Layout extends Table
 {
     /**
      * @var string
@@ -19,9 +19,9 @@ class DemoScreen1Layout extends Table
 
 			TD::set('input','Title')
                 //->linkPost('platform.demokit.screen1.edit'),
-                ->link('platform.demokit.screen1.edit','id','input'),
+                ->link('platform.demokit.step2.edit','id','input'),
 			TD::set('phone', 'Phone')
-                ->link('platform.demokit.screen1.edit','id','phone'),
+                ->link('platform.demokit.step2.edit','id','phone'),
 
         ];
     }

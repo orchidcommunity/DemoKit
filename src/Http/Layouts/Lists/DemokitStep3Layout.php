@@ -4,7 +4,7 @@ namespace Orchids\DemoKit\Http\Layouts\Lists;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
-class DemoScreen3Layout extends Table
+class DemokitStep3Layout extends Table
 {
     /**
      * @var string
@@ -22,12 +22,12 @@ class DemoScreen3Layout extends Table
 
                 ->setRender(function ($data) {
                     //dump($data->getContent('content')[app()->getLocale()]['input']);
-                    return '<a href="' . route('platform.demokit.screen3.edit',
+                    return '<a href="' . route('platform.demokit.step3',
                             [$data->id,'OneColumn']) . '">' . $data->getContent('content')[app()->getLocale()]['input'] . '</a>';
                 }),
                 //->link('platform.demokit.screen3.edit',['id','OneColumn'],'input'),
 			TD::set('phone', 'Phone')
-                ->link('platform.demokit.screen3.edit','id','phone'),
+                ->link('platform.demokit.step3','id','phone'),
 
         ];
     }
