@@ -58,7 +58,8 @@ class DemokitStep1 extends Screen
     public function layout() : array
     {
         return [
-            IconsLayout::class,
+            //IconsLayout::class,
+            Layouts::view('orchids/demokit::layouts.icons'),
             Layouts::modals([
                 'HelpModal' => [
                     HelpModalLayout::class,
