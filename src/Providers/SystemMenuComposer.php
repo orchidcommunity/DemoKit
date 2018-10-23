@@ -27,8 +27,8 @@ class SystemMenuComposer
             ->add('CMS', [
                 'slug'       => 'cms-demokit',
                 'icon'       => 'icon-settings',
-                'route'      => route('platform.demokit.screen1.list'),
-                'label'      => 'Screens',
+                'route'      => route('platform.demokit.step4.list'),
+                'label'      => 'Demo kit Step4',
                 'groupname'  => trans('platform::systems/category.groupname'),
                 'permission' => 'platform.demokit',
                 'sort'       => 8,
