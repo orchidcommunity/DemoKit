@@ -2,6 +2,7 @@
 window.Turbolinks = require('turbolinks');
 Turbolinks.start();
 */
+/*
 try {
     window.$ = window.jQuery = require('jquery');
 } catch (e) {}
@@ -11,7 +12,6 @@ $(function() {
 // Instance the tour  http://bootstraptour.com
 
     var tour = new Tour({
-        /*debug: true,*/
         basePath:"/dashboard",
         steps: [
             {
@@ -47,10 +47,6 @@ $(function() {
 
     // Start the tour
     tour.start();
-/*
-    if (tour.ended()) {
-        // decide what to do
-        tour.restart();
-    }
-*/
 });
+
+*/

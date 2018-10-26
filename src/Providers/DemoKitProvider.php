@@ -32,12 +32,14 @@ class DemoKitProvider extends ServiceProvider
         $this->publishes([
             realpath( DEMOKIT_PATH.'/public/') => public_path('orchids/demokit'),
         ], 'public');*/
+/*
         $this->dashboard->registerResource(
             [
                 'stylesheets' => ['/orchids/demokit/css/demokit.css'],
                 'scripts'     => ['/orchids/demokit/js/demokit.js'],
             ]
         );
+*/
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(DashboardProvider::class);
         //dd($this->app);
