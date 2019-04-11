@@ -3,6 +3,7 @@
 namespace Orchids\DemoKit\Providers;
 
 use Orchid\Platform\Dashboard;
+use Orchid\Platform\ItemMenu;
 
 class SystemMenuComposer
 {
@@ -24,15 +25,15 @@ class SystemMenuComposer
     {
 
         $this->dashboard->menu
-            ->add('CMS', [
-                'slug'       => 'cms-demokit',
-                'icon'       => 'icon-settings',
-                'route'      => route('platform.demokit.step4.list'),
-                'label'      => 'Demo kit Step4',
-                'groupname'  => trans('platform::systems/category.groupname'),
-                'permission' => 'platform.demokit',
-                'sort'       => 8,
-            ]);
+            ->add('CMS',
+                ItemMenu::Label('Demo kit Step4')
+                    ->Slug('cms-demokit')
+                    ->Icon('icon-settings')
+                    ->Route('platform.demokit.step4.list')
+                    ->GroupName(trans('platform::systems/category.groupname'))
+                    ->Permission('platform.demokit')
+                    ->Sort(8)
+            );
 
     }
 }

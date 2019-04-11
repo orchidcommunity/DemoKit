@@ -11,6 +11,10 @@ class TextListsLayout extends Rows
 
     public $template = 'orchids/demokit::layouts.textlists';
 
+    public function fields(): array {
+        return [];
+    }
+
     /**
      * @param \Orchid\Screen\Repository $query
      *

@@ -1,6 +1,6 @@
 <?php
 
-namespace  Orchids\DemoKit\Http\Layouts\Step5;
+namespace Orchids\DemoKit\Http\Layouts\Step5;
 
 use Orchid\Screen\Layouts\Metric;
 

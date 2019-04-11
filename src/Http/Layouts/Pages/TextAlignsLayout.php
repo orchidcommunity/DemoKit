@@ -11,6 +11,10 @@ class TextAlignsLayout extends Rows
 
     public $template = 'orchids/demokit::layouts.textaligns';
 
+    public function fields(): array {
+        return [];
+    }
+
     /**
      * @param \Orchid\Screen\Repository $query
      *

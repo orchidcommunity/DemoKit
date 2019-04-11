@@ -15,6 +15,10 @@ class HelpModalLayout extends Rows
 
     public $template = 'orchids/demokit::layouts.helpmodal';
 
+    public function fields(): array {
+        return [];
+    }
+
     /**
      * @param \Orchid\Screen\Repository $query
      *

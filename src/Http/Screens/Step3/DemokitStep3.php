@@ -25,6 +25,7 @@ class DemokitStep3 extends Screen
      * @var string
      */
     public $name = 'Экран типографий';
+
     /**
      * Display header description
      *
@@ -38,7 +39,7 @@ class DemokitStep3 extends Screen
     /**
      * Query data
      *
-     * @param XSetting $xsetting
+     * @param $demokitdata
      *
      * @return array
      */
@@ -48,7 +49,6 @@ class DemokitStep3 extends Screen
     {
 
         $demokitdata = is_null($demokitdata) ? new DemoPost() : DemoPost::whereId($demokitdata)->first();
-        //dd($demokitdata);
         return [
             'data'   => $demokitdata,
         ];
@@ -79,13 +79,6 @@ class DemokitStep3 extends Screen
      */
     public function layout() : array
     {
-        /*
-        $template = function ($template)
-        {
-            return view('orchids/demokit::layouts.'.$template);
-        };
-*/
-        //dump($this->method);
         $Layout = [
             'OneColumn' => [
                 //Layouts::view('orchids/demokit::layouts.headings'),
@@ -120,66 +113,24 @@ class DemokitStep3 extends Screen
                 ]),
             ],
             'DivColumn' => [
-                Layouts::blank([
-                    'Columns' => [
-                        Layouts::blank([
-                            'First Column'   => [
-                                TextColorsLayout::class,
-                                TextListsLayout::class,
-                                TextAlignsLayout::class
-                            ],
-                        ])->class('col-7 border-right'),
-                        Layouts::blank([
-                            'Second Column' => [
-                                HeadingsLayout::class,
-                                TextElementsLayout::class
-                            ],
-                        ])->class('col-5 no-gutter')
-                    ]
-                ])->class('row')
-            ],
+                Layouts::wrapper('orchids/demokit::container.layouts.wrapper', [
+                    'left' => [
+                        TextColorsLayout::class,
+                        TextListsLayout::class,
+                        TextAlignsLayout::class
+                    ],
+
+                    'right' => [
+                        HeadingsLayout::class,
+                        TextElementsLayout::class
+                    ],
+
+                ]),
+                ],
         ];
-
-        /*
-                return [
-
-                    Layouts::columns([
-                        'HeadingsLayout' => [
-                            HeadingsLayout::class,
-                            TextElementsLayout::class,
-                            TextElementsLayout::class
-                        ],
-                        'TextElementsLayout' => [
-                            TextElementsLayout::class
-                        ],
-                    ]),
-
-                ];
-        */
-        //dd($this->method);
 
         return $Layout[$this->method ?? 'OneColumn'];
     }
-
-/*
-
-    public function OneColumn()
-    {
-        $this->method='OneColumn';
-    }
-    public function TwoColumn()
-    {
-        $this->method='TwoColumn';
-    }
-    public function TabColumn()
-    {
-        $this->method='TabColumn';
-    }
-    public function DivColumn()
-    {
-        $this->method='DivColumn';
-    }
-*/
 
     /**
      * @param null $method

@@ -11,6 +11,10 @@ class TextColorsLayout extends Rows
 
     public $template = 'orchids/demokit::layouts.textcolors';
 
+    public function fields(): array {
+        return [];
+    }
+
     /**
      * @param \Orchid\Screen\Repository $query
      *

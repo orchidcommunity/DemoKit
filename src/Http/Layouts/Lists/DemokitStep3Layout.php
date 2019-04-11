@@ -20,7 +20,7 @@ class DemokitStep3Layout extends Table
 			TD::set('input','Title')
                 //->linkPost('platform.demokit.screen1.edit')
 
-                ->setRender(function ($data) {
+                ->Render(function ($data) {
                     //dump($data->getContent('content')[app()->getLocale()]['input']);
                     return '<a href="' . route('platform.demokit.step3',
                             [$data->id,'OneColumn']) . '">' . $data->getContent('content')[app()->getLocale()]['input'] . '</a>';

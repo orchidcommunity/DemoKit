@@ -11,6 +11,11 @@ class TextElementsLayout extends Rows
 
     public $template = 'orchids/demokit::layouts.textelements';
 
+
+    public function fields(): array {
+        return [];
+    }
+
     /**
      * @param \Orchid\Screen\Repository $query
      *

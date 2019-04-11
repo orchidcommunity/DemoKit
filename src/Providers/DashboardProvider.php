@@ -15,9 +15,11 @@ class DashboardProvider extends ServiceProvider
      */
     public function boot(Dashboard $dashboard)
     {
-        $dashboard->registerResource([
+        /* $dashboard->registerResource([
             'stylesheets' => ['/orchids/demokit/css/demokit.css'],
             'scripts'     => ['/orchids/demokit/js/demokit.js'],
-        ]);
+        ]);*/
+        //$dashboard->registerResource('stylesheets','/orchids/demokit/css/demokit.css');
+        //$dashboard->registerResource('scripts','/orchids/demokit/js/demokit.js');
     }
 }

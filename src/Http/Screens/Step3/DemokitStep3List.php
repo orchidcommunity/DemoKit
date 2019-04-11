@@ -66,7 +66,7 @@ class DemokitStep3List extends Screen
                 'HelpModal' => [
                     HelpModalLayout::class,
                 ],
-            ])->class('modal-lg'),
+            ]),
         ];
     }
 }

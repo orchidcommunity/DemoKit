@@ -78,7 +78,7 @@ class DemokitStep2Edit extends Screen
                 'HelpModal' => [
                     HelpModalLayout::class,
                 ],
-            ])->class('modal-lg'),
+            ]),
 		
         ];
     }
@@ -93,6 +93,7 @@ class DemokitStep2Edit extends Screen
 
         //dd($postdata);
         $req = $this->request->get('data');
+        //dd($req);
         //dd($req['content'][app()->getLocale()]['input']);
         $postdata->fill($req);
         $postdata->slug = is_null($postdata->slug) ? Str::slug($req['content'][app()->getLocale()]['input']) : $postdata->slug;

@@ -1,115 +1,129 @@
 <?php
 
-namespace  Orchids\DemoKit\Http\Layouts\Step5;
+namespace Orchids\DemoKit\Http\Layouts\Step5;
 
 use Orchid\Screen\Field;
+use Orchid\Screen\Fields\Map;
+use Orchid\Screen\Fields\UTM;
+use Orchid\Screen\Fields\Code;
+use Orchid\Screen\Fields\Tags;
+use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Layouts\Rows;
+use Orchid\Screen\Fields\Select;
+use Orchid\Screen\Fields\Picture;
+use Orchid\Screen\Fields\TinyMCE;
+use Orchid\Screen\Fields\CheckBox;
+use Orchid\Screen\Fields\Switcher;
+use Orchid\Screen\Fields\TextArea;
+use Orchid\Screen\Fields\DateTimer;
+use Orchid\Screen\Fields\SimpleMDE;
 
 class RowExample extends Rows
 {
     /**
-     * @return array
      * @throws \Throwable
+     *
+     * @return array
      */
     public function fields(): array
     {
         return [
+
             Field::group([
 
-                Field::tag('input')
+                Input::make('name')
                     ->type('text')
-                    ->name('name')
                     ->max(255)
+                    ->required()
                     ->title('Name Articles')
-                    ->help('Article title'),
+                    ->help('Article title')
+                    ->popover('Tooltip - hint that user opens himself.'),
 
-                Field::tag('input')
+                Input::make('title')
                     ->type('text')
-                    ->name('title')
                     ->max(255)
+                    ->required()
                     ->title('Article Title')
-                    ->help('SEO title'),
+                    ->help('SEO title')
+                    ->popover('Tooltip - hint that user opens himself.'),
 
             ]),
 
             Field::group([
 
-                Field::tag('select')
-                    ->options([
-                        'index'   => 'Index',
-                        'noindex' => 'No index',
-                    ])
-                    ->multiple()
-                    ->name('robot.')
-                    ->title('Indexing')
-                    ->help('Allow search bots to index'),
+                DateTimer::make('open')
+                    ->title('Opening date')
+                    ->help('The opening event will take place'),
 
-                Field::tag('input')
+                Input::make('phone')
                     ->type('text')
-                    ->name('phone')
                     ->mask('(999) 999-9999')
                     ->title('Phone')
                     ->help('Number Phone'),
 
-                Field::tag('checkbox')
-                    ->name('free')
+                CheckBox::make('free-checkbox')
                     ->sendTrueOrFalse()
-                    ->title('Free')
+                    ->title('Free checkbox')
                     ->placeholder('Event for free')
                     ->help('Event for free'),
 
+                Switcher::make('free-switch')
+                    ->sendTrueOrFalse()
+                    ->title('Free switch')
+                    ->placeholder('Event for free')
+                    ->help('Event for free'),
             ]),
 
-            Field::tag('textarea')
-                ->name('description')
+            TextArea::make('description')
                 ->max(255)
                 ->rows(5)
-                ->title('Short description')
-                ->horizontal(),
+                ->required()
+                ->title('Short description'),
 
-            Field::tag('wysiwyg')
-                ->name('body')
+            TinyMCE::make('body')
                 ->required()
                 ->title('Name Articles')
-                ->help('Article title')
-                ->horizontal(),
+                ->help('Article title'),
 
-            Field::tag('picture')
+            Map::make('place')
+                ->required()
+                ->title('Object on the map')
+                ->help('Enter the coordinates, or use the search'),
+
+            Picture::make('picture')
                 ->name('picture')
-                ->title('Picture')
                 ->width(500)
-                ->height(300)
-                ->horizontal(),
+                ->height(300),
 
-            Field::tag('utm')
-                ->name('link')
+            UTM::make('link')
                 ->title('UTM link')
-                ->help('Generated link')
-                ->horizontal(),
+                ->help('Generated link'),
 
-            Field::tag('datetime')
-                ->name('open')
-                ->title('Opening date')
-                ->help('The opening event will take place')
-                ->horizontal(),
+            Select::make('robot.')
+                ->options([
+                    'index'   => 'Index',
+                    'noindex' => 'No index',
+                ])
+                ->multiple()
+                ->title('Indexing')
+                ->help('Allow search bots to index'),
 
-            Field::tag('tags')
-                ->name('keywords')
+            Tags::make('keywords')
                 ->title('Keywords')
-                ->help('SEO keywords')
-                ->horizontal(),
+                ->help('SEO keywords'),
 
-            Field::tag('markdown')
-                ->name('body2')
+            SimpleMDE::make('body2')
                 ->title('Name Articles')
-                ->help('Article title')
-                ->horizontal(),
+                ->help('Article title'),
 
-            Field::tag('code')
-                ->name('code')
+            Code::make('code')
                 ->title('Name Articles')
-                ->help('Article title')
-                ->horizontal(),
+                ->help('Article title'),
+
+            Quill::make('body3')
+                ->title('Name Articles')
+                ->help('Article title'),
 
         ];
     }

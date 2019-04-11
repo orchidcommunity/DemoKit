@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Facades\View;
 use Orchid\Platform\Dashboard;
+use Orchid\Platform\ItemPermission;
 
 class DemoKitProvider extends ServiceProvider
 {
@@ -48,16 +49,10 @@ class DemoKitProvider extends ServiceProvider
     /**
      * @return array
      */
-    protected function registerPermissions(): array
+    protected function registerPermissions(): ItemPermission
     {
-        return [
-            trans('platform::permission.main.systems') => [
-                [
-                    'slug' => 'platform.demokit',
-                    'description' => 'Demo Kit',
-                ],
-            ],
-        ];
+        return ItemPermission::group(__('Systems'))
+            ->addPermission('platform.demokit', __('Demo Kit'));
     }
 
     /**

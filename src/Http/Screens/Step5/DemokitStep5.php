@@ -2,6 +2,7 @@
 
 namespace Orchids\DemoKit\Http\Screens\Step5;
 
+use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Link;
 use Orchid\Screen\Field;
 use Orchid\Screen\Screen;
@@ -147,9 +148,8 @@ class DemokitStep5 extends Screen
 
             Layouts::modals([
                 'exampleModal' => Layouts::rows([
-                    Field::tag('input')
+                    Input::make('user.password')
                         ->type('test')
-                        ->name('user.password')
                         ->title(__('Example'))
                         ->placeholder(__('Example')),
                 ] ),
@@ -158,7 +158,7 @@ class DemokitStep5 extends Screen
                 'HelpModal' => [
                     HelpModalLayout::class,
                 ],
-            ])->class('modal-lg'),
+            ]),
 
         ];
     }
