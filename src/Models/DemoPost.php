@@ -12,4 +12,17 @@ class DemoPost extends Post
      * @var string
      */
     protected $postType = 'demo-screen';
+
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+
+    /*
+    protected $attributes = [
+        'type' => 'demo-screen',
+    ];
+    */
 }

@@ -1,176 +1,51 @@
 # Шаг второй
 ----------
 
-В этом уроке мы научимся получать и сохранять данные из базы, создадим макет с полями, добавим пункт в верхнее меню экрана.
+В этом уроке мы научимся получать и сохранять данные из базы, создадим макет с полями, добавим пункт в верхнее меню экрана, а также научимся разграничивать права доступа.
 
 
 ## Экран с полями
  
-Создадим протой экран на котором будут отображены почти все стандартные поля Orchid.
+Создадим протой экран на котором будут отображены почти все стандартные поля Orchid, и сохраним эти данные в базу данных.
 
-### 1. Добавим роуты и меню
+### 2.1 Добавим экран
 
-В файле `routes/platform.php` в роут из предыдущего шага, добавим строку 
-```
-$router->screen('screen1/create', 'Step2Screen', 'platform.screens.step2.create');
-```
-И в файл `app/Http/Composers/MenuComposer.php` строку 
-```
-$this->dashboard->menu
-    ->add('demokit-screens', [
-        'slug'       => 'demokit-step2',
-        'icon'       => 'icon-notebook',
-        'route'      => route('platform.screens.step2.create'),
-        'label'      => 'Step 2 - Screen Create',
-        'groupname'  => 'Screens',
-        'sort'       => 10,
-    ]);
-```
-  
-### 2. Добавим экран
+Создадим файл экрана `app/Http/Screens/Step2/DemokitStep2Edit.php`
 
-Создадим файл экрана `app/Http/Screens/Step2Screen.php`
+<file prefix="DEMOKIT_PATH" file="/src/Http/Screens/Step2/DemokitStep2Edit.php" strings="4-12,16-50,52-61,63-76,80-118" />
 
-```
-namespace App\Http\Screens;
+_([Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/src/Http/Screens/Step2/DemokitStep2Edit.php))_
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Auth;
+Данный экран отличается от экрана в шаге 1 тем что отправляет данные в макет `Step2Layout` а также имеет метод `save` и `remove` для сохранения и удаления данных.
 
-use Orchid\Press\Models\Post;
-use Orchid\Support\Facades\Alert;
-use Orchid\Screen\Layouts;
-use Orchid\Screen\Link;
-use Orchid\Screen\Screen;
+### 2.2 Добавим макет
 
-use App\Http\Layouts\Step2Layout;
+Создадим макет ([Layouts](https://orchid.software/ru/docs/layouts)) в файле `app\Http\Layouts\Step2\Step2Layout.php` и добавим в него добавим все [***поля из документации***](https://orchid.software/ru/docs/field)
 
-class Step2Screen extends Screen
-{
-    public $name = 'Screen edit';
-    public $description = 'Simple screen with all fields';
+<file prefix="DEMOKIT_PATH" file="/src/Http/Layouts/Step2/Step2Layout.php" strings="4-78" />
 
-    public function query($postdata = null) : array
-    {
-        $postdata = is_null($postdata) ? new Post() : $postdata;
-        return [
-            'data'   => $postdata,
-        ];
-    }
+_([Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/src/Http/Layouts/Step2/Step2Layout.php))_
 
-    public function commandBar() : array
-    {
-        return [
-            Link::name('Save')->method('save'),
-        ];
-    }
+### 2.3 Роуты
 
-    public function layout() : array
-    {
-        return [
-            Step2Layout::class
-        ];
-    }
+Теперь чтобы наш экран отобразился нужно добавить роуты и пункт меню. 
 
-    public function save(Post $postdata)
-    {
-        $req = $this->request->get('data');
-        $postdata->fill($req);
-        $postdata->slug = is_null($postdata->slug) ? Str::slug($req['content'][app()->getLocale()]['input']) : $postdata->slug;
-        $postdata->user_id = is_null($postdata->user_id) ? Auth::user()->id : $postdata->user_id;
-        $postdata->type = 'demo-screen';
-        $postdata->status = 'publish';
-        $postdata->options = ['locale' => [ app()->getLocale() => 'true' ] ];
-        $postdata->save();
+В файле `routes/platform.php` добавим строку 
 
-        Alert::info('Data was saved');
-        return redirect()->back();
-    }
-}
-```
+<file prefix="DEMOKIT_PATH" file="/routes/route.php" strings="13" />
 
-### 3. Добавим макет
+### 2.3 Права доступа _([Permissions](https://orchid.software/ru/docs/access/))_
 
-Создадим макет в файл `app\Http\Layouts\Step2Layout.php` добавим все [***поля из документации***](https://orchid.software/ru/docs/field)
+_[Права доступа](https://orchid.software/ru/docs/access/)_ нужны для разграничения доступа определенным пользователям и группам пользователей.
 
-```
-namespace Orchids\DemoKit\Http\Layouts\AllFields;
+Для создания прав доступа нужно в файле провайдера `app/Providers/AppServiceProvider.php` в функцию `boot` добавим строки:
 
-use Orchid\Screen\Layouts\Rows;
-use Orchid\Screen\Fields\Field;
+<file prefix="DEMOKIT_PATH" file="/src/Providers/DemoKitProvider.php" strings="46-48" />
+ и добавить функцию:
+<file prefix="DEMOKIT_PATH" file="/src/Providers/DemoKitProvider.php" strings="51-58" />
 
-class Step2Layout extends Rows
-{
-	public function fields(): array
-    {
-        // data - название запроса который назначили в экране
-        // content - столбец данных в таблице post  
-        $data_con='data.content.'.app()->getLocale();  
+### 2.4 Меню
 
-        return [
-            Field::tag('input')
-                ->type('text')
-                ->name($data_con.'.input')
-                ->max(255)
-                ->required()
-                ->title('Name Articles')
-                ->help('Article title'),
-            Field::tag('textarea')
-                ->name($data_con.'.textarea')
-                ->required()
-                ->max(255)
-                ->rows(5)
-                ->title('Short description'),
-            Field::tag('wysiwyg')
-                ->name($data_con.'.body')
-                ->title('Name Articles')
-                ->help('Article title')
-                ->theme('inlite'),
-            Field::tag('markdown')
-                ->name($data_con.'.markdown')
-                ->title('О чём вы хотите рассказать?'),
-            Field::tag('picture')
-                ->name($data_con.'.picture')
-                ->width(500)
-                ->height(300),
-            Field::tag('upload')
-                ->name($data_con.'.photos')
-                ->title('Upload'),
-            Field::tag('datetime')
-                ->type('text')
-                ->name($data_con.'.datetime')
-                ->title('Opening date')
-                ->help('The opening event will take place'),
-            Field::tag('checkbox')
-                ->name($data_con.'.checkbox')
-                ->value(1)
-                ->title('Free')
-                ->placeholder('Event for free')
-                ->help('Event for free'),
-            Field::tag('code')
-                ->name($data_con.'.code')
-                ->title('Code Block')
-                ->help('Simple web editor'),
-            Field::tag('tags')
-                ->name($data_con.'.tags')
-                ->title('Tags')
-                ->help('SEO keywords'),
-            Field::tag('select')
-                ->options([
-                    'index'   => 'Index',
-                    'noindex' => 'No index',
-                ])
-                ->name($data_con.'.select')
-                ->title('Select tags')
-                ->help('Allow search bots to index page'),
-            Field::tag('input')
-                ->type('text')
-                ->name($data_con.'.phone')
-                ->mask('(999) 999-9999')
-                ->title('Phone')
-                ->help('Number Phone'),
-        ];
-    }
-}
-```
+В файл `app/Http/Composers/MenuComposer.php` добавим строки 
 
+<file prefix="DEMOKIT_PATH" file="/src/Providers/MenuComposer.php" strings="26,45-52" />

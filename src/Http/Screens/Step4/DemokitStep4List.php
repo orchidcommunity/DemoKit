@@ -4,13 +4,14 @@ namespace Orchids\DemoKit\Http\Screens\Step4;
 
 use Illuminate\Support\Facades\Artisan;
 use Orchid\Screen\Screen;
-use Orchid\Screen\Layouts;
+use Orchid\Screen\Layout;
+use Orchid\Screen\Layouts\Modals;
 use Orchid\Screen\Link;
+use Orchid\Press\Models\Post;
 
-use Orchids\DemoKit\Models\DemoPost;
-use Orchids\DemoKit\Http\Layouts\Lists\DemokitStep4Layout;
+//use Orchids\DemoKit\Models\DemoPost;
+use Orchids\DemoKit\Http\Layouts\Step4\Step4Layout;
 use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout;
-//use Orchids\DemoKit\Database\Seeds\Add1DemoPostsTableSeeder;
 
 class DemokitStep4List extends Screen
 {
@@ -19,7 +20,7 @@ class DemokitStep4List extends Screen
      *
      * @var string
      */
-    public $name = 'Screen1 List';
+    public $name = 'Screen3 List';
     /**
      * Display header description
      *
@@ -33,10 +34,9 @@ class DemokitStep4List extends Screen
      */
     public function query() : array
     {
-        //DEMOKIT_PATH
          return [
-            'data' => DemoPost::paginate(30),
-             'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step4.md',
+            'data' => Post::where('type','demo-screen')->paginate(30),
+            'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step4.md',
         ];
     }
     /**
@@ -47,10 +47,7 @@ class DemokitStep4List extends Screen
     public function commandBar() : array
     {
         return [
-            Link::name('Create a new data')->method('create'),
-            Link::name('Add 1 row demo')->method('add1_demo'),
-            //Link::name('Add 10 row demo')->method('add10_demo'),
-            Link::name('Help')
+            Link::name('Help Step 4')
                 ->modal('HelpModal'),
         ];
     }
@@ -62,44 +59,13 @@ class DemokitStep4List extends Screen
     public function layout() : array
     {
         return [
-            DemokitStep4Layout::class,
-            Layouts::modals([
+            Step4Layout::class,
+            Layout::modals([
                 'HelpModal' => [
                     HelpModalLayout::class,
                 ],
-            ]),
+            ])
+            ->size(Modals::SIZE_LG),
         ];
     }
-    /**
-     * @return null
-     */
-     public function create()
-    {
-        return redirect()->route('platform.demokit.step2.create');
-    }
-
-    /**
-     * @return null
-     */
-    public function add1_demo()
-    {
-        //php artisan db:seed --class="Orchids\DemoKit\Database\Seeds\Add1DemoPostsTableSeeder"
-        //$this->call(Add1DemoPostsTableSeeder::class);
-        //Artisan::queue('backup:run');
-        Artisan::call("db:seed", ['--class' => "Orchids\DemoKit\Database\Seeds\Add1DemoPostsTableSeeder"]);
-        return back();
-    }
-
-    /**
-     * @return null
-     */
-    public function add10_demo()
-    {
-        //php artisan db:seed --class="Orchids\DemoKit\Database\Seeds\Add1DemoPostsTableSeeder"
-        //$this->call(Add1DemoPostsTableSeeder::class);
-        //Artisan::queue('backup:run');
-        Artisan::call("db:seed", ['--class' => "Orchids\DemoKit\Database\Seeds\Add10DemoPostsTableSeeder"]);
-        return back();
-    }
-
 }

@@ -15,7 +15,6 @@ class MenuComposer
     public function __construct(Dashboard $dashboard)
     {
         $this->dashboard = $dashboard;
-		//$this->menu = $dashboard->menu;
     }
 
     /**
@@ -31,17 +30,17 @@ class MenuComposer
                     ->Icon('icon-notebook')
                     ->Childs(true)
                     ->Active('platform.demokit.*')
-                    ->Permission('platform.demokit')
                     ->Sort(300)
+                    ->Permission('platform.demokit')
             )
             ->add('demokit-steps',
-                ItemMenu::Label('Step 1 - Icon Screen')
+                ItemMenu::Label(__('Step 1 - Display HTML'))
                     ->Slug('demokit-step1')
                     ->Icon('icon-notebook')
                     ->Route('platform.demokit.step1')
-                    ->GroupName('Screens')
-                    ->Permission('platform.demokit')
+                    ->Title('Screens')
                     ->Sort(10)
+                    ->Permission('platform.demokit')
             )
             ->add('demokit-steps',
                 ItemMenu::Label('Step 2 - Screen Create')
@@ -52,7 +51,7 @@ class MenuComposer
                     ->Sort(11)
             )
             ->add('demokit-steps',
-                ItemMenu::Label('Step 3 - Typography')
+                ItemMenu::Label('Step 3 - Screen list')
                     ->Slug('demokit-step3')
                     ->Icon('icon-notebook')
                     ->Route( 'platform.demokit.step3.list')
@@ -60,7 +59,7 @@ class MenuComposer
                     ->Sort(12)
             )
             ->add('demokit-steps',
-                ItemMenu::Label('Step 4 - Screens')
+                ItemMenu::Label('Step 4 - Typography')
                     ->Slug('demokit-step4')
                     ->Icon('icon-notebook')
                     ->Route( 'platform.demokit.step4.list')

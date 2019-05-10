@@ -4,6 +4,7 @@ namespace Orchids\DemoKit\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Orchid\Platform\Dashboard;
 use Orchid\Platform\Http\Middleware\AccessMiddleware;
 use Orchid\Platform\Widget\WidgetContractInterface;
 use Orchid\Press\Models\Post;
@@ -64,6 +65,12 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
 		//$this->loadRoutesFrom(realpath(__DIR__.'/../../routes/route.php'));  //Файл роутинга
-        $this->loadRoutesFrom(realpath(DEMOKIT_PATH.'/routes/route.php'));   //Файл роутинга
+        //$this->loadRoutesFrom(realpath(DEMOKIT_PATH.'/routes/route.php'));   //Файл роутинга
+
+        Route::domain((string) config('platform.domain'))
+            ->prefix(Dashboard::prefix('/'))
+            ->middleware(config('platform.middleware.private'))
+            ->group(realpath(DEMOKIT_PATH.'/routes/route.php'));
+
     }
 }

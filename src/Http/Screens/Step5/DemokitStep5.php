@@ -6,7 +6,8 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Link;
 use Orchid\Screen\Field;
 use Orchid\Screen\Screen;
-use Orchid\Screen\Layouts;
+use Orchid\Screen\Layout;
+use Orchid\Screen\Layouts\Modals;
 use Orchid\Screen\Repository;
 use Orchid\Support\Facades\Alert;
 use Orchids\DemoKit\Http\Layouts\Step5\RowExample;
@@ -136,29 +137,29 @@ class DemokitStep5 extends Screen
             MetricsExample::class,
             ChartLineExample::class,
 
-            Layouts::columns([
+            Layout::columns([
                 ChartPieExample::class,
                 ChartBarExample::class,
             ]),
 
-            Layouts::tabs([
+            Layout::tabs([
                 'Example Tab Table' => TableExample::class,
                 'Example Tab Rows'  => RowExample::class,
             ]),
 
-            Layouts::modals([
-                'exampleModal' => Layouts::rows([
+            Layout::modals([
+                'exampleModal' => Layout::rows([
                     Input::make('user.password')
                         ->type('test')
                         ->title(__('Example'))
                         ->placeholder(__('Example')),
                 ] ),
             ]),
-            Layouts::modals([
+            Layout::modals([
                 'HelpModal' => [
                     HelpModalLayout::class,
                 ],
-            ]),
+            ])->size(Modals::SIZE_LG),
 
         ];
     }

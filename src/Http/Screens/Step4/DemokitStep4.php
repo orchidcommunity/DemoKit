@@ -1,9 +1,9 @@
 <?php
-namespace Orchids\DemoKit\Http\Screens\Screen3;
+namespace Orchids\DemoKit\Http\Screens\Step4;
 
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Setting;
-use Orchid\Screen\Layouts;
+use Orchid\Screen\Layout;
 use Orchid\Screen\Link;
 use Orchid\Screen\Screen;
 
@@ -16,7 +16,7 @@ use Orchids\DemoKit\Http\Layouts\Pages\TextAlignsLayout;
 
 
 
-class DemoScreen3Edit extends Screen
+class DemokitStep4 extends Screen
 {
 	
     /**
@@ -25,6 +25,7 @@ class DemoScreen3Edit extends Screen
      * @var string
      */
     public $name = 'Экран типографий';
+
     /**
      * Display header description
      *
@@ -38,7 +39,7 @@ class DemoScreen3Edit extends Screen
     /**
      * Query data
      *
-     * @param XSetting $xsetting
+     * @param $demokitdata
      *
      * @return array
      */
@@ -48,7 +49,6 @@ class DemoScreen3Edit extends Screen
     {
 
         $demokitdata = is_null($demokitdata) ? new DemoPost() : DemoPost::whereId($demokitdata)->first();
-        //dd($demokitdata);
         return [
             'data'   => $demokitdata,
         ];
@@ -62,12 +62,13 @@ class DemoScreen3Edit extends Screen
     {
         return [
             Link::name('Макеты')
-                ->icon('icon-user')
+                ->icon('icon-docs')
                 ->group([
-                    Link::name('OneColumn')->link('OneColumn')->icon('icon-user'),
-                    Link::name('TwoColumn')->link('TwoColumn')->icon('icon-user'),
-                    Link::name('TabColumn')->link('TabColumn')->icon('icon-user'),
-                    Link::name('DivColumn')->link('DivColumn')->icon('icon-user'),
+                    Link::name('OneColumn')->link('OneColumn')->icon('icon-doc'),
+                    Link::name('TwoColumn')->link('TwoColumn')->icon('icon-doc'),
+                    Link::name('TabColumn')->link('TabColumn')->icon('icon-doc'),
+                    Link::name('WrapperColumn')->link('WrapperColumn')->icon('icon-doc'),
+                    Link::name('AccordionColumn')->link('AccordionColumn')->icon('icon-doc'),
                 ])
 
         ];
@@ -79,18 +80,9 @@ class DemoScreen3Edit extends Screen
      */
     public function layout() : array
     {
-        /*
-        $template = function ($template)
-        {
-            return view('orchids/demokit::layouts.'.$template);
-        };
-*/
-        //dump($this->method);
         $Layout = [
             'OneColumn' => [
                 //Layouts::view('orchids/demokit::layouts.headings'),
-                //serialize(view('orchids/demokit::layouts.headings')),
-                //serialize($template('headings')),
                 HeadingsLayout::class,
                 TextElementsLayout::class,
                 TextColorsLayout::class,
@@ -98,7 +90,7 @@ class DemoScreen3Edit extends Screen
                 TextAlignsLayout::class,
             ],
             'TwoColumn' => [
-                Layouts::columns([
+                Layout::columns([
                     'First Column' => [
                         HeadingsLayout::class,
                         TextElementsLayout::class,
@@ -111,7 +103,7 @@ class DemoScreen3Edit extends Screen
                 ]),
             ],
             'TabColumn' => [
-                Layouts::tabs([
+                Layout::tabs([
                     'Headings' => [HeadingsLayout::class],
                     'Elements' => [TextElementsLayout::class],
                     'Colors'   => [TextColorsLayout::class],
@@ -119,67 +111,34 @@ class DemoScreen3Edit extends Screen
                     'Aligns'   => [TextAlignsLayout::class],
                 ]),
             ],
-            'DivColumn' => [
-                Layouts::blank([
-                    'Columns' => [
-                        Layouts::blank([
-                            'First Column'   => [
-                                TextColorsLayout::class,
-                                TextListsLayout::class,
-                                TextAlignsLayout::class
-                            ],
-                        ])->class('col-7 border-right'),
-                        Layouts::blank([
-                            'Second Column' => [
-                                HeadingsLayout::class,
-                                TextElementsLayout::class
-                            ],
-                        ])->class('col-5 no-gutter')
-                    ]
-                ])->class('row')
+            'WrapperColumn' => [
+                Layout::wrapper('orchids/demokit::container.layouts.wrapper', [
+                    'left' => [
+                        HeadingsLayout::class,
+                        TextListsLayout::class,
+                        TextAlignsLayout::class
+                    ],
+
+                    'right' => [
+                        TextColorsLayout::class,
+                        TextElementsLayout::class
+                    ],
+
+                ]),
+            ],
+            'AccordionColumn' => [
+                Layout::accordion([
+                    'Headings' => [HeadingsLayout::class],
+                    'Elements' => [TextElementsLayout::class],
+                    'Colors'   => [TextColorsLayout::class],
+                    'Lists'    => [TextListsLayout::class],
+                    'Aligns'   => [TextAlignsLayout::class],
+                ]),
             ],
         ];
 
-        /*
-                return [
-
-                    Layouts::columns([
-                        'HeadingsLayout' => [
-                            HeadingsLayout::class,
-                            TextElementsLayout::class,
-                            TextElementsLayout::class
-                        ],
-                        'TextElementsLayout' => [
-                            TextElementsLayout::class
-                        ],
-                    ]),
-
-                ];
-        */
-        //dd($this->method);
-
         return $Layout[$this->method ?? 'OneColumn'];
     }
-
-/*
-
-    public function OneColumn()
-    {
-        $this->method='OneColumn';
-    }
-    public function TwoColumn()
-    {
-        $this->method='TwoColumn';
-    }
-    public function TabColumn()
-    {
-        $this->method='TabColumn';
-    }
-    public function DivColumn()
-    {
-        $this->method='DivColumn';
-    }
-*/
 
     /**
      * @param null $method

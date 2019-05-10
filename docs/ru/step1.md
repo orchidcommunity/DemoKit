@@ -1,140 +1,57 @@
 # Шаг первый
 ----------
 
+Orchid это не только админка, но и платформа для быстрого создания пользовательского интерфейса.
 В Orchid отображение информации строится на экранах ([Screens](https://orchid.software/ru/docs/screens)). Экран принимает данные, источником которых может быть: база данных, API или любые другие внешние источники.
 Дальше экран отображает информацию через макеты, и обрабатывает полученную от них информацию.  
 Экран может состоять из одного или нескольких макетов ([Layouts](https://orchid.software/ru/docs/layouts)), а макет может быть просто шаблоном (html, blade ...), таблицей или состоять из полей ([Fields](https://orchid.software/ru/docs/field)).
-Один макет можно подключить к нескольким экранам и он будет отображать информацию из этой этих экранов.
+Один макет можно подключить к нескольким экранам и он будет отображать информацию из этих экранов.
 
-## Простой экран
+## Hello world
 
-Для того чтобы сделать первый экран нужно добавить, роутинг (путь по которому будет открываться наш экран), а ткже пункты меню в админ панель.
+В первом шаге мы сделаем простой экран который будет передавать информацию в шаблон.
+Будем передавать простую строку "Hello World", а также массив иконок отсюда ([Icons](https://orchid.software/ru/icons/))
+ 
+### 1.1 Создание экрана
 
-### Роутинг (Route)
+Сделаем экран который передает данные в шаблон.
 
-Роутинг обрабатывает запросы браузера, сделаем роутинг который обработает запрос `http://sitename.com/dashboard/screens/step1`.
+Создадим экран, для этого в каталог `app/Http/Screens/Step1` добавим файл `DemokitStep1.php` с следующим содержимым.
+
+<file prefix="DEMOKIT_PATH" file="/src/Http/Screens/Step1/DemokitStep1.php" strings="4-7,9-31,35-40,317-321,323-332,336-346,353-356" />
+
+_([Если что-то не понятно посмотрите Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/src/Http/Screens/Step1/DemokitStep1.php))_
+
+### 1.2 Создание шаблон
+
+Наш экран просто подключает шаблон из файла `/resources/views/icons.blade.php` и передает в него данные.
+Давайте создадим его, для этого в каталоге `/resources/views` создадим файл `icons.blade.php` в который можно внести любые html данные, например:
+
+<file prefix="DEMOKIT_PATH" file="/resources/views/layouts/icons.blade.php" strings="23-34" />
+
+_([Если что-то не понятно посмотрите Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/resources/views/layouts/icons.blade.php))_
+
+### 1.3 Роутинг (Route)
+
+Для того чтобы наш экран отобразился нужно добавить, роутинг (путь по которому будет открываться наш экран), а также пункты меню в админ панель.
+
+Роутинг обрабатывает запросы браузера, сделаем роутинг который обработает запрос `http://sitename.com/dashboard/demokit/step1`.
 Для этого добавим в файл `routes/platform.php` следующие строки
-```
-Route::prefix(Dashboard::prefix('/screens'))   //префикс нашего роута будет /dasboard/screens
-    ->middleware(config('platform.middleware.private')) 
-    ->namespace('App\Http\Screens')   //Расположение файлов обработчиков роута 
-    ->group(function (\Illuminate\Routing\Router $router) {
-        $router->screen('step1', 'Step1Screen', 'platform.screens.step1.edit');
-        
-        //Здесь будут добавляться роуты из других уроков
-    });
-```
 
-### Меню
+<file prefix="DEMOKIT_PATH" file="/routes/route.php" strings="3,9,10" />
 
-Теперь нужно добавить в левое меню ссылку на наш роутинг, для этого создадим конструктор меню, создадим файл `app/Http/Composers/MenuComposer.php` со следущими данными
-```   
-<?php
+_([Если что-то не понятно посмотрите Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/routes/route.php))_
 
-namespace App\Http\Composers;
+Теперь наш экран отобразится по адресу `http://sitename.com/dashboard/demokit/step1`
 
-use Orchid\Platform\Dashboard;
+### 1.4 Меню
 
-class MenuComposer
-{
-    public function __construct(Dashboard $dashboard)
-    {
-        $this->dashboard = $dashboard;
-    }
+Теперь нужно добавить в левое меню ссылку на наш роутинг, для этого создадим создадим файл `app/Http/Composers/MenuComposer.php` со следущими данными
 
-    public function compose()
-    {
-        $this->dashboard->menu
-            ->add('Main', [
-                'slug'       => 'demokit-screens',
-                'icon'       => 'icon-notebook',
-                'route'      => '#',
-                'label'      => 'DemoKit',
-                'childs'     => true,
-                'main'       => true,
-                'sort'       => 300,
-            ]);
-        $this->dashboard->menu
-            ->add('demokit-screens', [
-                'slug'       => 'demokit-step1',
-                'icon'       => 'icon-notebook',
-                'route'      => route('platform.screens.step1.edit'),
-                'label'      => 'Step 1 - Icon Screen',
-                'groupname'  => 'Screens',
-                'sort'       => 10,
-            ]);
-    }
-}
-```
-Теперь подключим конструктор меню к провайдеру, для этого в файл `app/Providers/AppServiceProvider.php` в функцию `boot` добавим строку:
-```
-View::composer('platform::layouts.dashboard', App/Http/Composers/MenuComposer::class);
-```
+<file prefix="DEMOKIT_PATH" file="/src/Providers/MenuComposer.php" strings="5-33,35-42,76-78" />
 
-### Создание экрана
+Далее нужно подключить конструктор меню к провайдеру, для этого в файл `app/Providers/AppServiceProvider.php` в функцию `boot` добавим строку:
 
-Сделаем экран который выводит макет из простого шаблона.
-
-Создадим экран, для этого в каталог `app/Http/Screens` добавим файл `Step1Screen.php` с следующим содержимым.
-  
-```
-namespace App\Http\Screens;
-
-use Orchid\Screen\Screen;
-
-use App\Http\Layouts\IconsLayout;   //Подключаемый макет
-
-class Step1Screen extends Screen
-{
-    public $name = 'Заголовок экрана';
-    public $description = 'Дополнительное описание под заголовком';
-    /**
-     * Данные передаваемые в макет
-     */
-    public function query() : array
-    {
-        return [];
-    }
-
-    /**
-     * Подключаемые макеты
-     *
-     * @return array
-     */
-    public function layout() : array
-    {
-        return [
-            IconsLayout::class
-        ];
-    }
-}
-```
-
-
-### Макет и шаблон
-Наш экран просто подключает макет, но не передает в него данные.
-Создадим макет, для этого в каталоге `app\Http\Layouts\` добавим файл `IconsLayout.php` с следующим содержимым.
-```
-namespace App\Http\Layouts;
-
-use Orchid\Screen\Layouts\Rows;
-
-class IconsLayout extends Rows
-{
-    public $template = 'layouts.icons'; //подключить шаблон
-}
-```
-Данный макет подключает файл шаблона, давайте создадим его, для этого в каталоге `/resources/views/layouts` создадим файл `icons.blade.php` в который можно внести любые html данные, например:
-```
-<div class="wrapper-md">
-    <h2>Orchid icon collection</h2>
-    <div class="row">
-            <div class="col-4">
-                <i class="icon-orchid icons"></i>
-                <span class="name">icon-orchid</span>
-            </div>
-    </div>
-</div>
-```
+<file prefix="DEMOKIT_PATH" file="/src/Providers/DemoKitProvider.php" strings="22" />
 
 Поздравляю!

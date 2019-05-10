@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Facades\View;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
+//***use App\Http\Composers\MenuComposer;
 
 class DemoKitProvider extends ServiceProvider
 {
@@ -18,15 +19,13 @@ class DemoKitProvider extends ServiceProvider
     {
         $this->dashboard = $dashboard;
 
-        $this->loadViewsFrom(realpath(DEMOKIT_PATH.'/resources/views'), 'orchids/demokit');
-
-
-        $this->dashboard->registerPermissions($this->registerPermissions());
-        //$this->loadMigrationsFrom(realpath(__DIR__.'/../../database/migrations'));
-   		//$this->loadRoutesFrom(realpath(DEMOKIT_PATH.'/routes/route.php'));  //Файл роутинга
-
         View::composer('platform::layouts.dashboard', MenuComposer::class);
         View::composer('platform::container.systems.index', SystemMenuComposer::class);
+
+        $this->loadViewsFrom(realpath(DEMOKIT_PATH.'/resources/views'), 'orchids/demokit');
+
+        //$this->loadMigrationsFrom(realpath(__DIR__.'/../../database/migrations'));
+   		//$this->loadRoutesFrom(realpath(DEMOKIT_PATH.'/routes/route.php'));  //Файл роутинга
 
         $this->app->make(Factory::class)->load(realpath(DEMOKIT_PATH.'/database/factories'));
 /*
@@ -43,7 +42,10 @@ class DemoKitProvider extends ServiceProvider
 */
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(DashboardProvider::class);
-        //dd($this->app);
+
+        $this->app->booted(function () {
+            $this->dashboard->registerPermissions($this->registerPermissions());
+        });
     }
 
     /**

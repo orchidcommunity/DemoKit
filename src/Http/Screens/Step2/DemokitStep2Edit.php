@@ -3,21 +3,20 @@ namespace Orchids\DemoKit\Http\Screens\Step2;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-
 use Orchid\Press\Models\Post;
 use Orchid\Support\Facades\Alert;
-use Orchid\Screen\Layouts;
+use Orchid\Screen\Layout;
 use Orchid\Screen\Link;
+use Orchid\Screen\Layouts\Modals;
 use Orchid\Screen\Screen;
-
-//use Orchids\DemoKit\Models\DemoPost;
-use Orchids\DemoKit\Http\Layouts\AllFields\DemokitStep2Layout;
+//***use App\Http\Layouts\Step2\Step2Layout;
+use Orchids\DemoKit\Http\Layouts\Step2\Step2Layout;
 use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout;
 
 
 class DemokitStep2Edit extends Screen
 {
-	
+    public $edit = true;
     /**
      * Display header name
      *
@@ -39,7 +38,14 @@ class DemokitStep2Edit extends Screen
      */
     public function query($postdata = null) : array
     {
-        $postdata = is_null($postdata) ? new Post() : $postdata; //Post::whereId($postdata)->first();
+        if (is_null($postdata)) {
+            $postdata = new Post();
+            $this->edit = false;
+            $this->description = 'Add new post';
+        } else {
+            $this->description = 'Edit post';
+        }
+
         return [
             'data'   => $postdata,
             'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step2.md',
@@ -53,11 +59,10 @@ class DemokitStep2Edit extends Screen
     public function commandBar() : array
     {
         return [
-            Link::name('Help Step 2')
-                ->modal('HelpModal'),
-            Link::name('Save')->method('save'),
-            Link::name('Remove')->method('remove'),
-
+            Link::name('Help Step 2')->icon('icon-question')->modal('HelpModal'),
+            Link::name('Add')->icon(' icon-plus')->method('save')->canSee(!$this->edit),
+            Link::name('Save')->icon('icon-check')->method('save')->canSee($this->edit),
+            Link::name('Remove')->icon('icon-close')->method('remove')->canSee($this->edit),
         ];
     }
     /**
@@ -68,18 +73,10 @@ class DemokitStep2Edit extends Screen
     public function layout() : array
     {
         return [
-		
-		    Layouts::columns([
-                'EditLayout' => [
-                    DemokitStep2Layout::class
-                ],
-            ]),
-            Layouts::modals([
-                'HelpModal' => [
-                    HelpModalLayout::class,
-                ],
-            ]),
-		
+            Step2Layout::class,
+            Layout::modals([
+                'HelpModal' => [HelpModalLayout::class],
+            ])->size(Modals::SIZE_LG),
         ];
     }
     /**
@@ -90,11 +87,7 @@ class DemokitStep2Edit extends Screen
      */
     public function save(Post $postdata)
     {
-
-        //dd($postdata);
         $req = $this->request->get('data');
-        //dd($req);
-        //dd($req['content'][app()->getLocale()]['input']);
         $postdata->fill($req);
         $postdata->slug = is_null($postdata->slug) ? Str::slug($req['content'][app()->getLocale()]['input']) : $postdata->slug;
         $postdata->user_id = is_null($postdata->user_id) ? Auth::user()->id : $postdata->user_id;
@@ -104,7 +97,6 @@ class DemokitStep2Edit extends Screen
         $postdata->save();
         $postdata->attachment()
                 ->attach(array_diff($this->request->get('data_photos') ?? [],$postdata->attachment()->pluck('attachment_id')->toArray()));
-
         Alert::info('Data was saved');
         return redirect()->back();
     }
