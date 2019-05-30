@@ -1,7 +1,11 @@
-/*
-window.Turbolinks = require('turbolinks');
-Turbolinks.start();
-*/
+import RelationMany from "./controllers/fields/relation_controller";
+
+//We can work with this only when we already have an application
+if (typeof window.application !== 'undefined') {
+    window.application.register('demokit--relation', RelationMany);
+}
+
+
 /*
 try {
     window.$ = window.jQuery = require('jquery');

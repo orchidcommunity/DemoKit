@@ -19,8 +19,8 @@ class DemoKitProvider extends ServiceProvider
     {
         $this->dashboard = $dashboard;
 
-        View::composer('platform::layouts.dashboard', MenuComposer::class);
-        View::composer('platform::container.systems.index', SystemMenuComposer::class);
+        View::composer('platform::dashboard', MenuComposer::class);
+        View::composer('platform::systems', SystemMenuComposer::class);
 
         $this->loadViewsFrom(realpath(DEMOKIT_PATH.'/resources/views'), 'orchids/demokit');
 
@@ -40,6 +40,14 @@ class DemoKitProvider extends ServiceProvider
             ]
         );
 */
+        $this->dashboard
+            ->addPublicDirectory('demokit',DEMOKIT_PATH.'/public/');
+
+        \View::composer('platform::app', function () {
+            \Dashboard::registerResource('scripts', orchid_mix('/js/demokit.js', 'demokit'));
+                //->registerResource('stylesheets', orchid_mix('/css/demokit.css', 'demokit'));
+        });
+
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(DashboardProvider::class);
 

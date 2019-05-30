@@ -51,7 +51,7 @@ class RouteServiceProvider extends ServiceProvider
     public function binding()
     {
 
-        Route::bind('postscreen', function ($value) {
+        Route::bind('demokitpost', function ($value) {
 			return Post::firstOrNew(['id'=>$value]);
         });
 

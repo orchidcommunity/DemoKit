@@ -13,7 +13,7 @@
 
 Создадим файл экрана `app/Http/Screens/Step3/DemokitStep3List.php`
 
-<file prefix="DEMOKIT_PATH" file="/src/Http/Screens/Step3/DemokitStep3List.php" strings="5-11,15-38,40-49,53-64,70-79,98" />
+<file prefix="DEMOKIT_PATH" file="/src/Http/Screens/Step3/DemokitStep3List.php" />
 
 _([Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/src/Http/Screens/Step3/DemokitStep3List.php))_
 
@@ -21,7 +21,7 @@ _([Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/s
 
 Создадим макет ([Layouts](https://orchid.software/ru/docs/layouts)) в файле `app\Http\Layouts\Step3\Step3Layout.php`
 
-<file prefix="DEMOKIT_PATH" file="/src/Http/Layouts/Step3/Step3Layout.php" strings="4-33" />
+<file prefix="DEMOKIT_PATH" file="/src/Http/Layouts/Step3/Step3Layout.php" select="4-33" />
 
 _([Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/src/Http/Layouts/Step3/Step3Layout.php))_
 
@@ -31,14 +31,14 @@ _([Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/s
 
 В файле `routes/platform.php` добавим строку 
 
-<file prefix="DEMOKIT_PATH" file="/routes/route.php" strings="14" />
+<file prefix="DEMOKIT_PATH" file="/routes/route.php" select="15" />
 
 также добавим роут редактирования данных ссылающийся на экран в шаге 2 
 
-<file prefix="DEMOKIT_PATH" file="/routes/route.php" strings="12" />
+<file prefix="DEMOKIT_PATH" file="/routes/route.php" select="13" />
 
 осталось добавить пункт меню
 
 В файл `app/Http/Composers/MenuComposer.php` добавим строки 
 
-<file prefix="DEMOKIT_PATH" file="/src/Providers/MenuComposer.php" strings="26,53-60" />
+<file prefix="DEMOKIT_PATH" file="/src/Providers/MenuComposer.php" select="26,53-60" />

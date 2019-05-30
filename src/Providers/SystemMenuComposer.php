@@ -30,7 +30,7 @@ class SystemMenuComposer
                     ->Slug('cms-demokit')
                     ->Icon('icon-settings')
                     ->Route('platform.demokit.step4.list')
-                    ->GroupName(trans('platform::systems/category.groupname'))
+                    ->Title(trans('platform::systems/category.groupname'))
                     ->Permission('platform.demokit')
                     ->Sort(8)
             );

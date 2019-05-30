@@ -1,6 +1,6 @@
-<?php
-
-namespace Orchids\DemoKit\Http\Screens\Step3;
+<?php       //---
+//---
+namespace Orchids\DemoKit\Http\Screens\Step3;  //---
 
 use Illuminate\Support\Facades\Artisan;
 use Orchid\Screen\Screen;
@@ -9,9 +9,7 @@ use Orchid\Screen\Layouts\Modals;
 use Orchid\Screen\Link;
 use Orchid\Press\Models\Post;
 use Orchids\DemoKit\Http\Layouts\Step3\Step3Layout;
-
-//use Orchids\DemoKit\Models\DemoPost;
-use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout;
+use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout; //---
 
 class DemokitStep3List extends Screen
 {
@@ -36,7 +34,7 @@ class DemokitStep3List extends Screen
     {
          return [
             'data' => Post::where('type','demo-screen')->filters()->defaultSort('id')->paginate(30),
-            'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step3.md',
+            'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step3.md',  //---
         ];
     }
     /**
@@ -48,7 +46,7 @@ class DemokitStep3List extends Screen
     {
         return [
             Link::name('Help step 3')->icon('icon-question')->modal('HelpModal'),
-            //Link::name('Add 10 row demo')->method('add10_demo'),
+            //Link::name('Add 10 row demo')->method('add10_demo'),   //---
             Link::name('Add 1 row demo')->icon(' icon-plus')->method('add1_demo'),
             Link::name('Add data')->icon(' icon-plus')->method('create'),
         ];
@@ -62,11 +60,11 @@ class DemokitStep3List extends Screen
     {
         return [
             Step3Layout::class,
-            Layout::modals([
-                'HelpModal' => [
-                    HelpModalLayout::class,
-                ],
-            ])->size(Modals::SIZE_LG),
+            Layout::modals([  //---
+                'HelpModal' => [  //---
+                    HelpModalLayout::class,  //---
+                ],  //---
+            ])->size(Modals::SIZE_LG),  //---
         ];
     }
 
@@ -87,12 +85,12 @@ class DemokitStep3List extends Screen
         return back();
     }
 
-    /**
-     * @return null
-     */
-    public function add10_demo()
-    {
-        Artisan::call("db:seed", ['--class' => "Orchids\DemoKit\Database\Seeds\Add10DemoPostsTableSeeder"]);
-        return back();
-    }
+    /**  //---
+     * @return null  //---
+     */  //---
+    public function add10_demo()  //---
+    {  //---
+        Artisan::call("db:seed", ['--class' => "Orchids\DemoKit\Database\Seeds\Add10DemoPostsTableSeeder"]);  //---
+        return back();  //---
+    }  //---
 }

@@ -1,17 +1,16 @@
-<?php
+<?php      //---
 
-namespace Orchids\DemoKit\Http\Screens\Step4;
+namespace Orchids\DemoKit\Http\Screens\Step4;      //---
 
-use Illuminate\Support\Facades\Artisan;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Layout;
 use Orchid\Screen\Layouts\Modals;
 use Orchid\Screen\Link;
 use Orchid\Press\Models\Post;
 
-//use Orchids\DemoKit\Models\DemoPost;
+//use Orchids\DemoKit\Models\DemoPost;      //---
 use Orchids\DemoKit\Http\Layouts\Step4\Step4Layout;
-use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout;
+use Orchids\DemoKit\Http\Layouts\Modals\HelpModalLayout;      //---
 
 class DemokitStep4List extends Screen
 {
@@ -20,13 +19,13 @@ class DemokitStep4List extends Screen
      *
      * @var string
      */
-    public $name = 'Screen3 List';
+    public $name = 'Step4 List';
     /**
      * Display header description
      *
      * @var string
      */
-    public $description = 'List all data screen1';
+    public $description = 'List all data screen';
     /**
      * Query data
      *
@@ -36,7 +35,7 @@ class DemokitStep4List extends Screen
     {
          return [
             'data' => Post::where('type','demo-screen')->paginate(30),
-            'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step4.md',
+            'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step4.md',      //---
         ];
     }
     /**
@@ -47,8 +46,8 @@ class DemokitStep4List extends Screen
     public function commandBar() : array
     {
         return [
-            Link::name('Help Step 4')
-                ->modal('HelpModal'),
+            Link::name('Help Step 4')      //---
+                ->modal('HelpModal'),      //---
         ];
     }
     /**
@@ -60,12 +59,12 @@ class DemokitStep4List extends Screen
     {
         return [
             Step4Layout::class,
-            Layout::modals([
-                'HelpModal' => [
-                    HelpModalLayout::class,
-                ],
-            ])
-            ->size(Modals::SIZE_LG),
+            Layout::modals([                    //---
+                'HelpModal' => [                //---
+                    HelpModalLayout::class,     //---
+                ],                              //---
+        ])                                      //---
+            ->size(Modals::SIZE_LG),      //---
         ];
     }
 }

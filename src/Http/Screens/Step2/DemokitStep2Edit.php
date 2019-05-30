@@ -32,14 +32,14 @@ class DemokitStep2Edit extends Screen
     /**
      * Query data
      *
-     * @param Post $postdata
+     * @param Post $demokitPost
      *
      * @return array
      */
-    public function query($postdata = null) : array
+    public function query($demokitPost = null) : array
     {
-        if (is_null($postdata)) {
-            $postdata = new Post();
+         if (is_null($demokitPost)) {
+            $demokitPost = new Post();
             $this->edit = false;
             $this->description = 'Add new post';
         } else {
@@ -47,7 +47,7 @@ class DemokitStep2Edit extends Screen
         }
 
         return [
-            'data'   => $postdata,
+            'data'   => $demokitPost,
             'helpmdpath'  => DEMOKIT_PATH.'/docs/ru/step2.md',
         ];
     }

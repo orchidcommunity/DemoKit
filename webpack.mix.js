@@ -14,7 +14,7 @@ const { mix } = require('laravel-mix');
 
 mix.setPublicPath('public'); 
  
-//mix
-	//.js('resources/assets/js/demokit.js', 'js')
-	//.sass('resources/assets/sass/demokit.scss', 'css');
+mix
+	.js('resources/js/demokit.js', 'js');
+	//.sass('resources/sass/demokit.scss', 'css');
     //.copyDirectory('./node_modules/monaco-editor/min', 'public/js/min');

@@ -12,7 +12,7 @@
 
 Создадим файл экрана `app/Http/Screens/Step2/DemokitStep2Edit.php`
 
-<file prefix="DEMOKIT_PATH" file="/src/Http/Screens/Step2/DemokitStep2Edit.php" strings="4-12,16-50,52-61,63-76,80-118" />
+<file prefix="DEMOKIT_PATH" file="/src/Http/Screens/Step2/DemokitStep2Edit.php" select="4-12,16-50,52-61,63-76,80-118" />
 
 _([Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/src/Http/Screens/Step2/DemokitStep2Edit.php))_
 
@@ -22,7 +22,7 @@ _([Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/s
 
 Создадим макет ([Layouts](https://orchid.software/ru/docs/layouts)) в файле `app\Http\Layouts\Step2\Step2Layout.php` и добавим в него добавим все [***поля из документации***](https://orchid.software/ru/docs/field)
 
-<file prefix="DEMOKIT_PATH" file="/src/Http/Layouts/Step2/Step2Layout.php" strings="4-78" />
+<file prefix="DEMOKIT_PATH" file="/src/Http/Layouts/Step2/Step2Layout.php" select="4-78" />
 
 _([Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/src/Http/Layouts/Step2/Step2Layout.php))_
 
@@ -32,7 +32,7 @@ _([Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/s
 
 В файле `routes/platform.php` добавим строку 
 
-<file prefix="DEMOKIT_PATH" file="/routes/route.php" strings="13" />
+<file prefix="DEMOKIT_PATH" file="/routes/route.php" select="14" />
 
 ### 2.3 Права доступа _([Permissions](https://orchid.software/ru/docs/access/))_
 
@@ -40,12 +40,12 @@ _[Права доступа](https://orchid.software/ru/docs/access/)_ нужн�
 
 Для создания прав доступа нужно в файле провайдера `app/Providers/AppServiceProvider.php` в функцию `boot` добавим строки:
 
-<file prefix="DEMOKIT_PATH" file="/src/Providers/DemoKitProvider.php" strings="46-48" />
+<file prefix="DEMOKIT_PATH" file="/src/Providers/DemoKitProvider.php" select="46-48" />
  и добавить функцию:
-<file prefix="DEMOKIT_PATH" file="/src/Providers/DemoKitProvider.php" strings="51-58" />
+<file prefix="DEMOKIT_PATH" file="/src/Providers/DemoKitProvider.php" select="51-58" />
 
 ### 2.4 Меню
 
 В файл `app/Http/Composers/MenuComposer.php` добавим строки 
 
-<file prefix="DEMOKIT_PATH" file="/src/Providers/MenuComposer.php" strings="26,45-52" />
+<file prefix="DEMOKIT_PATH" file="/src/Providers/MenuComposer.php" select="26,45-52" />

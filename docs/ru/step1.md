@@ -18,7 +18,7 @@ Orchid это не только админка, но и платформа дл�
 
 Создадим экран, для этого в каталог `app/Http/Screens/Step1` добавим файл `DemokitStep1.php` с следующим содержимым.
 
-<file prefix="DEMOKIT_PATH" file="/src/Http/Screens/Step1/DemokitStep1.php" strings="4-7,9-31,35-40,317-321,323-332,336-346,353-356" />
+<file prefix="DEMOKIT_PATH" file="/src/Http/Screens/Step1/DemokitStep1.php" select="4-7,9-31,35-40,317-321,323-332,336-346,353-356" />
 
 _([Если что-то не понятно посмотрите Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/src/Http/Screens/Step1/DemokitStep1.php))_
 
@@ -27,7 +27,7 @@ _([Если что-то не понятно посмотрите Исходни�
 Наш экран просто подключает шаблон из файла `/resources/views/icons.blade.php` и передает в него данные.
 Давайте создадим его, для этого в каталоге `/resources/views` создадим файл `icons.blade.php` в который можно внести любые html данные, например:
 
-<file prefix="DEMOKIT_PATH" file="/resources/views/layouts/icons.blade.php" strings="23-34" />
+<file prefix="DEMOKIT_PATH" file="/resources/views/layouts/icons.blade.php" select="23-34"/>
 
 _([Если что-то не понятно посмотрите Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/resources/views/layouts/icons.blade.php))_
 
@@ -38,7 +38,7 @@ _([Если что-то не понятно посмотрите Исходни�
 Роутинг обрабатывает запросы браузера, сделаем роутинг который обработает запрос `http://sitename.com/dashboard/demokit/step1`.
 Для этого добавим в файл `routes/platform.php` следующие строки
 
-<file prefix="DEMOKIT_PATH" file="/routes/route.php" strings="3,9,10" />
+<file prefix="DEMOKIT_PATH" file="/routes/route.php" select="3,10,11" />
 
 _([Если что-то не понятно посмотрите Исходник>>>](https://github.com/orchidcommunity/DemoKit/blob/master/routes/route.php))_
 
@@ -48,10 +48,10 @@ _([Если что-то не понятно посмотрите Исходни�
 
 Теперь нужно добавить в левое меню ссылку на наш роутинг, для этого создадим создадим файл `app/Http/Composers/MenuComposer.php` со следущими данными
 
-<file prefix="DEMOKIT_PATH" file="/src/Providers/MenuComposer.php" strings="5-33,35-42,76-78" />
+<file prefix="DEMOKIT_PATH" file="/src/Providers/MenuComposer.php" select="5-33,35-42,76-78" />
 
 Далее нужно подключить конструктор меню к провайдеру, для этого в файл `app/Providers/AppServiceProvider.php` в функцию `boot` добавим строку:
 
-<file prefix="DEMOKIT_PATH" file="/src/Providers/DemoKitProvider.php" strings="22" />
+<file prefix="DEMOKIT_PATH" file="/src/Providers/DemoKitProvider.php" select="22" />
 
 Поздравляю!

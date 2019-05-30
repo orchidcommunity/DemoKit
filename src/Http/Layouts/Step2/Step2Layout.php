@@ -8,7 +8,7 @@ use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Select;
-use Orchid\Screen\Fields\Tags;
+use Orchid\Press\Screen\Fields\Tags;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Fields\TinyMCE;
 use Orchid\Screen\Fields\SimpleMDE;

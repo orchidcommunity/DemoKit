@@ -44,20 +44,20 @@ class DemokitStep5 extends Screen
         return [
             'charts'  => [
                 [
-                    'name'   => 'Some Data',
-                    'values' => [25, 40, 30, 35, 8, 52, 17],
+                    'label'   => 'Some Data',
+                    'data' => [25, 40, 30, 35, 8, 52, 17],
                 ],
                 [
-                    'name'   => 'Another Set',
-                    'values' => [25, 50, -10, 15, 18, 32, 27],
+                    'label'   => 'Another Set',
+                    'data' => [25, 50, -10, 15, 18, 32, 27],
                 ],
                 [
-                    'name'   => 'Yet Another',
-                    'values' => [15, 20, -3, -15, 58, 12, -17],
+                    'label'   => 'Yet Another',
+                    'data' => [15, 20, -3, -15, 58, 12, -17],
                 ],
                 [
-                    'name'   => 'And Last',
-                    'values' => [10, 33, -8, -3, 70, 20, -34],
+                    'label'   => 'And Last',
+                    'data' => [10, 33, -8, -3, 70, 20, -34],
                 ],
             ],
             'table'   => [

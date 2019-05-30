@@ -1,8 +1,6 @@
 <?php
 namespace Orchids\DemoKit\Http\Screens\Step4;
 
-use Orchid\Support\Facades\Alert;
-use Orchid\Support\Facades\Setting;
 use Orchid\Screen\Layout;
 use Orchid\Screen\Link;
 use Orchid\Screen\Screen;
@@ -39,18 +37,17 @@ class DemokitStep4 extends Screen
     /**
      * Query data
      *
-     * @param $demokitdata
+     * @param $demokitPost
      *
      * @return array
      */
 
 
-    public function query($demokitdata= null) : array
+    public function query($demokitPost= null) : array
     {
-
-        $demokitdata = is_null($demokitdata) ? new DemoPost() : DemoPost::whereId($demokitdata)->first();
+        $demokitPost = is_null($demokitPost) ? new DemoPost() : DemoPost::whereId($demokitPost)->first();
         return [
-            'data'   => $demokitdata,
+            'data'   => $demokitPost,
         ];
     }
     /**
@@ -155,6 +152,5 @@ class DemokitStep4 extends Screen
 
         return parent::handle($parameters);
     }
-
 
 }
